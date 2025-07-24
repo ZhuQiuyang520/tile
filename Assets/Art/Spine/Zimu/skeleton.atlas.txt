@@ -1,0 +1,104 @@
+
+skeleton.png
+size: 782,518
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+9po
+  rotate: false
+  xy: 424, 20
+  size: 35, 102
+  orig: 37, 104
+  offset: 1, 1
+  index: -1
+DFSA
+  rotate: false
+  xy: 70, 22
+  size: 65, 58
+  orig: 67, 60
+  offset: 1, 1
+  index: -1
+amazing
+  rotate: true
+  xy: 633, 154
+  size: 362, 147
+  orig: 382, 165
+  offset: 10, 9
+  index: -1
+awesome
+  rotate: true
+  xy: 469, 84
+  size: 432, 162
+  orig: 446, 172
+  offset: 0, 2
+  index: -1
+dd6
+  rotate: true
+  xy: 435, 214
+  size: 28, 23
+  orig: 30, 25
+  offset: 1, 1
+  index: -1
+fc
+  rotate: false
+  xy: 461, 2
+  size: 119, 80
+  orig: 141, 127
+  offset: 14, 28
+  index: -1
+great
+  rotate: false
+  xy: 2, 228
+  size: 322, 143
+  orig: 382, 165
+  offset: 35, 10
+  index: -1
+huaban1
+  rotate: true
+  xy: 326, 124
+  size: 118, 107
+  orig: 141, 127
+  offset: 1, 13
+  index: -1
+legendary
+  rotate: false
+  xy: 2, 373
+  size: 465, 143
+  orig: 492, 172
+  offset: 8, 18
+  index: -1
+lrj_10113_tex_26
+  rotate: false
+  xy: 633, 25
+  size: 127, 127
+  orig: 127, 127
+  offset: 0, 0
+  index: -1
+m_20
+  rotate: false
+  xy: 297, 53
+  size: 125, 69
+  orig: 141, 127
+  offset: 5, 45
+  index: -1
+nice
+  rotate: false
+  xy: 2, 82
+  size: 293, 144
+  orig: 382, 165
+  offset: 50, 8
+  index: -1
+rainbow_13
+  rotate: true
+  xy: 326, 244
+  size: 127, 116
+  orig: 130, 131
+  offset: 1, 7
+  index: -1
+xx
+  rotate: false
+  xy: 2, 16
+  size: 66, 64
+  orig: 68, 66
+  offset: 1, 1
+  index: -1

@@ -1,0 +1,15 @@
+{
+    "BuildTarget": "iOS",
+    "DesState": "DES",
+    "BaseUrl": "http://g.creativecatapp.com",
+    "GameName": "Lattice Collapse",
+    "PackageName": "com.suibianguo.bian",
+    "BuildCode": 20,
+    "Applovin_SDK_KEY": "vHqAjlqZXM4ahebtUQfRFHZBkEC5FGjKIyiq3NMSD1rCQfxTu9jZouSmtUgesrir9S5kmbveiF6eggRwkOHPXul2S1q8C02rwBGG4OD9K2gByn5eiIzvpg==",
+    "Applovin_REWARD_ID": "1ee4bf7e32b55437",
+    "Applovin_INTER_ID": "89ca81d6bd0b7764",
+    "Adjust_APP_ID": "rkvhku06uu4g",
+    "GameCode": "21277",
+    "Rate_ID": "1111111111111",
+    "Build_path": "/Users/yfax/Desktop/\u672A\u547D\u540D\u6587\u4EF6\u5939"
+}

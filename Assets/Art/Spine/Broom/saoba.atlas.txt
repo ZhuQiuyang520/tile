@@ -1,0 +1,195 @@
+
+saoba.png
+size: 1615,1311
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 1470, 216
+  size: 207, 132
+  orig: 219, 153
+  offset: 2, 1
+  index: -1
+2
+  rotate: false
+  xy: 2, 957
+  size: 341, 352
+  orig: 341, 352
+  offset: 0, 0
+  index: -1
+3
+  rotate: false
+  xy: 1207, 873
+  size: 107, 117
+  orig: 111, 119
+  offset: 2, 1
+  index: -1
+4
+  rotate: false
+  xy: 1207, 758
+  size: 103, 113
+  orig: 105, 115
+  offset: 1, 1
+  index: -1
+5
+  rotate: false
+  xy: 1475, 568
+  size: 138, 169
+  orig: 141, 172
+  offset: 2, 1
+  index: -1
+6
+  rotate: false
+  xy: 961, 365
+  size: 69, 82
+  orig: 71, 84
+  offset: 1, 1
+  index: -1
+7
+  rotate: false
+  xy: 1475, 425
+  size: 136, 141
+  orig: 140, 144
+  offset: 2, 1
+  index: -1
+smoke_00002
+  rotate: true
+  xy: 1241, 39
+  size: 205, 215
+  orig: 346, 358
+  offset: 74, 76
+  index: -1
+smoke_00003
+  rotate: false
+  xy: 1241, 246
+  size: 227, 233
+  orig: 346, 358
+  offset: 62, 70
+  index: -1
+smoke_00004
+  rotate: false
+  xy: 1222, 481
+  size: 251, 256
+  orig: 346, 358
+  offset: 50, 60
+  index: -1
+smoke_00005
+  rotate: false
+  xy: 961, 449
+  size: 259, 263
+  orig: 346, 358
+  offset: 45, 57
+  index: -1
+smoke_00006
+  rotate: false
+  xy: 938, 714
+  size: 267, 273
+  orig: 346, 358
+  offset: 41, 52
+  index: -1
+smoke_00007
+  rotate: false
+  xy: 666, 710
+  size: 270, 276
+  orig: 346, 358
+  offset: 39, 50
+  index: -1
+smoke_00008
+  rotate: true
+  xy: 1321, 739
+  size: 275, 280
+  orig: 346, 358
+  offset: 36, 48
+  index: -1
+smoke_00009
+  rotate: false
+  xy: 1321, 1016
+  size: 285, 293
+  orig: 346, 358
+  offset: 31, 41
+  index: -1
+smoke_00010
+  rotate: false
+  xy: 946, 56
+  size: 293, 298
+  orig: 346, 358
+  offset: 28, 37
+  index: -1
+smoke_00011
+  rotate: false
+  xy: 644, 51
+  size: 300, 301
+  orig: 346, 358
+  offset: 25, 35
+  index: -1
+smoke_00012
+  rotate: false
+  xy: 2, 2
+  size: 306, 304
+  orig: 346, 358
+  offset: 22, 34
+  index: -1
+smoke_00013
+  rotate: true
+  xy: 650, 356
+  size: 312, 309
+  orig: 346, 358
+  offset: 19, 32
+  index: -1
+smoke_00014
+  rotate: false
+  xy: 327, 42
+  size: 315, 310
+  orig: 346, 358
+  offset: 17, 32
+  index: -1
+smoke_00015
+  rotate: false
+  xy: 330, 354
+  size: 318, 314
+  orig: 346, 358
+  offset: 15, 30
+  index: -1
+smoke_00016
+  rotate: false
+  xy: 345, 670
+  size: 319, 316
+  orig: 346, 358
+  offset: 15, 29
+  index: -1
+smoke_00017
+  rotate: false
+  xy: 998, 992
+  size: 321, 317
+  orig: 346, 358
+  offset: 14, 29
+  index: -1
+smoke_00018
+  rotate: false
+  xy: 672, 989
+  size: 324, 320
+  orig: 346, 358
+  offset: 13, 27
+  index: -1
+smoke_00019
+  rotate: false
+  xy: 345, 988
+  size: 325, 321
+  orig: 346, 358
+  offset: 12, 26
+  index: -1
+smoke_00020
+  rotate: false
+  xy: 2, 633
+  size: 326, 322
+  orig: 346, 358
+  offset: 11, 26
+  index: -1
+smoke_00021
+  rotate: false
+  xy: 2, 308
+  size: 323, 323
+  orig: 346, 358
+  offset: 10, 25
+  index: -1
