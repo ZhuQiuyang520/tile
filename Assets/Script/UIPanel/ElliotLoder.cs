@@ -39,7 +39,7 @@ public class ElliotLoder : BaseUIForms
         Hurl.interactable = true;
         ThawBG.OralCrimp();
         RoadTenuous.GetInstance().UsuallyStuff();
-        WingCyan.text = "+" + NetInfoMgr.instance.GameData.win_coins;
+        
         
         if (RoadTenuous.GetInstance().OfTelescope)
         {
@@ -54,7 +54,14 @@ public class ElliotLoder : BaseUIForms
         }
         else
         {
-            SparseFence = NetInfoMgr.instance.GameData.Win_Cash;
+            if (CommonUtil.IsApple())
+            {
+                SparseFence = NetInfoMgr.instance.GameData.win_coins;
+            }
+            else
+            {
+                SparseFence = NetInfoMgr.instance.GameData.Win_Cash;
+            }
             SonicCyan.text = "+" + SparseFence;
         }  
     }
@@ -83,7 +90,12 @@ public class ElliotLoder : BaseUIForms
 
     private void RatifySpark()
     {
+        if (CommonUtil.IsApple())
+        {
+            PlayerPrefs.SetInt(CConfig.CoinNumber, PlayerPrefs.GetInt(CConfig.CoinNumber) + (int)SparseFence);
+        }
         RatifyElliot();
+        
         //AniObj.enabled = true;
         //RotationTasmania AniManager = AniObj.gameObject.AddComponent<RotationTasmania>();
         //AniManager.AddMethod(ChangeFinish);
@@ -121,15 +133,24 @@ public class ElliotLoder : BaseUIForms
             PlayerPrefs.SetInt(CConfig.sv_CurLevel, PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1);
             SaveDataManager.SetInt(CConfig.sv_ad_trial_num, PlayerPrefs.GetInt(CConfig.sv_CurLevel));
             RoadTenuous.GetInstance().OfRadishTelescope = PlayerPrefs.GetInt(CConfig.sv_CurLevel) > NetInfoMgr.instance.GameData.Daily_Challenge;
-            if (PlayerPrefs.GetInt(CConfig.sv_CurLevel) == NetInfoMgr.instance.GameData.RateUs_config)
-            {
-                UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
-                UIManager.GetInstance().ShowUIForms(nameof(ClueNoLoder));
-            }
-            else
+            //审核模式继续玩  普通模式判断是否跳到好评
+            if (CommonUtil.IsApple())
             {
                 UIManager.GetInstance().ShowUIForms(nameof(RoadLoder), PlayerPrefs.GetInt(CConfig.sv_CurLevel));
             }
+            else
+            {
+                if (PlayerPrefs.GetInt(CConfig.sv_CurLevel) == NetInfoMgr.instance.GameData.RateUs_config)
+                {
+                    UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
+                    UIManager.GetInstance().ShowUIForms(nameof(ClueNoLoder));
+                }
+                else
+                {
+                    UIManager.GetInstance().ShowUIForms(nameof(RoadLoder), PlayerPrefs.GetInt(CConfig.sv_CurLevel));
+                }
+            }
+            
         }
         RoadLoder.instance.OatWing(SonicThai, NetInfoMgr.instance.GameData.Win_Cash);
     }
@@ -188,6 +209,7 @@ public class ElliotLoder : BaseUIForms
             {
                 SparseFence = SparseFence * multi;
                 SonicCyan.text = "+" + NumberUtil.DoubleToStr(SparseFence);
+                
                 PerHusbandWeHat = true;
                 RatifySpark();
             });

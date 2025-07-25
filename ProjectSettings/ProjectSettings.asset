@@ -172,7 +172,7 @@ PlayerSettings:
     iPhone: com.tessera.shift.depthsnare
   buildNumber:
     Standalone: 0
-    iPhone: 3
+    iPhone: 27
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 46
@@ -811,7 +811,7 @@ PlayerSettings:
     WebGL: TextMeshPro
     Windows Store Apps: TextMeshPro
     XboxOne: TextMeshPro
-    iPhone: TextMeshPro;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;MODULE_IAP
+    iPhone: TextMeshPro;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;MODULE_IAP;MAX
     tvOS: TextMeshPro
   additionalCompilerArguments: {}
   platformArchitecture:

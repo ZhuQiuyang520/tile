@@ -267,7 +267,7 @@ public class ADManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
             MBridgeRevenueParamsEntity mBridgeRevenueParamsEntity = new MBridgeRevenueParamsEntity(MBridgeRevenueParamsEntity.ATTRIBUTION_PLATFORM_ADJUST, adjustAdid);
             ///MaxSdkBase.AdInfo类型的adInfo
-            //mBridgeRevenueParamsEntity.SetMaxAdInfo(info);
+            mBridgeRevenueParamsEntity.SetMaxAdInfo(info);
             MBridgeRevenueManager.Track(mBridgeRevenueParamsEntity);
             UnityEngine.Debug.Log(nameof(MBridgeRevenueManager) + "~Rewarded revenue:" + info.Revenue);
 #endif
@@ -347,7 +347,7 @@ public class ADManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
             MBridgeRevenueParamsEntity mBridgeRevenueParamsEntity = new MBridgeRevenueParamsEntity(MBridgeRevenueParamsEntity.ATTRIBUTION_PLATFORM_ADJUST, adjustAdid);
             ///MaxSdkBase.AdInfo类型的adInfo
-            //mBridgeRevenueParamsEntity.SetMaxAdInfo(info);
+            mBridgeRevenueParamsEntity.SetMaxAdInfo(info);
             MBridgeRevenueManager.Track(mBridgeRevenueParamsEntity);
             UnityEngine.Debug.Log(nameof(MBridgeRevenueManager) + "~Interstitial revenue:" + info.Revenue);
 #endif

@@ -150,6 +150,10 @@ public class GirlNewlyLoder : BaseUIForms
         if (type == "cash")
         {
             rewardType = RewardType.cash;
+            if (CommonUtil.IsApple())
+            {
+                rewardType = RewardType.gold;
+            }
         }
         if (type == "gold")
         {
@@ -168,13 +172,10 @@ public class GirlNewlyLoder : BaseUIForms
             rewardType = RewardType.wand;
         }
         _SparseNeck.NoseHard = "LuckyWheel";
-        if (CommonUtil.IsApple())
-        {
-            rewardType = RewardType.gold;
-        }
+       
         _SparseNeck.Rim_Marlin.Add(rewardType, num);
         CloseUIForm(GetType().Name);
-        UIManager.GetInstance().ShowUIForms("CargoSkipLoder",_SparseNeck);
+        UIManager.GetInstance().ShowUIForms(nameof(CargoSkipLoder),_SparseNeck);
         
         ADManager.Instance.ResumeTimeInterstitial();
     }

@@ -35,10 +35,12 @@ public class CargoSkipLoder : BaseUIForms
         Fragile.gameObject.SetActive(false);
         Exponent.gameObject.SetActive(false);
         Loam.gameObject.SetActive(false);
+        Debug.Log(_SparseNeck.NoseHard);
         if (_SparseNeck.NoseHard == "LuckyWheel")
         {
             foreach (var item in _SparseNeck.Rim_Marlin)
             {
+                Debug.Log(item.Key);
                 switch (item.Key)
                 {
                     case RewardType.shuffle:

@@ -46,6 +46,10 @@ public class DramTenuous : MonoBehaviour
             PlayerPrefs.SetInt(CConfig.SaveVolun, 1);
             RoadTenuous.GetInstance().OfPearl = true;
             PlayerPrefs.SetInt(CConfig.sv_CurLevel, 0);
+            if (CommonUtil.IsApple())
+            {
+                PlayerPrefs.SetInt(CConfig.FinishWangzhuanGuide, 1);
+            }
         }
         else
         {

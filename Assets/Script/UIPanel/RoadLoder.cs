@@ -12,6 +12,8 @@ public class RoadLoder : BaseUIForms
 [UnityEngine.Serialization.FormerlySerializedAs("WangzhuanMask")]
     public GameObject ProboscisClaw;
     public GameObject WangzhuanObj;
+    public GameObject Coin;
+    public Text CoinNumber;
 [UnityEngine.Serialization.FormerlySerializedAs("PutongLevel")]
     public GameObject FervorBleak;
 [UnityEngine.Serialization.FormerlySerializedAs("ChallengeLevel")]
@@ -80,6 +82,13 @@ public class RoadLoder : BaseUIForms
     {
         base.Awake();
         instance = this;
+        if (CommonUtil.IsApple())
+        {
+            ProboscisClaw.SetActive(false);
+            WangzhuanObj.SetActive(false);
+            Coin.SetActive(true);
+        }
+        CoinNumber.text = PlayerPrefs.GetInt(CConfig.CoinNumber).ToString();
         string ChallengeAward = NetInfoMgr.instance.GameData.Challenge_Reward;
         ChallengeAwardNumber = ChallengeAward.Split('|');
         SqueezeTenuous.GetInstance().LidSeverely<PropType>(MessageCode.BookletBoth, BookletBoth);
@@ -92,6 +101,8 @@ public class RoadLoder : BaseUIForms
 
     private void BookletBoth(PropType Type)
     {
+        RoadBrother.instance.OfForget = true;
+        CoinNumber.text = PlayerPrefs.GetInt(CConfig.CoinNumber).ToString();
         switch (Type)
         {
             case PropType.Roll:
@@ -149,6 +160,8 @@ public class RoadLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        CoinNumber.text = PlayerPrefs.GetInt(CConfig.CoinNumber).ToString();
+        RoadTenuous.GetInstance().ReliefStilt = true;
         BeltDareHat.interactable = true;
         ForgetHat.interactable = true;
         BookletHat.interactable = true;
@@ -274,7 +287,7 @@ public class RoadLoder : BaseUIForms
         switch (Num)
         {
             case 1:
-                if (Enterprising.gameObject.active)
+                if (Enterprising.gameObject.activeSelf)
                 {
                     Enterprising.AnimationState.SetAnimation(4, "nice", false);
                 }
@@ -285,7 +298,7 @@ public class RoadLoder : BaseUIForms
                 break;
             case 2:
                 Enterprising.Initialize(true);
-                if (EquipHomeland.gameObject.active)
+                if (EquipHomeland.gameObject.activeSelf)
                 {
                     EquipHomeland.AnimationState.SetAnimation(2, "great", false);
                 }
@@ -297,7 +310,7 @@ public class RoadLoder : BaseUIForms
             case 3:
                 EquipHomeland.Initialize(true);
                 RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Combo3);
-                if (LoyaltyHomeland.gameObject.active)
+                if (LoyaltyHomeland.gameObject.activeSelf)
                 {
                     LoyaltyHomeland.AnimationState.SetAnimation(1, "awesome", false);
                 }
@@ -309,7 +322,7 @@ public class RoadLoder : BaseUIForms
             case 4:
                 LoyaltyHomeland.Initialize(true);
                 RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Combo4);
-                if (AmenityHomeland.gameObject.active)
+                if (AmenityHomeland.gameObject.activeSelf)
                 {
                     AmenityHomeland.AnimationState.SetAnimation(0, "amazing", false);
                 }
@@ -321,7 +334,7 @@ public class RoadLoder : BaseUIForms
             case 5:
                 AmenityHomeland.Initialize(true);
                 RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Combo5);
-                if (HillbillyHomeland.gameObject.active)
+                if (HillbillyHomeland.gameObject.activeSelf)
                 {
                     HillbillyHomeland.AnimationState.SetAnimation(3, "legendary", false);
                 }
@@ -580,9 +593,12 @@ public class RoadLoder : BaseUIForms
 
     public void OatWing(Transform StartPostion , double AwardNum )
     {
-        AnimationController.GoldMoveBest(WingThai, 10, StartPostion, SewWay , () =>
+        if (!CommonUtil.IsApple())
+        {
+            AnimationController.GoldMoveBest(WingThai, 10, StartPostion, SewWay, () =>
             {
                 RoadNeckTenuous.GetInstance().LidYour(AwardNum);
             });
+        }
     }
 }
