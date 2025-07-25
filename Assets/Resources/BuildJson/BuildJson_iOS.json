@@ -1,15 +1,1 @@
-{
-    "BuildTarget": "iOS",
-    "DesState": "DES",
-    "BaseUrl": "http://g.creativecatapp.com",
-    "GameName": "Lattice Collapse",
-    "PackageName": "com.suibianguo.bian",
-    "BuildCode": 20,
-    "Applovin_SDK_KEY": "vHqAjlqZXM4ahebtUQfRFHZBkEC5FGjKIyiq3NMSD1rCQfxTu9jZouSmtUgesrir9S5kmbveiF6eggRwkOHPXul2S1q8C02rwBGG4OD9K2gByn5eiIzvpg==",
-    "Applovin_REWARD_ID": "1ee4bf7e32b55437",
-    "Applovin_INTER_ID": "89ca81d6bd0b7764",
-    "Adjust_APP_ID": "rkvhku06uu4g",
-    "GameCode": "21277",
-    "Rate_ID": "1111111111111",
-    "Build_path": "/Users/yfax/Desktop/\u672A\u547D\u540D\u6587\u4EF6\u5939"
-}
+{"BuildTarget":"iOS","DesState":"DES","BaseUrl":"http://lazylegend.top","GameName":"Lattice Collapse","PackageName":"com.tessera.shift.depthsnare","BuildCode":3,"Applovin_SDK_KEY":"tjjVr6HnxUhAe0aNXs2vFQAOZT6CHt+mIDMM+zOqEl1ig7iGKzwl7DMfy4pNehuy82T6FxH+oCKBi/1xR8C2NB8SvQC7L46TArI9eLYeYHPdd7lP1Nz8CA==","Applovin_REWARD_ID":"4250aec708e5830d","Applovin_INTER_ID":"0c6e28afeb6195d0","Adjust_APP_ID":"ivdw0b652fwg","GameCode":"21277","Rate_ID":"6749047995","Build_path":"/Users/yfax/Desktop/\u672A\u547D\u540D\u6587\u4EF6\u5939"}
