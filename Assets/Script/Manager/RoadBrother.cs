@@ -91,7 +91,6 @@ public class RoadBrother : MonoBehaviour
         {
             ThawFire[i].SettingOrder(i);
         }
-        PlayerPrefs.SetInt(CConfig.sv_CurLevel, 204);
     }
 
     //游戏退出时记录登出时间
