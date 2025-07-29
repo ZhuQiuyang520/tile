@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Lofelt.NiceVibrations;
 using Spine.Unity;
 using System;
 using System.Collections;
@@ -36,16 +37,17 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
     }
 
     public List<int> TelescopeBleak= new List<int>() {
-        {200},{201},{203},{204},{205}
+        {205},{206},{207},{209},{210},{211}
     };
-    public void UsuallyStuff()
+    public void UsuallyStuff(HapticPatterns.PresetType type)
     {
+
 #if UNITY_EDITOR
         //Debug.Log("震动");
 #else
-        if (OfStuff)
+         if (OfStuff)
         {
-            Handheld.Vibrate();
+            HapticPatterns.PlayPreset(type);
         }
 #endif
     }
@@ -99,10 +101,10 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
         switch (PlayerPrefs.GetInt(CConfig.NowDayChallenAward))
         {
             case 0:
-                RoadBrother.instance.BeamBleak(202);
+                RoadBrother.instance.BeamBleak(208);
                 break;
             case 1:
-                RoadBrother.instance.BeamBleak(206);
+                RoadBrother.instance.BeamBleak(212);
                 break;
             case 2:
                 RoadBrother.instance.BeamBleak(TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)]);

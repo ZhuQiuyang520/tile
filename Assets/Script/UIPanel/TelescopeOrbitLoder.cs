@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lofelt.NiceVibrations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class TelescopeOrbitLoder : BaseUIForms
 
     public void RatifyLike()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         UIManager.GetInstance().ClearAllUI();
@@ -48,6 +50,7 @@ public class TelescopeOrbitLoder : BaseUIForms
 
     public void RatifySpark()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         CloseUIForm(GetType().Name);

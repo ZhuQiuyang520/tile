@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lofelt.NiceVibrations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,6 +83,7 @@ public class UsuallyLoder : BaseUIForms
 
     private void RatifySpark()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RotationTasmania AniManager = EraLop.gameObject.AddComponent<RotationTasmania>();
@@ -96,6 +98,7 @@ public class UsuallyLoder : BaseUIForms
 
     private void ToTusk()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = false;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         UIManager.GetInstance().ClearAllUI();
@@ -107,6 +110,7 @@ public class UsuallyLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         if (open)
         {
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
             Movie.isOn = true;
             //继续播放，如果没有BGM就从头播放
             MusicMgr.GetInstance().setBgmReplaceOneTime();
@@ -127,6 +131,7 @@ public class UsuallyLoder : BaseUIForms
         KinfolkBG.SetActive(!open);
         if (open)
         {
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
             Kinfolk.isOn = true;
             PlayerPrefs.SetInt(CConfig.SaveVolun, 1);
         }
@@ -141,6 +146,7 @@ public class UsuallyLoder : BaseUIForms
         RoadTenuous.GetInstance().OfCharm = open;
         if (open)
         {
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
             Charm.isOn = true;
             PlayerPrefs.SetInt(CConfig.SaveSound, 1);
         }
@@ -156,6 +162,7 @@ public class UsuallyLoder : BaseUIForms
         RoadTenuous.GetInstance().OfStuff = open;
         if (open)
         {
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
             Stuff.isOn = true;
             PlayerPrefs.SetInt(CConfig.SaveVibration, 1);
         }
@@ -166,6 +173,7 @@ public class UsuallyLoder : BaseUIForms
     }
     public void RatifyClue()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         //string toMail = RoadTenuous.GetInstance().GetGameConfig().contact_us;
         //string subject = "[USERFEED]wordfarmers v1.1.0";
@@ -174,6 +182,7 @@ public class UsuallyLoder : BaseUIForms
     }
     public void RatifyCheapen()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         if (!string.IsNullOrEmpty(NetInfoMgr.instance.GameData.Privacy_Policy))
         {
@@ -182,6 +191,7 @@ public class UsuallyLoder : BaseUIForms
     }
     public void RatifyGive()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

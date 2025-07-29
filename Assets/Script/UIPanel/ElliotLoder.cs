@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lofelt.NiceVibrations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,9 +39,9 @@ public class ElliotLoder : BaseUIForms
         base.Display(uiFormParams);
         Hurl.interactable = true;
         ThawBG.OralCrimp();
-        RoadTenuous.GetInstance().UsuallyStuff();
-        
-        
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);
+
+
         if (RoadTenuous.GetInstance().OfTelescope)
         {
             if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 0)

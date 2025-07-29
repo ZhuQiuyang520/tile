@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Lofelt.NiceVibrations;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -375,6 +376,7 @@ public class RoadLoder : BaseUIForms
                 OatWing(ForgetHat.gameObject.transform, NetInfoMgr.instance.GameData.Wand_Cash);
                 OfLieForget = false;
                 ForgetBorrow--;
+                RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
                 if (RoadTenuous.GetInstance().OfTelescope)
                 {
                     if (ForgetBorrow <= 0 && TelescopeForgetBorrow == 0)
@@ -405,6 +407,7 @@ public class RoadLoder : BaseUIForms
 
     private void RatifyUsually()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         UIManager.GetInstance().ShowUIForms(nameof(UsuallyLoder));
     }
 
@@ -413,7 +416,7 @@ public class RoadLoder : BaseUIForms
         if (BookletBorrow > 0)
         {
             OatWing(BookletHat.gameObject.transform, NetInfoMgr.instance.GameData.Shuffle_Cash);
-            RoadTenuous.GetInstance().UsuallyStuff();
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
             BookletBorrow--;
             if (RoadTenuous.GetInstance().OfTelescope)
             {
@@ -443,6 +446,7 @@ public class RoadLoder : BaseUIForms
             if (RoadBrother.instance.MobMidwayThaw().Count > 0)
             {
                 BeltDareBorrow--;
+                RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
                 if (RoadTenuous.GetInstance().OfTelescope)
                 {
                     if (BeltDareBorrow <= 0 && TelescopeBeltBorrow == 0)
@@ -585,10 +589,13 @@ public class RoadLoder : BaseUIForms
 
     public void OatWing(Vector3 StartPosition,double AwardNum)
     {
-        AnimationController.GoldMoveBest(WingThai, 10, StartPosition, SewWay.position, () =>
+        if (!CommonUtil.IsApple())
         {
-            RoadNeckTenuous.GetInstance().LidYour(AwardNum);
-        });
+            AnimationController.GoldMoveBest(WingThai, 10, StartPosition, SewWay.position, () =>
+            {
+                RoadNeckTenuous.GetInstance().LidYour(AwardNum);
+            });
+        }   
     }
 
     public void OatWing(Transform StartPostion , double AwardNum )

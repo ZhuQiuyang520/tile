@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lofelt.NiceVibrations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ public class TelescopeTerm : BaseUIForms
         //    CloseUIForm(GetType().Name);
         //    RoadBrother.instance.UpwindThaw();
         //}, "110");
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         CloseUIForm(GetType().Name);
         RoadTenuous.GetInstance().StoveCrossbones();
@@ -52,6 +54,7 @@ public class TelescopeTerm : BaseUIForms
 
     public void ToTusk()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         UIManager.GetInstance().ClearAllUI(); 
         PostEventScript.GetInstance().SendEvent("1008", "0");

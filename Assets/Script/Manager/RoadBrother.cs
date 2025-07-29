@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using LitJson;
+using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,7 @@ public class RoadBrother : MonoBehaviour
         {
             ThawFire[i].SettingOrder(i);
         }
+        PlayerPrefs.SetInt(CConfig.sv_CurLevel, 204);
     }
 
     //游戏退出时记录登出时间
@@ -107,6 +109,14 @@ public class RoadBrother : MonoBehaviour
         UpwindSord = 0;
         UpwindAssert = 0;
         OfEatBleakTelescope = RoadTenuous.GetInstance().OfTelescope;
+
+        if (!OfEatBleakTelescope)
+        {
+            if (index >= 205)
+            {
+                index = index % 205 + 29;
+            }
+        }
         if (PlayerPrefs.GetInt(CConfig.OnceEnterChallenge) == 1 && OfEatBleakTelescope)
         {
             PlayerPrefs.SetInt(CConfig.OnceEnterChallenge, 0);
@@ -132,7 +142,7 @@ public class RoadBrother : MonoBehaviour
         
         //加载level
         EatBleak = AfterFollower.GetLevel(index);
-            
+
         TradeHumor = new List<TileSpawnData>();
         AfterPoison.Recalculate();
         BleakMaidenLop.transform.position = AfterPoison.LevelFieldCenter;
@@ -994,7 +1004,7 @@ public class RoadBrother : MonoBehaviour
                                 //初始化数据
                                 LieThawFire[i + 2].InitData();
                                 RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Match);
-                                RoadTenuous.GetInstance().UsuallyStuff();
+                                RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.HeavyImpact);
                                 //判断后面还有没有 如果有就往前移动
                                 if (i + 3 < LieThawFire.Count)
                                 {

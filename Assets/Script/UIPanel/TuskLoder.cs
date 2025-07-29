@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lofelt.NiceVibrations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -173,6 +174,7 @@ public class TuskLoder : BaseUIForms
 
     private void StoveRoad()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().OfTelescope = false;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         CloseUIForm(GetType().Name);
@@ -220,10 +222,12 @@ public class TuskLoder : BaseUIForms
     }
     private void RatifyUsually()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         UIManager.GetInstance().ShowUIForms(nameof(UsuallyLoder));
     }
     public void BeamTelescopeBleak()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         CloseUIForm(GetType().Name);
         RoadTenuous.GetInstance().OfTelescope = true;

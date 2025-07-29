@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lofelt.NiceVibrations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +41,6 @@ public class CargoSkipLoder : BaseUIForms
         {
             foreach (var item in _SparseNeck.Rim_Marlin)
             {
-                Debug.Log(item.Key);
                 switch (item.Key)
                 {
                     case RewardType.shuffle:
@@ -80,6 +80,7 @@ public class CargoSkipLoder : BaseUIForms
 
     private void RatifyHurl()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         ADManager.Instance.playRewardVideo((success) =>
         {
@@ -93,6 +94,7 @@ public class CargoSkipLoder : BaseUIForms
 
     private void RatifyMob()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         foreach (var item in _SparseNeck.Rim_Marlin)
         {
             switch (item.Key)

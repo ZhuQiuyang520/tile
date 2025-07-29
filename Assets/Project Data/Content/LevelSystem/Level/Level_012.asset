@@ -412,6 +412,6 @@ MonoBehaviour:
   bottomLayerWidth: 7
   bottomLayerHeight: 8
   useInRandomizer: 1
-  elementsPerLevel: 10
+  elementsPerLevel: 6
   coinsReward: 20
   editorNote: ' sets: 20,effects: ice'

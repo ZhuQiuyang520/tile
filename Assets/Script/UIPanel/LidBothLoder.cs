@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lofelt.NiceVibrations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -121,6 +122,7 @@ public class LidBothLoder : BaseUIForms
 
     private void RatifySpark()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         switch (Hard)
@@ -142,6 +144,7 @@ public class LidBothLoder : BaseUIForms
 
     private void RatifyHurl()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         ADManager.Instance.playRewardVideo((success) =>
         {
@@ -184,6 +187,7 @@ public class LidBothLoder : BaseUIForms
 
     private void RatifyMobWing()
     {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         EatWingBorrow -= EatWarmer;

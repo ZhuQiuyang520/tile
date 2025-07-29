@@ -74,7 +74,7 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 0
         Effect: 0
-      - IsFilled: 0
+      - IsFilled: 1
         Effect: 0
       - IsFilled: 0
         Effect: 0
@@ -314,4 +314,4 @@ MonoBehaviour:
   useInRandomizer: 1
   elementsPerLevel: 10
   coinsReward: 20
-  editorNote: ' sets: 23,effects: crate'
+  editorNote: ' sets: 24,effects: crate'

@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using DG.Tweening;
 using System.Collections;
+using Lofelt.NiceVibrations;
 
 namespace Watermelon
 {
@@ -190,7 +191,7 @@ namespace Watermelon
             if (isBlocked) isClickAllowed = false;
             if (!isClickable) isClickAllowed = false;
             RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Click);
-            RoadTenuous.GetInstance().UsuallyStuff();
+            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.MediumImpact);
             if (isClickAllowed)
             {
                 CloseAni();
