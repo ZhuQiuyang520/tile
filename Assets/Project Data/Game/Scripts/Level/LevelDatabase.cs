@@ -89,21 +89,34 @@ namespace Watermelon
             LevelData levelData = levels[levelId];
 
             List<TileData> result = new List<TileData>();
+            List<TileData> ResultReserve = new List<TileData>();
 
             for (int i = 0; i < tiles.Length; i++)
             {
                 if (tiles[i].AvailableFromLevel <= levelId)
                 {
-                    result.Add(tiles[i]);
+                    ResultReserve.Add(tiles[i]);
+                    //result.Add(tiles[i]);
                 }
             }
 
-            int elementsPerLevel = Mathf.Clamp(levelData.ElementsPerLevel, 1, result.Count);
-            if (result.Count > elementsPerLevel)
+            int elementsPerLevel = Mathf.Clamp(levelData.ElementsPerLevel, 1, ResultReserve.Count);
+
+            if (ResultReserve.Count > elementsPerLevel)
             {
-                result.RemoveRange(elementsPerLevel, result.Count - elementsPerLevel);
+                for (int i = 0; i < elementsPerLevel; i++)
+                {
+                    int index = Random.Range(0, ResultReserve.Count);
+                    result.Add(ResultReserve[index]);
+                    ResultReserve.RemoveAt(index);
+                }
+                return result.ToArray();
             }
-            return result.ToArray();
+            //if (result.Count > elementsPerLevel)
+            //{
+            //    result.RemoveRange(elementsPerLevel, result.Count - elementsPerLevel);
+            //}
+            return ResultReserve.ToArray();
         }
 
         public BackgroundData GetLastAvailableBackgroundData()

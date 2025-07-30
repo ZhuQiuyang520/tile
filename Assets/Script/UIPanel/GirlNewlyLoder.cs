@@ -25,6 +25,7 @@ public class GirlNewlyLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);
         RoadTenuous.GetInstance().ReliefStilt = false;
         RiftVenice.SetActive(false);
         BellCanopy.onClick.RemoveAllListeners();

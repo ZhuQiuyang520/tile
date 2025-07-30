@@ -145,7 +145,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 1.1
   preloadedAssets:
   - {fileID: 11400000, guid: e6261837a3ced224698bc00399d93b59, type: 2}
   metroInputSource: 0
@@ -172,7 +172,7 @@ PlayerSettings:
     iPhone: com.tessera.shift.depthsnare
   buildNumber:
     Standalone: 0
-    iPhone: 27
+    iPhone: 29
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 46

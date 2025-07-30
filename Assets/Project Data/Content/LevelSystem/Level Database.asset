@@ -240,7 +240,7 @@ MonoBehaviour:
     availableFromLevel: 0
     collectionID: 0
   - prefab: {fileID: 4914584422383715934, guid: ec3e0bb0b6e21b34baa2e712b5fef2fd, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 50
     collectionID: 0
   - prefab: {fileID: 3345171259601324445, guid: a5da90b5ef01cb849a2c381316c4bc23, type: 3}
     availableFromLevel: 0
@@ -342,25 +342,25 @@ MonoBehaviour:
     availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 137665440630767664, guid: 621dcea98719b9f479cd8d4f9fdc6117, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 2615259518732552183, guid: e6a451ed581d93046acab16153b6e7b3, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 7013592294422183329, guid: 3c0010fa0bc75d047bbf734a16cde9c9, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 7802202002640570920, guid: 959a9cf26326db840be23d05b01ecfa6, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 6385064615803801831, guid: f4b67d1299050a540ae2b00db23c6ba1, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 7136081369673007467, guid: 5e33443bfc369a54ab47be8de1543249, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 7275923363791074467, guid: 0a31bb15d6aa30d498fca352817aaf6c, type: 3}
-    availableFromLevel: 0
+    availableFromLevel: 201
     collectionID: 2
   - prefab: {fileID: 4932584926766776068, guid: 7d77867a28123764d8b2c3fe84e4124d, type: 3}
     availableFromLevel: 201

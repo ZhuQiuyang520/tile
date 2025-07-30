@@ -86,6 +86,7 @@ public class CargoSkipLoder : BaseUIForms
         {
             if (success)
             {
+                PostEventScript.GetInstance().SendEvent("1010", "1");
                 Hurl.interactable = false;
                 GrowThaw();
             }
@@ -94,6 +95,7 @@ public class CargoSkipLoder : BaseUIForms
 
     private void RatifyMob()
     {
+        PostEventScript.GetInstance().SendEvent("1010", "0");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         foreach (var item in _SparseNeck.Rim_Marlin)
         {

@@ -30,8 +30,15 @@ public class ElliotLoder : BaseUIForms
     protected override void Awake()
     {
         base.Awake();
+        RotationTasmania AniManager = EraLop.gameObject.AddComponent<RotationTasmania>();
+        AniManager.LidBasalt(AddVirta);
         string ChallengeAward = NetInfoMgr.instance.GameData.Challenge_Reward;
         ChallengeAwardNumber = ChallengeAward.Split('|');
+    }
+
+    private void AddVirta()
+    {
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);
     }
 
     public override void Display(object uiFormParams)

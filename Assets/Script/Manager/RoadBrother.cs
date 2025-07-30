@@ -12,8 +12,6 @@ public class RoadBrother : MonoBehaviour
 {
     public static RoadBrother instance;
 
-
-
     [SerializeField] LevelDatabase AfterFollower;
     public static LevelDatabase Follower=> instance.AfterFollower;
     [SerializeField] LevelData IdealBleakNeck;

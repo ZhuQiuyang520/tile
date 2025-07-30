@@ -116,15 +116,15 @@ MonoBehaviour:
     UIForm_LucencyType: 1
     UIForm_animationType: 0
   close_button: {fileID: 0}
-  AwardDesc: {fileID: 6066223972120835440}
-  Coin: {fileID: 2585488365243271858}
-  Money: {fileID: 4854115583428240590}
-  Wand: {fileID: 3443160603684210224}
-  Shuffle: {fileID: 7879157275210394869}
-  Rollback: {fileID: 2831039643117063792}
-  Free: {fileID: 4443851351171818160}
-  Get: {fileID: 4127323997918645109}
-  SlotBG: {fileID: 9164084426118927970}
+  DreamCyan: {fileID: 6066223972120835440}
+  Wing: {fileID: 2585488365243271858}
+  Sonic: {fileID: 4854115583428240590}
+  Loam: {fileID: 3443160603684210224}
+  Fragile: {fileID: 7879157275210394869}
+  Exponent: {fileID: 2831039643117063792}
+  Hurl: {fileID: 4443851351171818160}
+  Mob: {fileID: 4127323997918645109}
+  ThawBG: {fileID: 9164084426118927970}
 --- !u!1 &1042204587166848438
 GameObject:
   m_ObjectHideFlags: 0
@@ -31780,7 +31780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60c17ea6ed97784f84aa9e3b8315f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitGroup: {fileID: 1621663887595049501}
+  BlueLayer: {fileID: 1621663887595049501}
 --- !u!114 &5281196214402608537
 MonoBehaviour:
   m_ObjectHideFlags: 0
