@@ -101,7 +101,7 @@ public class PostEventScript : MonoSingleton<PostEventScript>
             Debug.Log(message);
         }));
     }
-    public void SendEvent(string event_id, string p1 = null, string p2 = null, string p3 = null)
+    public void SendEvent(string event_id, string p1 = null, string p2 = null, string p3 = null, string p4 = null, string p5 = null, string p6 = null)
     {
         if (text != null)
         {
@@ -142,6 +142,18 @@ public class PostEventScript : MonoSingleton<PostEventScript>
         if (p3 != null)
         {
             wwwForm.AddField("params3", p3);
+        }
+        if (p4 != null)
+        {
+            wwwForm.AddField("params3", p4);
+        }
+        if (p5 != null)
+        {
+            wwwForm.AddField("params3", p5);
+        }
+        if (p6 != null)
+        {
+            wwwForm.AddField("params3", p6);
         }
         StartCoroutine(SendPost(NetInfoMgr.instance.BaseUrl + "/api/client/log", wwwForm,
         (error) =>

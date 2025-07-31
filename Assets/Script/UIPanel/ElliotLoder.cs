@@ -44,6 +44,7 @@ public class ElliotLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        RoadLoder.instance.IsButtonMask(false);
         Hurl.interactable = true;
         ThawBG.OralCrimp();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);
@@ -102,6 +103,7 @@ public class ElliotLoder : BaseUIForms
         {
             PlayerPrefs.SetInt(CConfig.CoinNumber, PlayerPrefs.GetInt(CConfig.CoinNumber) + (int)SparseFence);
         }
+        ADManager.Instance.NoThanksAddCount();
         RatifyElliot();
         
         //AniObj.enabled = true;
@@ -176,7 +178,7 @@ public class ElliotLoder : BaseUIForms
             int index = 0;
             foreach (SlotItem wg in NetInfoMgr.instance.InitData.slot_group)
             {
-                if (wg.multi == 5)
+                if (wg.multi == 7)
                 {
                     return index;
                 }

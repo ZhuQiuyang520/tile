@@ -54,6 +54,7 @@ public class TelescopeTerm : BaseUIForms
 
     public void ToTusk()
     {
+        ADManager.Instance.NoThanksAddCount();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         UIManager.GetInstance().ClearAllUI(); 

@@ -4,6 +4,7 @@ using Spine.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using static Spine.AnimationState;
 
@@ -181,6 +182,13 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
             skeleton.AnimationState.SetAnimation(trackIndex, animName, loop);
         }
     }
+    /// <summary>
+    /// cash  金币  累计cash  累计金币  当前关卡
+    /// </summary>
+    public void MaidianData()
+    {
+        PostEventScript.GetInstance().SendEvent("2001", CashOutManager.GetInstance().Data.Cash.ToString("F2"), SaveDataManager.GetFloat("CashOut_Money").ToString(), "0", SaveDataManager.GetFloat("CashOut_Money_All").ToString(), (PlayerPrefs.GetInt(CConfig.sv_CurLevel)+1).ToString());
+    }
 }
 
 public class RewardPanelData
@@ -222,21 +230,22 @@ public enum RewardType
 public class RewardData
 {
     public string type;
-    private double _Trader;
-    public double Trader    {
-        get
-        {
-            if (type == "cash")
-            {
-                return _Trader * GameUtil.GetCashWeightMulti();
-            }
-            return _Trader;
-        }
-        set
-        {
-            _Trader = value;
-        }
-    }
+    public double weight;
+    //public double weight
+    //{
+    //    get
+    //    {
+    //        if (type == "cash")
+    //        {
+    //            return weight * GameUtil.GetCashWeightMulti();
+    //        }
+    //        return weight;
+    //    }
+    //    set
+    //    {
+    //        weight = value;
+    //    }
+    //}
     public double num;
     //public double num
     //{
@@ -267,20 +276,20 @@ public class RewardData
 public class TileTurnData
 {
     public string type;
-    private double _Trader;
+    private double weight;
     public double Trader    {
         get
         {
             if (type == "cash")
             {
-                return _Trader * GameUtil.GetCashWeightMulti();
+                return weight * GameUtil.GetCashWeightMulti();
             }
 
-            return _Trader;
+            return weight;
         }
         set
         {
-            _Trader = value;
+            weight = value;
         }
     }
     private double _Fad;

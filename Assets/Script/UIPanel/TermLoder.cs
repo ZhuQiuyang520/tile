@@ -43,6 +43,7 @@ public class TermLoder : BaseUIForms
     }
     public void RatifySpark()
     {
+        ADManager.Instance.NoThanksAddCount();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);

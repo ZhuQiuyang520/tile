@@ -9,6 +9,7 @@ using Watermelon;
 
 public class RoadLoder : BaseUIForms
 {
+    public GameObject ButtonMask;
 [UnityEngine.Serialization.FormerlySerializedAs("GuideObj")]    public GameObject[] IdealLop;
 [UnityEngine.Serialization.FormerlySerializedAs("WangzhuanMask")]
     public GameObject ProboscisClaw;
@@ -161,6 +162,7 @@ public class RoadLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        ButtonMask.SetActive(false);
         CoinNumber.text = PlayerPrefs.GetInt(CConfig.CoinNumber).ToString();
         RoadTenuous.GetInstance().ReliefStilt = true;
         BeltDareHat.interactable = true;
@@ -408,7 +410,7 @@ public class RoadLoder : BaseUIForms
     private void RatifyUsually()
     {
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
-        UIManager.GetInstance().ShowUIForms(nameof(UsuallyLoder));
+        UIManager.GetInstance().ShowUIForms(nameof(UsuallyLoder),"1");
     }
 
     private void RatifyBooklet()
@@ -585,6 +587,11 @@ public class RoadLoder : BaseUIForms
             CloseUIForm(GetType().Name);
             OpenUIForm(nameof(ElliotLoder));
         }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            UIManager.GetInstance().ShowUIForms(nameof(GirlNewlyLoder));
+        }
     }
 
     public void OatWing(Vector3 StartPosition,double AwardNum)
@@ -607,5 +614,10 @@ public class RoadLoder : BaseUIForms
                 RoadNeckTenuous.GetInstance().LidYour(AwardNum);
             });
         }
+    }
+
+    public void IsButtonMask(bool open)
+    {
+        ButtonMask.SetActive(open);
     }
 }

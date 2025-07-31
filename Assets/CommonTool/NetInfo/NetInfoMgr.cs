@@ -70,6 +70,10 @@ public class NetInfoMgr : MonoBehaviour
     public bool ready = false;
     public BlockRuleData BlockRule;
     //ios 获取idfa函数声明
+#if UNITY_IOS
+    [DllImport("__Internal")]
+    internal extern static void getIDFA();
+#endif
 
     void Awake()
     {
@@ -94,6 +98,7 @@ public class NetInfoMgr : MonoBehaviour
         {
 #if UNITY_IOS
             //Login();
+            getIDFA();
             string idfv = UnityEngine.iOS.Device.vendorIdentifier;
             SaveDataManager.SetString("idfv", idfv);
 #endif

@@ -22,9 +22,18 @@ public class UsuallyLoder : BaseUIForms
 [UnityEngine.Serialization.FormerlySerializedAs("QuickObj")]
     public GameObject FloorLop;
 
+    public Button TryBtn;
+
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        Tusk.gameObject.SetActive(false);
+        TryBtn.gameObject.SetActive(false);
+        if (uiFormParams != null)
+        {
+            Tusk.gameObject.SetActive(true);
+            TryBtn.gameObject.SetActive(true);
+        }
         RoadTenuous.GetInstance().ReliefStilt = false;
         if (PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config)
         {
@@ -39,7 +48,8 @@ public class UsuallyLoder : BaseUIForms
         Tusk.onClick.AddListener(ToTusk);
         Clue.onClick.AddListener(RatifyClue);
         Cheapen.onClick.AddListener(RatifyCheapen);
-        Give.onClick.AddListener(RatifyGive);
+        //Give.onClick.AddListener(RatifyGive);
+        TryBtn.onClick.AddListener(ChangeTryAgain);
 
         Kinfolk.onValueChanged.AddListener(RatifyKinfolk);
         Charm.onValueChanged.AddListener(RatifyCharm);
@@ -98,11 +108,22 @@ public class UsuallyLoder : BaseUIForms
 
     private void ToTusk()
     {
+        ADManager.Instance.NoThanksAddCount();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = false;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         UIManager.GetInstance().ClearAllUI();
         UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
+    }
+
+    private void ChangeTryAgain()
+    {
+        ADManager.Instance.NoThanksAddCount();
+        RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
+        RoadTenuous.GetInstance().ReliefStilt = true;
+        CloseUIForm(GetType().Name);
+        RoadBrother.instance.BeamBleak(PlayerPrefs.GetInt(CConfig.sv_CurLevel));
     }
 
     public void RatifyMovie(bool open)

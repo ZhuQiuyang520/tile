@@ -85,7 +85,6 @@ public class GirlNewlyLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_BigWheel);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RiftVenice.SetActive(true);
-        //StartCoroutine(pointerAnimation());
         int bigIndex = GameUtil.GetRewardIndexWithWeight(NetInfoMgr.instance.GameData.wheel_reward_weight_group);
         RewardData rewardData = NetInfoMgr.instance.GameData.wheel_reward_weight_group[bigIndex];
         int smallIndex = GameUtil.GetWheelMultiIndex(rewardData.type);

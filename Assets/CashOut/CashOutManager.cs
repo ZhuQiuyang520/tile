@@ -35,14 +35,18 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     private void OnApplicationPause(bool pauseStatus)
     {
         long Seconds = LeftTime / 10000000;
-        if (pauseStatus && Seconds > 0)
+        if (pauseStatus)
         {
-            string title = "Your reward is ready!";
-            string info = $"All {NetInfoMgr.instance.ConfigData.CashOut_MoneyName} have been converted,Please check your rewaeds!";
-            MalleabilityTenuous.Tendency.CliffMalleability();
-            MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds);
-            for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
-                MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds + (i * 10800));
+            RoadTenuous.GetInstance().MaidianData();
+            if (Seconds > 0)
+            {
+                string title = "Your reward is ready!";
+                string info = $"All {NetInfoMgr.instance.ConfigData.CashOut_MoneyName} have been converted,Please check your rewaeds!";
+                MalleabilityTenuous.Tendency.CliffMalleability();
+                MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds);
+                for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
+                    MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds + (i * 10800));
+            }
         }
     }
 
@@ -511,6 +515,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     {
         Money += Value;
         SaveDataManager.SetFloat("CashOut_Money", Money);
+        SaveDataManager.SetFloat("CashOut_Money_All", SaveDataManager.GetFloat("CashOut_Money_All") + Value);
         _CashOutPanel?.UpdateMoney();
         _CashOutEnter?.UpdateMoney();
     }

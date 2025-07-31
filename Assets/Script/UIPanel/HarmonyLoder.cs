@@ -29,8 +29,10 @@ public class HarmonyLoder : BaseUIForms
         {
             Guinea.value += Time.deltaTime * 0.2f;
             SpillageStep.text ="LOADING... " + (int)(Guinea.value * 100) + "%";
+            
             if (Guinea.value >= 1)
             {
+                RoadTenuous.GetInstance().MaidianData();
                 CommonUtil.IsApple();
                 Destroy(transform.parent.gameObject);
                 DramTenuous.instance.VoteBlue();

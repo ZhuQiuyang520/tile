@@ -95,6 +95,7 @@ public class CargoSkipLoder : BaseUIForms
 
     private void RatifyMob()
     {
+        ADManager.Instance.NoThanksAddCount();
         PostEventScript.GetInstance().SendEvent("1010", "0");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         foreach (var item in _SparseNeck.Rim_Marlin)
@@ -124,6 +125,9 @@ public class CargoSkipLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RoadNeckTenuous.GetInstance().addWild(SparseFence);
         RoadTenuous.GetInstance().ReliefStilt = true;
+        //转完转盘之后，判断是否为挑战 ，不为挑战 判断是否达到自动收牌节点，
+        RoadLoder.instance.IsButtonMask(false);
+        RoadBrother.instance.IsTriggerVolun();
         CloseUIForm(GetType().Name);
     }
 

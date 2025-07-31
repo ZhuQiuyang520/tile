@@ -68,9 +68,12 @@ public class RoadBrother : MonoBehaviour
 
     private Vector3 ObtainShakeV3;
 
-    
+    private float DownTime = 120;
 
     public bool IsFail;
+
+    private string ComboAward;
+    private string[] ComboAwardData;
 
     //private List<string> ReviveList1 = new List<string>();
     //private List<string> ReviveList2 = new List<string>();
@@ -85,6 +88,7 @@ public class RoadBrother : MonoBehaviour
 
     private void Start()
     {
+        
         ForgetPass = 0;
         OfForget = false;
         for (int i = 0; i < ThawFire.Count; i++)
@@ -104,6 +108,8 @@ public class RoadBrother : MonoBehaviour
     //加载关卡
     public void BeamBleak(int index)
     {
+        ComboAward = NetInfoMgr.instance.GameData.Combo_Cash;
+        ComboAwardData = ComboAward.Split(';');
         IsFail = true;
         UpwindSord = 0;
         UpwindAssert = 0;
@@ -740,12 +746,19 @@ public class RoadBrother : MonoBehaviour
         ThawEraPass = 0;
     }
 
-    //自动收牌
+    //自动收牌  每次手牌停顿0.5f
     public void PearlClient()
     {
         if (DripFire.Count > 0)
         {
-            ForgetDrip(true);
+            Sequence seq = DOTween.Sequence();
+            seq.AppendCallback(() =>
+            {
+                ForgetDrip(true);
+                seq.Kill();
+            })
+            .SetDelay(0.1f)
+            .SetLoops(0);
         }
     }
 
@@ -915,6 +928,13 @@ public class RoadBrother : MonoBehaviour
                 ThawEra.Play("Level_warn");
                 StoveThawEra = false;
             }
+        }
+
+        DownTime -= Time.deltaTime;
+        if (DownTime < 0)
+        {
+            RoadTenuous.GetInstance().MaidianData();
+            DownTime = 120;
         }
     }
 
@@ -1100,18 +1120,32 @@ public class RoadBrother : MonoBehaviour
     {
         if (DripFire.Count == 0)
         {
-            PearlVenice.SetActive(false);
-            //完成关卡
-            RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Win);
-            UIManager.GetInstance().CloseOrReturnUIForms(nameof(RoadLoder));
-            UIManager.GetInstance().ShowUIForms(nameof(ElliotLoder));
-            return;
+            Sequence seq = DOTween.Sequence();
+            seq.AppendCallback(() =>
+            {
+                PearlVenice.SetActive(false);
+                //完成关卡
+                RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Win);
+                UIManager.GetInstance().CloseOrReturnUIForms(nameof(RoadLoder));
+                UIManager.GetInstance().ShowUIForms(nameof(ElliotLoder));
+                return;
+            })
+            .SetDelay(1f)
+            .SetLoops(0);
+            
         }
 
         if (!OfEatBleakTelescope)
         {
             // 如果场中存在的tile数量 <= 15开始自动收牌  开启自动收牌关闭连消提示 达到关卡限制
-            if (DripFire.Count + MobMidwayThaw().Count <= NetInfoMgr.instance.GameData.Auto_Complete && RoadTenuous.GetInstance().OfPearl && PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config)
+            if (!(DripFire.Count + MobMidwayThaw().Count <= NetInfoMgr.instance.GameData.Auto_Complete && RoadTenuous.GetInstance().OfPearl && PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config))
+            {
+                if (RoadLoder.instance.TheyRift())
+                {
+                    return;
+                }
+            }
+            else
             {
                 if (!PearlVenice.activeSelf)
                 {
@@ -1121,40 +1155,38 @@ public class RoadBrother : MonoBehaviour
                 {
                     PearlVenice.GetComponent<ParticleSystem>().Play();
                 }
+                RoadTenuous.GetInstance().ReliefStilt = false;
+                RoadLoder.instance.IsButtonMask(true);
                 PearlClient();
             }
-            else
-            {
-                RoadLoder.instance.TheyRift();
-            }
         }
-        if (!(DripFire.Count + MobMidwayThaw().Count <= NetInfoMgr.instance.GameData.Auto_Complete && RoadTenuous.GetInstance().OfPearl && PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config))
-        {
+        //if (!(DripFire.Count + MobMidwayThaw().Count <= NetInfoMgr.instance.GameData.Auto_Complete && RoadTenuous.GetInstance().OfPearl && PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config))
+        //{
             if (MexicanFeat <= 3)
             {
                 AdequacyBorrow++;
                 switch (AdequacyBorrow)
                 {
                     case 0:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 1);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[0].Split('|')[1]));
                         break;
                     case 1:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 3);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[1].Split('|')[1]));
                         break;
                     case 2:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 5);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[2].Split('|')[1]));
                         break;
                     case 3:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 7);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[3].Split('|')[1]));
                         break;
                     case 4:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 10);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[4].Split('|')[1]));
                         break;
                     case 5:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 15);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[5].Split('|')[1]));
                         break;
                     default:
-                        RoadLoder.instance.OatWing(ObtainShakeV3, 15);
+                        RoadLoder.instance.OatWing(ObtainShakeV3, double.Parse(ComboAwardData[5].Split('|')[1]));
                         break;
                 }
                 if (AdequacyBorrow > 0)
@@ -1168,6 +1200,17 @@ public class RoadBrother : MonoBehaviour
                 RoadLoder.instance.OatWing(ObtainShakeV3, 1);
             }
             MexicanFeat = 0;
+        //}
+    }
+
+    public void IsTriggerVolun()
+    {
+        if (!OfEatBleakTelescope)
+        {
+            if (DripFire.Count + MobMidwayThaw().Count <= NetInfoMgr.instance.GameData.Auto_Complete && RoadTenuous.GetInstance().OfPearl && PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config)
+            {
+                ElliotDemise();
+            }
         }
     }
 

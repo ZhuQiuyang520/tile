@@ -103,18 +103,18 @@ public class GameUtil
         double allweight = 0;
         foreach (RewardData data in list)
         {
-            allweight += data.Trader;
+            allweight += data.weight;
         }
+
         float r = Random.Range(0, (float)allweight);
         int index = 0;
         float nowWeight = 0;
         for (int i = 0; i < list.Count; i++)
         {
-            nowWeight += (float)list[i].Trader;
+            nowWeight += (float)list[i].weight;
             if (r < nowWeight)
             {
                 index = i;
-                //Debug.Log(i + "," + list[i].num);
                 break;
             }
         }
