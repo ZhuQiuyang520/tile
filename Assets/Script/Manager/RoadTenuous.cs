@@ -94,6 +94,7 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
         return string.Format("{0:D2}:{1:D2}:{2:D2}", hour, minute, seconds);
     }
 
+    private int challengeLevel;
     //加载挑战关卡
     public void StoveCrossbones()
     {
@@ -102,18 +103,26 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
         switch (PlayerPrefs.GetInt(CConfig.NowDayChallenAward))
         {
             case 0:
+                challengeLevel = 208;
                 RoadBrother.instance.BeamBleak(208);
                 break;
             case 1:
+                challengeLevel = 212;
                 RoadBrother.instance.BeamBleak(212);
                 break;
             case 2:
-                RoadBrother.instance.BeamBleak(TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)]);
+                challengeLevel = TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)];
+                RoadBrother.instance.BeamBleak(challengeLevel);
                 break;
                 UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
             default:
                 break;
         }
+    }
+
+    public int GetChallengeLevel()
+    {
+        return challengeLevel;
     }
 
     /// <summary>

@@ -30,7 +30,7 @@ public class TermLoder : BaseUIForms
             if (RoadTenuous.GetInstance().OfTelescope)
             {
                 PostEventScript.GetInstance().SendEvent("9007", "6");
-                PostEventScript.GetInstance().SendEvent("1008", "1");
+                PostEventScript.GetInstance().SendEvent("1008", "1",RoadTenuous.GetInstance().GetChallengeLevel().ToString());
             }
             else
             {

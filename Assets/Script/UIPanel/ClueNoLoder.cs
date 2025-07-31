@@ -40,7 +40,7 @@ public class ClueNoLoder : BaseUIForms
         {
             Merge[i].gameObject.GetComponent<Image>().sprite = i <= index ? Pool1Resume : Pool2Resume;
         }
-        PostEventScript.GetInstance().SendEvent("1009", (index + 1).ToString());
+        PostEventScript.GetInstance().SendEvent("1011", (index + 1).ToString());
         if (index < 3)
         {
             StartCoroutine(CloseLoder());

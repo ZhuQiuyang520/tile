@@ -192,7 +192,7 @@ public class LidBothLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         EatWingBorrow -= EatWarmer;
         PlayerPrefs.SetInt(CConfig.CoinNumber, EatWingBorrow);
-        ADManager.Instance.NoThanksAddCount();
+        //ADManager.Instance.NoThanksAddCount();
         switch (Hard)
         {
             case PropType.Roll:

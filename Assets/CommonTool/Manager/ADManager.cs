@@ -525,6 +525,7 @@ public class ADManager : MonoBehaviour
     {
         if (!pause)
         {
+            RoadTenuous.GetInstance().MaidianData();
             // 切回前台
             if (!isShowingAd)
             {

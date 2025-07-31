@@ -37,7 +37,6 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         long Seconds = LeftTime / 10000000;
         if (pauseStatus)
         {
-            RoadTenuous.GetInstance().MaidianData();
             if (Seconds > 0)
             {
                 string title = "Your reward is ready!";

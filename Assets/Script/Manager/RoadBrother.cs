@@ -435,10 +435,12 @@ public class RoadBrother : MonoBehaviour
     //增加槽位
     public void LidThaw()
     {
+        PostEventScript.GetInstance().SendEvent("1009", "1");
         ADManager.Instance.playRewardVideo((success) =>
         {
             LidThawLop.SetActive(false);
             PostEventScript.GetInstance().SendEvent("9007", "7");
+
             ThawPotato.gameObject.SetActive(true);
             ThawPotato.SettingOrder(7);
             LieThawFire.Add(ThawPotato);

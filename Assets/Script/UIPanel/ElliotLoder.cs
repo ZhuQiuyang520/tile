@@ -23,7 +23,7 @@ public class ElliotLoder : BaseUIForms
     // Start is called before the first frame update
     void Start()
     {
-        ElliotCanopy.onClick.AddListener(RatifySpark);
+        ElliotCanopy.onClick.AddListener(GetClose);
         Hurl.onClick.AddListener(RatifyHurl);
     }
 
@@ -90,11 +90,17 @@ public class ElliotLoder : BaseUIForms
                 if (success)
                 {
                     Hurl.interactable = false;
-                    PostEventScript.GetInstance().SendEvent("9007", "4");
+                    
                     GrowThaw();
                 }
             }, "101");
         }
+    }
+
+    private void GetClose()
+    {
+        ADManager.Instance.NoThanksAddCount();
+        RatifySpark();
     }
 
     private void RatifySpark()
@@ -103,7 +109,7 @@ public class ElliotLoder : BaseUIForms
         {
             PlayerPrefs.SetInt(CConfig.CoinNumber, PlayerPrefs.GetInt(CConfig.CoinNumber) + (int)SparseFence);
         }
-        ADManager.Instance.NoThanksAddCount();
+        
         RatifyElliot();
         
         //AniObj.enabled = true;
@@ -162,7 +168,7 @@ public class ElliotLoder : BaseUIForms
             }
             
         }
-        RoadLoder.instance.OatWing(SonicThai, NetInfoMgr.instance.GameData.Win_Cash);
+        RoadLoder.instance.OatWing(SonicThai, SparseFence);
     }
 
     private bool DyAimGulf()
@@ -211,6 +217,7 @@ public class ElliotLoder : BaseUIForms
 
     private void GrowThaw()
     {
+        PostEventScript.GetInstance().SendEvent("9007", "4");
         int index = FadThawCrimpAlarm();
         ThawBG.Food(index, (multi) => {
             // slot结束后的回调

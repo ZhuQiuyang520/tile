@@ -75,7 +75,7 @@ public class CargoSkipLoder : BaseUIForms
     private void Start()
     {
         Hurl.onClick.AddListener(RatifyHurl);
-        Mob.onClick.AddListener(RatifyMob);
+        Mob.onClick.AddListener(ClickGet);
     }
 
     private void RatifyHurl()
@@ -93,9 +93,14 @@ public class CargoSkipLoder : BaseUIForms
         }, "101");
     }
 
-    private void RatifyMob()
+    private void ClickGet()
     {
         ADManager.Instance.NoThanksAddCount();
+        RatifyMob();
+    }
+
+    private void RatifyMob()
+    {
         PostEventScript.GetInstance().SendEvent("1010", "0");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         foreach (var item in _SparseNeck.Rim_Marlin)

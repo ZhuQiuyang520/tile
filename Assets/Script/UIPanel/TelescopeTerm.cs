@@ -46,6 +46,7 @@ public class TelescopeTerm : BaseUIForms
         //    CloseUIForm(GetType().Name);
         //    RoadBrother.instance.UpwindThaw();
         //}, "110");
+        PostEventScript.GetInstance().SendEvent("9102", "104");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         CloseUIForm(GetType().Name);
@@ -58,7 +59,7 @@ public class TelescopeTerm : BaseUIForms
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         UIManager.GetInstance().ClearAllUI(); 
-        PostEventScript.GetInstance().SendEvent("1008", "0");
+        PostEventScript.GetInstance().SendEvent("1008", "0", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
         UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
     }
 }
