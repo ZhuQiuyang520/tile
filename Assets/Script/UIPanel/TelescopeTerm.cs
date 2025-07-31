@@ -46,7 +46,8 @@ public class TelescopeTerm : BaseUIForms
         //    CloseUIForm(GetType().Name);
         //    RoadBrother.instance.UpwindThaw();
         //}, "110");
-        PostEventScript.GetInstance().SendEvent("9102", "104");
+        //PostEventScript.GetInstance().SendEvent("9102", "104");
+        ADManager.Instance.playInterstitialAd(104);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         CloseUIForm(GetType().Name);

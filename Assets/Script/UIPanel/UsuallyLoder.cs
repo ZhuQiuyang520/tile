@@ -118,7 +118,8 @@ public class UsuallyLoder : BaseUIForms
 
     private void ChangeTryAgain()
     {
-        PostEventScript.GetInstance().SendEvent("9102", "104");
+        
+        ADManager.Instance.playInterstitialAd(104);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
