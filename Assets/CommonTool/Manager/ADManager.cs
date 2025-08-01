@@ -223,7 +223,7 @@ public class ADManager : MonoBehaviour
         }
         else
         {
-            //rewardCallBackAction?.Invoke(false);
+            rewardCallBackAction?.Invoke(false);
         }
 
         // 上报ecpm
@@ -251,7 +251,7 @@ public class ADManager : MonoBehaviour
         PostEventScript.GetInstance().SendEvent("9008", info.Revenue.ToString(), countryCodeByMAX);
 
         //带广告收入的漏传策略
-        AdjustInitManager.Instance.AddAdCount(countryCodeByMAX, info.Revenue);
+        //AdjustInitManager.Instance.AddAdCount(countryCodeByMAX, info.Revenue);
 
         string adjustAdid = AdjustInitManager.Instance.GetAdjustAdid();
         //发回收入数据给Adjust
@@ -331,7 +331,7 @@ public class ADManager : MonoBehaviour
         PostEventScript.GetInstance().SendEvent("9108", info.Revenue.ToString(), countryCodeByMAX);
 
         //带广告收入的漏传策略
-        AdjustInitManager.Instance.AddAdCount(countryCodeByMAX, info.Revenue);
+        //AdjustInitManager.Instance.AddAdCount(countryCodeByMAX, info.Revenue);
 
         //发回收入数据给Adjust
         if (!string.IsNullOrEmpty(AdjustInitManager.Instance.GetAdjustAdid()))
@@ -400,7 +400,7 @@ public class ADManager : MonoBehaviour
         else
         {
             ToastManager.GetInstance().ShowToast("No ads right now, please try it later.");
-            // rewardCallBackAction(false);
+            rewardCallBackAction(false);
         }
     }
 
@@ -433,13 +433,14 @@ public class ADManager : MonoBehaviour
             return;
         }
 
+        //这个参数很少有游戏会用 需要的时候自己再打开
         // 当用户过关数 < trial_MaxNum时，不弹插屏广告
-        int sv_trialNum = SaveDataManager.GetInt(CConfig.sv_ad_trial_num);
-        int trial_MaxNum = int.Parse(NetInfoMgr.instance.ConfigData.trial_MaxNum);
-        if (sv_trialNum < trial_MaxNum)
-        {
-            return;
-        }
+        // int sv_trialNum = SaveDataManager.GetInt(CConfig.sv_ad_trial_num);
+        // int trial_MaxNum = int.Parse(NetInfoMgr.instance.ConfigData.trial_MaxNum);
+        // if (sv_trialNum < trial_MaxNum)
+        // {
+        //     return;
+        // }
 
         // 时间间隔低于阈值，不播放广告
         if (lastPlayTimeCounter < int.Parse(NetInfoMgr.instance.ConfigData.inter_freq))
@@ -528,7 +529,6 @@ public class ADManager : MonoBehaviour
             // 切回前台
             if (!isShowingAd)
             {
-                RoadTenuous.GetInstance().MaidianData();
                 // 前后台切换时，播放间隔计数器需要累加切到后台的时间
                 if (applicationPauseTimestamp > 0)
                 {

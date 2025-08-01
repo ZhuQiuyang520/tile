@@ -7,10 +7,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Globalization;
 
+public enum LoginPlatform { Android, IOS }
 
 /// <summary> 提现功能管理 </summary>
 public class CashOutManager : MonoSingleton<CashOutManager>
 {
+    [Header("登录平台")]
+    public LoginPlatform _LoginPlatform = LoginPlatform.Android;
     [Header("短剧后台的产品id")]
     public string AppInfo = "4";
     string WithdrawPlatform = "PAYPAL";
@@ -24,8 +27,11 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     [HideInInspector] public bool Ready;
     float MinWithdrawCount; //最小提现金额
     int Event_1304Time;
+    string ClientIP;
+    string RealIP;
+    [HideInInspector] public long StartTime;
 
-    
+    #region 游戏逻辑
     private void Start()
     {
         Account = SaveDataManager.GetString("CashOut_Account");
@@ -35,44 +41,140 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     private void OnApplicationPause(bool pauseStatus)
     {
         long Seconds = LeftTime / 10000000;
-        if (pauseStatus)
+        if (pauseStatus && Seconds > 0)
         {
-            if (Seconds > 0)
+            string title = "Your reward is ready!";
+            string info = $"All {NetInfoMgr.instance.ConfigData.CashOut_MoneyName} have been converted,Please check your rewaeds!";
+            NotificationManager.Instance.ClearNotification();
+            NotificationManager.Instance.ScheduleNotification(title, info, (int)Seconds);
+            for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
+                NotificationManager.Instance.ScheduleNotification(title, info, (int)Seconds + (i * 10800));
+        }
+
+        if (pauseStatus)
+            ReportEvent(1005);
+        else
+            ReportEvent(1006);
+    }
+
+    void ConvertTimeCount() //Money转Cash倒计时
+    {
+        if (Data != null)
+        {
+            long nowTime = System.DateTime.UtcNow.Ticks;
+            LeftTime = Data.ConvertTime - nowTime;
+            //倒计时结束 更新用户信息 
+            if (LeftTime <= 0)
             {
-                string title = "Your reward is ready!";
-                string info = $"All {NetInfoMgr.instance.ConfigData.CashOut_MoneyName} have been converted,Please check your rewaeds!";
-                MalleabilityTenuous.Tendency.CliffMalleability();
-                MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds);
-                for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
-                    MalleabilityTenuous.Tendency.AlienateMalleability(title, info, (int)Seconds + (i * 10800));
+                LeftTime = 0;
+                if (_CashOutPanel != null && _CashOutPanel.gameObject.activeSelf)
+                    _CashOutPanel?.UpdateUserInfo(); //因为界面需要显示加载动画所以此处由_CashOutPanel调用
+                else
+                    UpdateUserInfo();
             }
+            //更新剩余时间ui 
+            string timeStr = "";
+            long Seconds = LeftTime / 10000000;
+            if (Seconds <= 0)
+                timeStr = "00:00:00";
+            else
+            {
+                int hour = (int)(Seconds / 3600);
+                int minute = (int)((Seconds - hour * 3600) / 60);
+                int second = (int)(Seconds - hour * 3600 - minute * 60);
+                timeStr = string.Format("{0:D2}:{1:D2}:{2:D2}", hour, minute, second);
+            }
+            _CashOutPanel?.UpdateTime(timeStr);
+            _CashOutEnter?.UpdateTime(timeStr);
         }
     }
 
+    public void AddMoney(float Value)
+    {
+        Money += Value;
+        SaveDataManager.SetFloat("CashOut_Money", Money);
+        SaveDataManager.SetFloat("CashOut_Money_All", SaveDataManager.GetFloat("CashOut_Money_All") + Value);
+        _CashOutPanel?.UpdateMoney();
+        _CashOutEnter?.UpdateMoney();
+    }
+
+    public void WaitToSendEvent1304() //等待 发送关闭商店后行为1304事件
+    {
+        InvokeRepeating(nameof(Count1304Time), 0, 1);
+    }
+    void Count1304Time() //计时器
+    {
+        Event_1304Time++;
+    }
+    public void SendEvent1304() ////打点 关闭商店后行为
+    {
+        CancelInvoke(nameof(Count1304Time));
+        if (Event_1304Time <= 0)
+            return;
+        PostEventScript.GetInstance().SendEvent("1304", Event_1304Time.ToString());
+        Event_1304Time = 0;
+    }
+
+    void CashOutLog(string log, bool IsError = false, bool IsOk = false) //提现相关功能日志
+    {
+        if (IsError)
+            Debug.LogError("<color=red><b>+++++   " + log + "</b></color>");
+        else
+        {
+            if (IsOk)
+                print("<color=cyan><b>+++++   " + log + "</b></color>");
+            else
+                print("<color=yellow><b>+++++   " + log + "</b></color>");
+        }
+    }
+
+    // //测试
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Space))
+    //     {
+    //         _CashOutPanel?.MoneyToCashAnim();
+    //         _CashOutEnter?.MoneyToCashAnim(true);
+    //     }
+    // }
+    #endregion
+
+    #region 短剧后台各类接口
     Dictionary<string, string> Headers() // 请求头
     {
         return new Dictionary<string, string>
         {
-            //{"app_info", AppInfo},
             {"app-version", Application.version},
             {"lang", I2.Loc.LocalizationManager.CurrentLanguageCode},
             {"Authorization", SaveDataManager.GetString("CashOut_Token")},
             {"platform", WithdrawPlatform},
             {"os-version", SystemInfo.operatingSystem},
             {"device-name", SystemInfo.deviceName},
-            //{"device_language", Application.systemLanguage.ToString()},
         };
     }
 
     public void Login() // 登录
     {
-        string Platform = "iOS";
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        string Platform = "Editor";
+        string Manufacturer = "Editor";
+        string DeviceAdId = "";
+        if (_LoginPlatform == LoginPlatform.Android)
+        {
+            Platform = "Android";
+            DeviceAdId = SaveDataManager.GetString("gaid");
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                AndroidJavaClass aj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                AndroidJavaObject p = aj.GetStatic<AndroidJavaObject>("currentActivity");
+                Manufacturer = p.CallStatic<string>("getManufacturer");
+            }
+        }
+        else
+        {
             Platform = "iOS";
-        string DeviceAdId = SaveDataManager.GetString("gaid");
-        if (Application.platform == RuntimePlatform.IPhonePlayer)
+            Manufacturer = "Apple";
             DeviceAdId = SaveDataManager.GetString("idfv");
-
+        }
         StringBuilder uuidsb = new StringBuilder();
         uuidsb.Append(SystemInfo.deviceUniqueIdentifier);
 #if UNITY_ANDROID || UNITY_EDITOR //安卓UUID存在不同应用相同ID的情况 用SystemInfo.deviceUniqueIdentifier+AppInfo 
@@ -87,24 +189,28 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             bundle_id = Application.identifier,
             uuid = uuidsb.ToString(),
             device_ad_id = DeviceAdId,
-            device_lang = CultureInfo.CurrentCulture.Name
+            device_lang = CultureInfo.CurrentCulture.Name,
+            model = SystemInfo.deviceModel,
+            manufacturer = Manufacturer,
+            screen_size = Screen.width + "x" + Screen.height,
+            screen_pixel = Screen.currentResolution.width + "x" + Screen.currentResolution.height,
         };
 
         string jsonBody = JsonMapper.ToJson(loginRequest);
         string loginUrl = $"{BaseUrl}/login";
-        CashOutLog($"请求URL: {loginUrl}  请求体: {jsonBody}", false);
+        CashOutLog($"请求登录  请求体: {jsonBody}", false);
 
         NetWorkManager.GetInstance().HttpPostJson(
             url: loginUrl,
             jsonData: jsonBody,
             success: (result) =>
             {
-                CashOutLog("登录数据： " + result.downloadHandler.text, false);
                 try
                 {
                     var response = JsonMapper.ToObject<Response_User>(result.downloadHandler.text);
                     if (response.code == 0)
                     {
+                        CashOutLog("登录成功 数据： " + result.downloadHandler.text, false, true);
 #if UNITY_ANDROID || UNITY_EDITOR //安卓UUID 新老用户兼容
                         bool isNewPlayer = !PlayerPrefs.HasKey(CConfig.sv_IsNewPlayer + "Bool") || SaveDataManager.GetBool(CConfig.sv_IsNewPlayer);
                         if (isNewPlayer)
@@ -135,10 +241,20 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         _CashOutEnter?.UpdateMoney();
 
                         Ready = true;
+
+                        //轮询获取各种IP 直到上报成功为止
+                        InvokeRepeating(nameof(ReportIDs), 0, 3);
+
+                        //游戏启动打点 需要先登录成功才能打点 这里的时间戳参数由ReportEvent方法内部特殊处理
+                        ReportEvent(1000);
+
+                        //上报设备信息
+                        ReportEvent_DeviceInfo();
                     }
                     else
                     {
                         CashOutLog($"登录失败: {response.msg}", true);
+                        CashOutLog("如果报错是app not found，有可能是登陆平台选错了，有可能是包名和短剧后台ID对不上", true);
                         ToastManager.GetInstance().ShowToast("Login fail :" + response.msg);
                     }
                 }
@@ -155,6 +271,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             },
             timeout: 3f,
             headers: Headers()
+            
         );
     }
 
@@ -166,12 +283,12 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             url: url,
             success: (result) =>
             {
-                CashOutLog("用户信息数据： " + result.downloadHandler.text, false);
                 try
                 {
                     var response = JsonMapper.ToObject<Response_User>(result.downloadHandler.text);
                     if (response.code == 0)
                     {
+                        CashOutLog("用户信息数据： " + result.downloadHandler.text, false, true);
                         string Event_Money = Money.ToString();
 
                         double OldCash = SaveDataManager.GetDouble("CashOut_Cash");
@@ -235,12 +352,12 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             url: url,
             success: (result) =>
             {
-                CashOutLog("提现规则数据： " + result.downloadHandler.text, false);
                 try
                 {
                     var response = JsonMapper.ToObject<Response_WithdrawRule>(result.downloadHandler.text);
                     if (response.code == 0) // 成功状态码
                     {
+                        CashOutLog("提现规则数据： " + result.downloadHandler.text, false, true);
                         MinWithdrawCount = float.Parse(response.data.min_amount, CultureInfo.InvariantCulture);
                     }
                     else
@@ -295,7 +412,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                     var response = JsonMapper.ToObject<Response_Withdraw>(result.downloadHandler.text);
                     if (response.code == 0)
                     {
-                        CashOutLog("提现数据： " + result.downloadHandler.text, false);
+                        CashOutLog("提现数据： " + result.downloadHandler.text, false, true);
                         _CashOutPanel?.CloseLoading_Withdraw(true);
                         _CashOutPanel?.UpdateUserInfo();
 
@@ -341,12 +458,12 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             url: url,
             success: (result) =>
             {
-                CashOutLog("提现记录数据： " + result.downloadHandler.text, false);
                 try
                 {
                     var response = JsonMapper.ToObject<Response_WithdrawRecord>(result.downloadHandler.text);
                     if (response.code == 0)
                     {
+                        CashOutLog("提现记录数据： " + result.downloadHandler.text, false, true);
                         Data.Record = response.data.data;
                         _CashOutPanel?.CloseLoading_Record();
                         _CashOutPanel?.UpdateRecord();
@@ -372,7 +489,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
     public void ReportEcpm(MaxSdkBase.AdInfo info, string RequestID, string AdFormat) // 上报ecpm
     {
-        return;
+        return; //暂时不需要上报ecpm
 
         if (Application.isEditor)
         {
@@ -478,81 +595,266 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         );
     }
 
-    void ConvertTimeCount() //Money转Cash倒计时
+    void GetClientIP() // 获取客户端IP
     {
-        if (Data != null)
+        string url = "http://ip-api.com/json/?key=NN3ExblXQt2Esoy";
+        NetWorkManager.GetInstance().HttpGet(
+            url: url,
+            success: (result) =>
+            {
+                //CashOutLog("获取客户端IP数据： " + result.downloadHandler.text, false);
+                try
+                {
+                    string json = result.downloadHandler.text;
+                    JsonData data = JsonMapper.ToObject(json);
+                    if (data.ContainsKey("query"))
+                    {
+                        ClientIP = data["query"].ToString();
+                    }
+                    else
+                    {
+                        CashOutLog("未找到IP地址", true);
+                    }
+                }
+                catch (Exception e)
+                {
+                    CashOutLog($"解析获取客户端IP响应数据失败: {e.Message}", true);
+                }
+            },
+            fail: () =>
+            {
+                CashOutLog("获取客户端IP请求失败", true);
+            },
+            timeout: 3f,
+            headers: null
+        );
+    }
+    void GetRealIP_Step1() // 获取真实IP网址
+    {
+        string url = "https://nstool.netease.com/";
+        NetWorkManager.GetInstance().HttpGet(
+            url: url,
+            success: (result) =>
+            {
+                //CashOutLog("获取真实IP网址： " + result.downloadHandler.text, false);
+                try
+                {
+                    // 使用正则表达式匹配iframe的src属性
+                    var match = System.Text.RegularExpressions.Regex.Match(result.downloadHandler.text, @"<iframe\s+[^>]*src=['""]([^'""]+)['""][^>]*>", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                    if (match.Success)
+                    {
+                        GetRealIP_Step2(match.Groups[1].Value);
+                        //RealIP = match.Groups[1].Value;
+                    }
+                }
+                catch (Exception e)
+                {
+                    CashOutLog($"解析获取真实IP网址响应数据失败: {e.Message}", true);
+                }
+            },
+            fail: () =>
+            {
+                CashOutLog("获取真实IP网址请求失败", true);
+            },
+            timeout: 3f,
+            headers: null
+        );
+    }
+    void GetRealIP_Step2(string url) // 获取真实IP
+    {
+        NetWorkManager.GetInstance().HttpGet(
+           url: url,
+           success: (result) =>
+           {
+               //CashOutLog("获取真实IP数据： " + result.downloadHandler.text, false);
+               try
+               {
+                   var match = System.Text.RegularExpressions.Regex.Match(result.downloadHandler.text, @"IP地址信息:\s*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                   if (match.Success)
+                   {
+                       RealIP = match.Groups[1].Value;
+                   }
+               }
+               catch (Exception e)
+               {
+                   CashOutLog($"解析获取真实IP响应数据失败: {e.Message}", true);
+               }
+           },
+           fail: () =>
+           {
+               CashOutLog("获取真实IP请求失败", true);
+           },
+           timeout: 3f,
+           headers: null
+       );
+    }
+    void ReportIDs() // 上报各种ID
+    {
+        if (string.IsNullOrEmpty(ClientIP))
         {
-            long nowTime = System.DateTime.UtcNow.Ticks;
-            LeftTime = Data.ConvertTime - nowTime;
-            //倒计时结束 更新用户信息 
-            if (LeftTime <= 0)
-            {
-                LeftTime = 0;
-                if (_CashOutPanel != null && _CashOutPanel.gameObject.activeSelf)
-                    _CashOutPanel?.UpdateUserInfo(); //因为界面需要显示加载动画所以此处由_CashOutPanel调用
-                else
-                    UpdateUserInfo();
-            }
-            //更新剩余时间ui 
-            string timeStr = "";
-            long Seconds = LeftTime / 10000000;
-            if (Seconds <= 0)
-                timeStr = "00:00:00";
-            else
-            {
-                int hour = (int)(Seconds / 3600);
-                int minute = (int)((Seconds - hour * 3600) / 60);
-                int second = (int)(Seconds - hour * 3600 - minute * 60);
-                timeStr = string.Format("{0:D2}:{1:D2}:{2:D2}", hour, minute, second);
-            }
-            _CashOutPanel?.UpdateTime(timeStr);
-            _CashOutEnter?.UpdateTime(timeStr);
-        }
-    }
-
-    public void AddMoney(float Value)
-    {
-        Money += Value;
-        SaveDataManager.SetFloat("CashOut_Money", Money);
-        SaveDataManager.SetFloat("CashOut_Money_All", SaveDataManager.GetFloat("CashOut_Money_All") + Value);
-        _CashOutPanel?.UpdateMoney();
-        _CashOutEnter?.UpdateMoney();
-    }
-
-    public void WaitToSendEvent1304() //等待 发送关闭商店后行为1304事件
-    {
-        RoadLoder.instance.SparkProboscisClaw();
-        InvokeRepeating(nameof(Count1304Time), 0, 1);
-    }
-    void Count1304Time() //计时器
-    {
-        Event_1304Time++;
-    }
-    public void SendEvent1304() ////打点 关闭商店后行为
-    {
-        CancelInvoke(nameof(Count1304Time));
-        if (Event_1304Time <= 0)
+            GetClientIP();
             return;
-        PostEventScript.GetInstance().SendEvent("1304", Event_1304Time.ToString());
-        Event_1304Time = 0;
-    }
-
-    void CashOutLog(string log, bool IsError = false) //提现相关功能日志
-    {
-        if (IsError)
-            Debug.LogError("<color=red><b>+++++   " + log + "</b></color>");
-        else
-            print("<color=yellow><b>+++++   " + log + "</b></color>");
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        }
+        if (string.IsNullOrEmpty(RealIP))
         {
-            _CashOutPanel?.MoneyToCashAnim();
-            _CashOutEnter?.MoneyToCashAnim(true);
+            GetRealIP_Step1();
+            return;
+        }
+
+        CashOutLog("上报ID  客户端Ip：" + ClientIP + "  真实Ip：" + RealIP);
+        string url = $"{BaseUrl}/user/meta";
+        NetWorkManager.GetInstance().HttpPostJson(
+            url: url,
+            jsonData: JsonMapper.ToJson(new { CLIENT_IP = ClientIP, REAL_IP = RealIP }),
+            success: (result) =>
+            {
+                try
+                {
+                    var response = JsonMapper.ToObject<BaseResponse>(result.downloadHandler.text);
+                    if (response.code == 0) // 成功状态码
+                    {
+                        CashOutLog("上报ID成功 数据： " + result.downloadHandler.text, false, true);
+                        CancelInvoke(nameof(ReportIDs));
+                    }
+                    else
+                    {
+                        CashOutLog($"上报各种ID失败: {response.msg}", true);
+                        CancelInvoke(nameof(ReportIDs));
+                    }
+                }
+                catch (Exception e)
+                {
+                    CashOutLog($"解析上报各种ID响应数据失败: {e.Message}", true);
+                    CancelInvoke(nameof(ReportIDs));
+                }
+            },
+            fail: () =>
+            {
+                CashOutLog("上报各种ID请求失败", true);
+                CancelInvoke(nameof(ReportIDs));
+            },
+            timeout: 3f,
+            headers: Headers()
+        );
+    }
+
+    public void ReportEvent(int type, string string_0 = null, string string_1 = null, int? big_int_0 = null) // 上报事件
+    {
+        if (string.IsNullOrEmpty(SaveDataManager.GetString("CashOut_Token")))
+        {
+            CashOutLog($"没Token不上报事件{type}", true);
+            return;
+        }
+
+        RequestData_ReportEvent EventRequest = new RequestData_ReportEvent();
+        EventRequest.network = GetNetworkInt();
+        EventRequest.time_zone = GetTimeZone();
+        EventRequest.events = new List<RequestData_ReportEvent_Event>();
+        RequestData_ReportEvent_Event Event = new RequestData_ReportEvent_Event();
+        Event.type = type;
+        Event.timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(); //毫秒时间戳
+        if (type == 1000) //游戏启动时间戳 由于要先等登录成功获取token 所以特殊处理
+            Event.timestamp = StartTime;
+        Event.string_0 = string_0;
+        Event.string_1 = string_1;
+        Event.big_int_0 = big_int_0;
+        EventRequest.events.Add(Event);
+
+        string url = $"{BaseUrl}/event";
+        CashOutLog($"上报事件{type}  请求体: {JsonMapper.ToJson(EventRequest)}", false);
+        NetWorkManager.GetInstance().HttpPostJson(
+            url: url,
+            jsonData: JsonMapper.ToJson(EventRequest),
+            success: (result) =>
+            {
+                //CashOutLog("上报事件数据： " + result.downloadHandler.text, false);
+                try
+                {
+                    var response = JsonMapper.ToObject<BaseResponse>(result.downloadHandler.text);
+                    if (response.code == 0) // 成功状态码
+                    {
+                        CashOutLog($"上报事件{type}成功", false, true);
+                    }
+                    else
+                    {
+                        CashOutLog($"上报事件{type}失败: {response.msg}", true);
+                    }
+                }
+                catch (Exception e)
+                {
+                    CashOutLog($"解析上报事件响应数据失败: {e.Message}", true);
+                }
+            },
+            fail: () =>
+            {
+                CashOutLog("上报事件请求失败", true);
+            },
+            timeout: 3f,
+            headers: Headers()
+        );
+    }
+    int GetNetworkInt() //根据网络类型获取对应的int值 
+    {
+        //安卓调原生方法 获取更详细的网络类型
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            AndroidJavaClass aj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject p = aj.GetStatic<AndroidJavaObject>("currentActivity");
+            return p.CallStatic<int>("getNetwork");
+        }
+
+        //苹果端暂时这样处理
+        NetworkReachability reachability = Application.internetReachability;
+        if (reachability == NetworkReachability.ReachableViaLocalAreaNetwork)
+            return 1; // WIFI
+        else
+            return 0; // 其他网络
+    }
+    int GetTimeZone() //获取当前时区相对于UTC0时区的差值，单位：秒
+    {
+        // 获取当前本地时间
+        DateTime localTime = DateTime.Now;
+        // 获取当前时间对应的UTC时间
+        DateTime utcTime = localTime.ToUniversalTime();
+        // 计算时间差（本地时间 - UTC时间）
+        TimeSpan offset = localTime - utcTime;
+        // 将时间差转换为秒
+        return (int)offset.TotalSeconds;
+    }
+    public void ReportEvent_LoadingTime() //上报loading时间
+    {
+        long LoadingTime = System.DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - StartTime;
+        ReportEvent(1004, null, null, (int)LoadingTime);
+    }
+    void ReportEvent_DeviceInfo() //上报设备信息
+    {
+        //目前只有安卓上报
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            AndroidJavaClass aj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject p = aj.GetStatic<AndroidJavaObject>("currentActivity");
+            bool isVpn = p.CallStatic<bool>("isVpn");
+            if (isVpn)
+                ReportEvent(1007);
+            bool isSimulator = p.CallStatic<bool>("isSimulator");
+            if (isSimulator)
+                ReportEvent(1008);
+            bool isRoot = p.CallStatic<bool>("isRoot");
+            if (isRoot)
+                ReportEvent(1009);
+            bool isDeveloper = p.CallStatic<bool>("isDeveloper");
+            if (isDeveloper)
+                ReportEvent(1010);
+            bool isUsb = p.CallStatic<bool>("isUsb");
+            if (isUsb)
+                ReportEvent(1011);
+            bool isSimCard = p.CallStatic<bool>("isSimcard");
+            ReportEvent(1012, null, null, isSimCard ? 1 : 0);
         }
     }
+
+    #endregion
+
 }
 
 #region 接口相关各类请求和响应数据结构
@@ -584,6 +886,10 @@ public class Request_Login
     public string uuid;
     public string device_ad_id;
     public string device_lang;
+    public string model;
+    public string manufacturer;
+    public string screen_size;
+    public string screen_pixel;
 }
 [System.Serializable]
 public class Response_User : BaseResponse
@@ -683,6 +989,24 @@ public class Response_Ecpm : BaseResponse
 public class RequestData_ReportAdjustID
 {
     public string id;
+}
+
+//打点相关数据模型
+[System.Serializable]
+public class RequestData_ReportEvent
+{
+    public int network;
+    public int time_zone;
+    public List<RequestData_ReportEvent_Event> events;
+}
+[System.Serializable]
+public class RequestData_ReportEvent_Event
+{
+    public int type;
+    public long timestamp;
+    public string string_0;
+    public string string_1;
+    public int? big_int_0;
 }
 
 #endregion

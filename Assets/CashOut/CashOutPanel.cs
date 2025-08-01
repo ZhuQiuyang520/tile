@@ -87,16 +87,23 @@ public class CashOutPanel : BaseUIForms
         PostEventScript.GetInstance().SendEvent("1301", "6");
         CashOutManager.GetInstance()._CashOutPanel = this;
         CloseBtn.onClick.AddListener(() => {
-            RoadTenuous.GetInstance().ReliefStilt = true; 
-            CloseUIForm(nameof(CashOutPanel));
-        });
+            RoadLoder.instance.SparkProboscisClaw();
+            CloseUIForm(nameof(CashOutPanel)); });
         CashOutBtn.onClick.AddListener(() => { OnCashOutBtn(); });
         MoneyName = NetInfoMgr.instance.ConfigData.CashOut_MoneyName;
         InfoText.text = NetInfoMgr.instance.ConfigData.CashOut_Description;
         InfoPanel_OpenBtn.onClick.AddListener(() => OpenPanel(InfoPanel));
         InfoPanel_CloseBtn.onClick.AddListener(() => ClosePanel(InfoPanel));
         ContactBtn.GetComponent<Text>().text = NetInfoMgr.instance.BaseUrl;
-        ContactBtn.onClick.AddListener(() => { Application.OpenURL(NetInfoMgr.instance.BaseUrl); });
+        ContactBtn.onClick.AddListener(() =>
+        {
+            string url = NetInfoMgr.instance.BaseUrl;
+#if UNITY_ANDROID || UNITY_EDITOR
+            Application.OpenURL(url);
+#elif UNITY_IOS
+            openUrl(url);
+#endif
+        });
         RecordPanel_OpenBtn.onClick.AddListener(() =>
         {
             OpenPanel(RecordPanel);

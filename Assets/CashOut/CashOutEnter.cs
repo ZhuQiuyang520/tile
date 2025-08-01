@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -25,10 +25,7 @@ public class CashOutEnter : MonoBehaviour
     void Start()
     {
         CashOutManager.GetInstance()._CashOutEnter = this;
-        OpenPanelBtn.onClick.AddListener(() => { 
-            RoadTenuous.GetInstance().ReliefStilt = false;
-            UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel));
-        });
+        OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
         UpdateMoney();
     }
 
