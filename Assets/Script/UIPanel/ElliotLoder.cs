@@ -55,10 +55,17 @@ public class ElliotLoder : BaseUIForms
             if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 0)
             {
                 SonicCyan.text = "+" + ChallengeAwardNumber[0];
+                SparseFence = double.Parse( ChallengeAwardNumber[0]);
             }
             else if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 1)
             {
                 SonicCyan.text = "+" + ChallengeAwardNumber[1];
+                SparseFence = double.Parse(ChallengeAwardNumber[1]);
+            }
+            else if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
+            {
+                SonicCyan.text = "+" + ChallengeAwardNumber[2];
+                SparseFence = double.Parse(ChallengeAwardNumber[2]);
             }
         }
         else
@@ -128,26 +135,17 @@ public class ElliotLoder : BaseUIForms
         {
             if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
             {
-                RoadLoder.instance.OatWing(SonicThai, double.Parse( ChallengeAwardNumber[2]));
                 UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
             }
             else
             {
-                if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 0)
-                {
-                    RoadLoder.instance.OatWing(SonicThai, double.Parse(ChallengeAwardNumber[0]));
-                }
-                else if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 1)
-                {
-                    RoadLoder.instance.OatWing(SonicThai, double.Parse(ChallengeAwardNumber[1]));
-                }
                 UIManager.GetInstance().ShowUIForms(nameof(TelescopeSunLoder));
             }
         }
         else
         {
             PlayerPrefs.SetInt(CConfig.sv_CurLevel, PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1);
-            SaveDataManager.SetInt(CConfig.sv_ad_trial_num, PlayerPrefs.GetInt(CConfig.sv_CurLevel));
+            SaveDataManager.SetInt(CConfig.sv_ad_trial_num, PlayerPrefs.GetInt(CConfig.sv_ad_trial_num) + 1);
             RoadTenuous.GetInstance().OfRadishTelescope = PlayerPrefs.GetInt(CConfig.sv_CurLevel) > NetInfoMgr.instance.GameData.Daily_Challenge;
             //审核模式继续玩  普通模式判断是否跳到好评
             if (CommonUtil.IsApple())
@@ -217,11 +215,11 @@ public class ElliotLoder : BaseUIForms
 
     private void GrowThaw()
     {
-        PostEventScript.GetInstance().SendEvent("9007", "4");
+       
         int index = FadThawCrimpAlarm();
         ThawBG.Food(index, (multi) => {
             // slot结束后的回调
-
+            PostEventScript.GetInstance().SendEvent("9007", "4");
             AnimationController.ChangeNumber(SparseFence, SparseFence * multi, 0, SonicCyan, "+", () =>
             {
                 SparseFence = SparseFence * multi;

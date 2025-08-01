@@ -151,10 +151,6 @@ public class PostEventScript : MonoSingleton<PostEventScript>
         {
             wwwForm.AddField("params3", p5);
         }
-        if (p6 != null)
-        {
-            wwwForm.AddField("params3", p6);
-        }
         StartCoroutine(SendPost(NetInfoMgr.instance.BaseUrl + "/api/client/log", wwwForm,
         (error) =>
         {

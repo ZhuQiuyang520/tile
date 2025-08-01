@@ -118,13 +118,19 @@ public class UsuallyLoder : BaseUIForms
 
     private void ChangeTryAgain()
     {
-        
         ADManager.Instance.playInterstitialAd(104);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         CloseUIForm(GetType().Name);
-        RoadBrother.instance.BeamBleak(PlayerPrefs.GetInt(CConfig.sv_CurLevel));
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            RoadTenuous.GetInstance().StoveCrossbones();
+        }
+        else
+        {
+            RoadBrother.instance.BeamBleak(PlayerPrefs.GetInt(CConfig.sv_CurLevel));
+        }
     }
 
     public void RatifyMovie(bool open)

@@ -144,6 +144,20 @@ public class LidBothLoder : BaseUIForms
 
     private void RatifyHurl()
     {
+        switch (Hard)
+        {
+            case PropType.Roll:
+                PostEventScript.GetInstance().SendEvent("1003", "1");
+                break;
+            case PropType.Remind:
+                PostEventScript.GetInstance().SendEvent("1004", "1");
+                break;
+            case PropType.Refresh:
+                PostEventScript.GetInstance().SendEvent("1005", "1");
+                break;
+            default:
+                break;
+        }
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         ADManager.Instance.playRewardVideo((success) =>
@@ -152,7 +166,7 @@ public class LidBothLoder : BaseUIForms
             {
                 case PropType.Roll:
                     PostEventScript.GetInstance().SendEvent("9007", "1");
-                    PostEventScript.GetInstance().SendEvent("1003","1");
+                    
                     if (!RoadTenuous.GetInstance().OfTelescope)
                     {
                         PlayerPrefs.SetInt(CConfig.RollBackNumber, StaffJob);
@@ -161,7 +175,7 @@ public class LidBothLoder : BaseUIForms
                     break;
                 case PropType.Remind:
                     PostEventScript.GetInstance().SendEvent("9007", "2");
-                    PostEventScript.GetInstance().SendEvent("1004", "1");
+                    
                     if (!RoadTenuous.GetInstance().OfTelescope)
                     {
                         PlayerPrefs.SetInt(CConfig.RemingNumber, StaffJob);
@@ -170,7 +184,7 @@ public class LidBothLoder : BaseUIForms
                     break;
                 case PropType.Refresh:
                     PostEventScript.GetInstance().SendEvent("9007", "3");
-                    PostEventScript.GetInstance().SendEvent("1005", "1");
+                    
                     if (!RoadTenuous.GetInstance().OfTelescope)
                     {
                         PlayerPrefs.SetInt(CConfig.RefreshNumber, StaffJob);

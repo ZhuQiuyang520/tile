@@ -80,13 +80,13 @@ public class CargoSkipLoder : BaseUIForms
 
     private void RatifyHurl()
     {
+        PostEventScript.GetInstance().SendEvent("1010", "1");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         ADManager.Instance.playRewardVideo((success) =>
         {
             if (success)
             {
-                PostEventScript.GetInstance().SendEvent("1010", "1");
                 Hurl.interactable = false;
                 GrowThaw();
             }
@@ -96,12 +96,13 @@ public class CargoSkipLoder : BaseUIForms
     private void ClickGet()
     {
         ADManager.Instance.NoThanksAddCount();
+        PostEventScript.GetInstance().SendEvent("1010", "0");
         RatifyMob();
     }
 
     private void RatifyMob()
     {
-        PostEventScript.GetInstance().SendEvent("1010", "0");
+        
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         foreach (var item in _SparseNeck.Rim_Marlin)
         {

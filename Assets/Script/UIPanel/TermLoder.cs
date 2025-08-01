@@ -22,6 +22,14 @@ public class TermLoder : BaseUIForms
 
     public void RatifyHurl()
     {
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            PostEventScript.GetInstance().SendEvent("1008", "1", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+        }
+        else
+        {
+            PostEventScript.GetInstance().SendEvent("1007", "1");
+        }
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         ADManager.Instance.playRewardVideo((success) =>
@@ -30,12 +38,12 @@ public class TermLoder : BaseUIForms
             if (RoadTenuous.GetInstance().OfTelescope)
             {
                 PostEventScript.GetInstance().SendEvent("9007", "6");
-                PostEventScript.GetInstance().SendEvent("1008", "1",RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+                
             }
             else
             {
                 PostEventScript.GetInstance().SendEvent("9007", "5");
-                PostEventScript.GetInstance().SendEvent("1007", "1");
+                
             }
             CloseUIForm(GetType().Name);
             RoadBrother.instance.UpwindThaw();
@@ -43,12 +51,19 @@ public class TermLoder : BaseUIForms
     }
     public void RatifySpark()
     {
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            PostEventScript.GetInstance().SendEvent("1008", "0", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+        }
+        else
+        {
+            PostEventScript.GetInstance().SendEvent("1007", "0");
+        }
         ADManager.Instance.NoThanksAddCount();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         UIManager.GetInstance().ClearAllUI();
-        PostEventScript.GetInstance().SendEvent("1007", "0");
         UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
     }
 }

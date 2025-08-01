@@ -172,7 +172,7 @@ PlayerSettings:
     iPhone: com.tessera.shift.depthsnare
   buildNumber:
     Standalone: 0
-    iPhone: 33
+    iPhone: 6
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 46

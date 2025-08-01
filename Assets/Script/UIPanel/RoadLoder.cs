@@ -273,11 +273,12 @@ public class RoadLoder : BaseUIForms
 
     public void SparkProboscisClaw()
     {
-        PostEventScript.GetInstance().SendEvent("1002");
+        
         RoadTenuous.GetInstance().ReliefStilt = true;
 
         if (!RoadTenuous.GetInstance().OfIdeal && PlayerPrefs.GetInt(CConfig.FinishWangzhuanGuide)==0)
         {
+            PostEventScript.GetInstance().SendEvent("1002");
             PlayerPrefs.SetInt(CConfig.FinishWangzhuanGuide, 1);
             ProboscisClaw.SetActive(false);
             WangzhuanScale.Kill();

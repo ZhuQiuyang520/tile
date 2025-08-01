@@ -16,6 +16,7 @@ public class HarmonyLoder : BaseUIForms
         Guinea.value = 0;
         SpillageStep.text = "0%";
         PostEventScript.GetInstance().SendEvent("1001");
+        RoadTenuous.GetInstance().MaidianData();
         //for (int i = 0; i < FireBroad.Length; i++)
         //{
         //    RoadTenuous.GetInstance().ThrustUnpublished(FireBroad[i].GetComponent<RectTransform>());
@@ -32,7 +33,6 @@ public class HarmonyLoder : BaseUIForms
             
             if (Guinea.value >= 1)
             {
-                RoadTenuous.GetInstance().MaidianData();
                 CommonUtil.IsApple();
                 Destroy(transform.parent.gameObject);
                 DramTenuous.instance.VoteBlue();

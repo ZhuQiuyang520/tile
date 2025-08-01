@@ -32,21 +32,6 @@ public class TelescopeTerm : BaseUIForms
 
     public void RatifyPayGrasp()
     {
-        //ADManager.Instance.playRewardVideo((success) =>
-        //{
-        //    RoadTenuous.GetInstance().ReliefStilt = true;
-        //    TelescopeBorrow--;
-        //    if (TelescopeBorrow == 0)
-        //    {
-        //        PayGrasp.interactable = false;
-        //    }
-        //    PostEventScript.GetInstance().SendEvent("9007", "6");
-        //    PostEventScript.GetInstance().SendEvent("1008", "1");
-
-        //    CloseUIForm(GetType().Name);
-        //    RoadBrother.instance.UpwindThaw();
-        //}, "110");
-        //PostEventScript.GetInstance().SendEvent("9102", "104");
         ADManager.Instance.playInterstitialAd(104);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;

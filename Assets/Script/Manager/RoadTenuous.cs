@@ -114,8 +114,8 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
                 challengeLevel = TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)];
                 RoadBrother.instance.BeamBleak(challengeLevel);
                 break;
-                UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
             default:
+                UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
                 break;
         }
     }
@@ -196,7 +196,7 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
     /// </summary>
     public void MaidianData()
     {
-        PostEventScript.GetInstance().SendEvent("2001", CashOutManager.GetInstance().Data.Cash.ToString("F2"), SaveDataManager.GetFloat("CashOut_Money").ToString(), "0", SaveDataManager.GetFloat("CashOut_Money_All").ToString(), (PlayerPrefs.GetInt(CConfig.sv_CurLevel)+1).ToString());
+        PostEventScript.GetInstance().SendEvent("2001", CashOutManager.GetInstance().Data.Cash.ToString(), SaveDataManager.GetFloat("CashOut_Money").ToString(), "0", SaveDataManager.GetFloat("CashOut_Money_All").ToString(), (PlayerPrefs.GetInt(CConfig.sv_CurLevel)+1).ToString());
     }
 }
 

@@ -207,6 +207,7 @@ public class TuskLoder : BaseUIForms
                     DreamSocial.fillAmount = 0.2f;
                     break;
                 case 2:
+                    Dream1.sprite = DreamThai[0];
                     Dream2.sprite = DreamThai[0];
                     DreamSocial.fillAmount = 0.5f;
                     break;

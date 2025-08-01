@@ -525,10 +525,10 @@ public class ADManager : MonoBehaviour
     {
         if (!pause)
         {
-            RoadTenuous.GetInstance().MaidianData();
             // 切回前台
             if (!isShowingAd)
             {
+                RoadTenuous.GetInstance().MaidianData();
                 // 前后台切换时，播放间隔计数器需要累加切到后台的时间
                 if (applicationPauseTimestamp > 0)
                 {
