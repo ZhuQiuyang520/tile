@@ -1,6 +1,7 @@
 ﻿using Lofelt.NiceVibrations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,6 +53,17 @@ public class ElliotLoder : BaseUIForms
 
         if (RoadTenuous.GetInstance().OfTelescope)
         {
+            PostEventScript.GetInstance().SendEvent("1023", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+            PostEventScript.GetInstance().SendEvent("1031", RoadTenuous.GetInstance().GetChallengeLevel().ToString(),RoadTenuous.GetInstance().Revive.ToString());
+            string challengeRoll = RoadTenuous.GetInstance().UseRollBack.ToString();
+            string challengeRemind = RoadTenuous.GetInstance().UseRemind.ToString();
+            string challengeRefresh = RoadTenuous.GetInstance().UseRefresh.ToString();
+            StringBuilder str = new StringBuilder();
+            str.Append(challengeRoll);
+            str.Append(challengeRemind);
+            str.Append(challengeRefresh);
+            PostEventScript.GetInstance().SendEvent("1027", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), str.ToString());
+            PostEventScript.GetInstance().SendEvent("1036", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), str.ToString(), RoadTenuous.GetInstance().Revive.ToString());
             if (PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 0)
             {
                 SonicCyan.text = "+" + ChallengeAwardNumber[0];
@@ -85,7 +97,15 @@ public class ElliotLoder : BaseUIForms
     private void RatifyHurl()
     {
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
-        PostEventScript.GetInstance().SendEvent("1006", "1");
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            PostEventScript.GetInstance().SendEvent("1035", "1");
+        }
+        else
+        {
+            PostEventScript.GetInstance().SendEvent("1006", "1");
+        }
+        
         if (DyAimGulf())
         {
             GrowThaw();
@@ -107,6 +127,14 @@ public class ElliotLoder : BaseUIForms
     private void GetClose()
     {
         ADManager.Instance.NoThanksAddCount();
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            PostEventScript.GetInstance().SendEvent("1035", "0");
+        }
+        else
+        {
+            PostEventScript.GetInstance().SendEvent("1006", "0");
+        }
         RatifySpark();
     }
 
@@ -115,6 +143,7 @@ public class ElliotLoder : BaseUIForms
         if (CommonUtil.IsApple())
         {
             PlayerPrefs.SetInt(CConfig.CoinNumber, PlayerPrefs.GetInt(CConfig.CoinNumber) + (int)SparseFence);
+            PlayerPrefs.SetInt(CConfig.CoinNumber_All, PlayerPrefs.GetInt(CConfig.CoinNumber_All) + (int)SparseFence);
         }
         
         RatifyElliot();
@@ -127,7 +156,6 @@ public class ElliotLoder : BaseUIForms
     private void RatifyElliot()
     {
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
-        PostEventScript.GetInstance().SendEvent("1006", "0");
         
         //AniObj.enabled = false;
         CloseUIForm(GetType().Name);
@@ -215,7 +243,6 @@ public class ElliotLoder : BaseUIForms
 
     private void GrowThaw()
     {
-       
         int index = FadThawCrimpAlarm();
         ThawBG.Food(index, (multi) => {
             // slot结束后的回调

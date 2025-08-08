@@ -31,6 +31,6 @@ public class TelescopeSunLoder : BaseUIForms
     {
         CloseUIForm(GetType().Name);
         UIManager.GetInstance().ShowUIForms(nameof(RoadLoder));
-        RoadTenuous.GetInstance().StoveCrossbones();
+        RoadTenuous.GetInstance().StoveCrossbones(StartChallengeState.Win);
     }
 }

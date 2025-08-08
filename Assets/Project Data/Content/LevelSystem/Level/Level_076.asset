@@ -45,19 +45,19 @@ MonoBehaviour:
       - IsFilled: 0
         Effect: 0
     - cells:
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
       - IsFilled: 0
         Effect: 0
       - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
         Effect: 0
     - cells:
       - IsFilled: 0
@@ -608,6 +608,6 @@ MonoBehaviour:
   bottomLayerWidth: 7
   bottomLayerHeight: 7
   useInRandomizer: 1
-  elementsPerLevel: 10
+  elementsPerLevel: 6
   coinsReward: 20
   editorNote: ' sets: 23'

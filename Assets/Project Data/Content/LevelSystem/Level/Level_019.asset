@@ -271,6 +271,6 @@ MonoBehaviour:
   bottomLayerWidth: 7
   bottomLayerHeight: 5
   useInRandomizer: 1
-  elementsPerLevel: 11
+  elementsPerLevel: 5
   coinsReward: 20
   editorNote: ' sets: 17,effects: unknown'

@@ -142,6 +142,10 @@ public class CConfig
     /// </summary>
     public const string CoinNumber = "CoinNumber";
     /// <summary>
+    /// 金币总数量
+    /// </summary>
+    public const string CoinNumber_All = "CoinNumber_All";
+    /// <summary>
     /// 语言
     /// </summary>
     public const string sys_language = "Language";

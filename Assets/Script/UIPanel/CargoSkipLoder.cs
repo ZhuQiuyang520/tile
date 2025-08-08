@@ -122,6 +122,8 @@ public class CargoSkipLoder : BaseUIForms
                     SqueezeTenuous.GetInstance().Caucasian(MessageCode.BookletBoth, PropType.Remind);
                     break;
                 case RewardType.gold:
+                    PlayerPrefs.SetInt(CConfig.CoinNumber, PlayerPrefs.GetInt(CConfig.CoinNumber) + (int)SparseFence);
+                    PlayerPrefs.SetInt(CConfig.CoinNumber_All, PlayerPrefs.GetInt(CConfig.CoinNumber_All) + (int)SparseFence);
                     RoadLoder.instance.OatWing(Wing.transform, SparseFence);
                     break;
                 default:

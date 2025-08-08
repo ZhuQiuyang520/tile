@@ -22,7 +22,9 @@ public class TuskLoder : BaseUIForms
 [UnityEngine.Serialization.FormerlySerializedAs("ListArray")]
     public GameObject[] FireBroad;
 [UnityEngine.Serialization.FormerlySerializedAs("AwardIcon")]
-    public Sprite[] DreamThai; 
+    public Sprite[] DreamThai;
+
+    public CashOutEnter enter1;
 
     #region 计算时间
 
@@ -73,21 +75,18 @@ public class TuskLoder : BaseUIForms
         DyDivisionTell = false;
         Debug.Log("执行每日刷新!");
         DreamSocial.fillAmount = 0;
-        Dream1.sprite = DreamThai[0];
-        Dream2.sprite = DreamThai[0];
+        Dream1.sprite = DreamThai[1];
+        Dream2.sprite = DreamThai[1];
         PlayerPrefs.SetInt(CConfig.NowDayChallenAward, 0);
         TelescopeViscera();
         if (RoadTenuous.GetInstance().OfRadishTelescope)
         {
-            if (PlayerPrefs.GetInt(CConfig.OnceChalleng) == 1)
-            {
-                //打开挑战弹窗
-                PlayerPrefs.SetInt(CConfig.OnceChalleng, 0);
-                UIManager.GetInstance().ShowUIForms(nameof(TelescopeOrbitLoder));
-            }
+            //打开挑战弹窗
+            PlayerPrefs.SetInt(CConfig.OnceChalleng, 0);
+            PostEventScript.GetInstance().SendEvent("1014", "pop");
+            UIManager.GetInstance().ShowUIForms(nameof(TelescopeOrbitLoder));
+            
         }
-        // 触发刷新事件
-        //OnRefresh?.Invoke();
     }
 
     // 检查离线期间是否需要刷新
@@ -103,7 +102,8 @@ public class TuskLoder : BaseUIForms
             WickDuringPass(now);
             return;
         }
-
+        Debug.Log(lastLogoutTime.Date);
+        Debug.Log(now.Date);
         // 计算上次登出时间到现在经过的天数
         int daysPassed = (int)(now.Date - lastLogoutTime.Date).TotalDays;
 
@@ -154,6 +154,13 @@ public class TuskLoder : BaseUIForms
 
     #endregion
 
+    private void Awake()
+    {
+        if (!CommonUtil.IsApple())
+        {
+            enter1.gameObject.SetActive(true);
+        }
+    }
     private void Start()
     {
         // 检查是否需要执行离线刷新
@@ -164,7 +171,7 @@ public class TuskLoder : BaseUIForms
         
         StoveHat.onClick.AddListener(StoveRoad);
         DiffuseHat.onClick.AddListener(BeamTelescopeBleak);
-        DiffuseHat1.onClick.AddListener(BeamTelescopeBleak);
+        //DiffuseHat1.onClick.AddListener(BeamTelescopeBleak);
         UsuallyHat.onClick.AddListener(RatifyUsually);
         for (int i = 0; i < FireBroad.Length; i++)
         {
@@ -184,6 +191,7 @@ public class TuskLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        enter1.UpdateData();
         RoadTenuous.GetInstance().ReliefStilt = true;
         BleakCyan.text = "Level " + (PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1);
         TelescopeViscera();
@@ -233,6 +241,6 @@ public class TuskLoder : BaseUIForms
         CloseUIForm(GetType().Name);
         RoadTenuous.GetInstance().OfTelescope = true;
         UIManager.GetInstance().ShowUIForms(nameof(RoadLoder));
-        RoadTenuous.GetInstance().StoveCrossbones();
+        RoadTenuous.GetInstance().StoveCrossbones(StartChallengeState.Challenge);
     }
 }

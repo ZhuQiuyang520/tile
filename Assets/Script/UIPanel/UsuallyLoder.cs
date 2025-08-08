@@ -2,8 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+
+
 
 public class UsuallyLoder : BaseUIForms
 {
@@ -24,18 +28,24 @@ public class UsuallyLoder : BaseUIForms
 
     public Button TryBtn;
 
+#if UNITY_IOS
+    [DllImport("__Internal")] // 打开外部链接
+    internal extern static void openUrl(string url);
+#endif
+
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
         Tusk.gameObject.SetActive(false);
         TryBtn.gameObject.SetActive(false);
+        FloorLop.SetActive(false);
         if (uiFormParams != null)
         {
             Tusk.gameObject.SetActive(true);
             TryBtn.gameObject.SetActive(true);
         }
         RoadTenuous.GetInstance().ReliefStilt = false;
-        if (PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config)
+        if (PlayerPrefs.GetInt(CConfig.sv_CurLevel) >= NetInfoMgr.instance.GameData.Quickplay_Config && !RoadTenuous.GetInstance().OfTelescope)
         {
             FloorLop.SetActive(true);
         }
@@ -122,13 +132,27 @@ public class UsuallyLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
-        CloseUIForm(GetType().Name);
         if (RoadTenuous.GetInstance().OfTelescope)
         {
-            RoadTenuous.GetInstance().StoveCrossbones();
+            PostEventScript.GetInstance().SendEvent("1025", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+            PostEventScript.GetInstance().SendEvent("1033", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), RoadTenuous.GetInstance().Revive.ToString());
+
+            string challengeRoll = RoadTenuous.GetInstance().UseRollBack.ToString();
+            string challengeRemind = RoadTenuous.GetInstance().UseRemind.ToString();
+            string challengeRefresh = RoadTenuous.GetInstance().UseRefresh.ToString();
+            StringBuilder str = new StringBuilder();
+            str.Append(challengeRoll);
+            str.Append(challengeRemind);
+            str.Append(challengeRefresh);
+            PostEventScript.GetInstance().SendEvent("1029", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), str.ToString());
+            PostEventScript.GetInstance().SendEvent("1038", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), str.ToString(), RoadTenuous.GetInstance().Revive.ToString());
+            UIManager.GetInstance().ClearAllUI();
+            UIManager.GetInstance().ShowUIForms(nameof(RoadLoder));
+            RoadTenuous.GetInstance().StoveCrossbones(StartChallengeState.SettingTryAgain);
         }
         else
         {
+            CloseUIForm(GetType().Name);
             RoadBrother.instance.BeamBleak(PlayerPrefs.GetInt(CConfig.sv_CurLevel));
         }
     }
@@ -214,7 +238,16 @@ public class UsuallyLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
         if (!string.IsNullOrEmpty(NetInfoMgr.instance.GameData.Privacy_Policy))
         {
-            Application.OpenURL(NetInfoMgr.instance.GameData.Privacy_Policy);
+            if (!string.IsNullOrEmpty(NetInfoMgr.instance.GameData.Privacy_Policy))
+            {
+                string url = NetInfoMgr.instance.GameData.Privacy_Policy;
+#if UNITY_ANDROID || UNITY_EDITOR
+                Application.OpenURL(url);
+#elif UNITY_IOS
+       openUrl(url);
+#endif
+                //Application.OpenURL(NetInfoMgr.instance.GameData.Privacy_Policy);
+            }
         }
     }
     public void RatifyGive()

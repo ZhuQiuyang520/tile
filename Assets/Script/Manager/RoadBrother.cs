@@ -68,12 +68,14 @@ public class RoadBrother : MonoBehaviour
 
     private Vector3 ObtainShakeV3;
 
-    private float DownTime = 120;
-
     public bool IsFail;
 
     private string ComboAward;
     private string[] ComboAwardData;
+
+    private int ChallengeGroup = 0;
+    private int LayerIndex;
+    private List<TileSpawnData> ChallengeTileList;
 
     //private List<string> ReviveList1 = new List<string>();
     //private List<string> ReviveList2 = new List<string>();
@@ -88,7 +90,6 @@ public class RoadBrother : MonoBehaviour
 
     private void Start()
     {
-        
         ForgetPass = 0;
         OfForget = false;
         for (int i = 0; i < ThawFire.Count; i++)
@@ -108,6 +109,13 @@ public class RoadBrother : MonoBehaviour
     //加载关卡
     public void BeamBleak(int index)
     {
+        for (int i = 0; i < ThawFire.Count; i++)
+        {
+            if (ThawFire[i].ActionValue())
+            {
+                ThawFire[i].InitData();
+            }
+        }
         ComboAward = NetInfoMgr.instance.GameData.Combo_Cash;
         ComboAwardData = ComboAward.Split(';');
         IsFail = true;
@@ -117,10 +125,23 @@ public class RoadBrother : MonoBehaviour
 
         if (!OfEatBleakTelescope)
         {
-            if (index >= 205)
+            if (index >= NetInfoMgr.instance.LevelList.level.Count)
             {
-                index = index % 205 + 29;
+                index = index % NetInfoMgr.instance.LevelList.level.Count + 29;
             }
+            foreach (var item in NetInfoMgr.instance.LevelList.level)
+            {
+                if (item.LevelID == index)
+                {
+                    index = item.LevelData;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            LayerIndex = 0;
+            ChallengeGroup = NetInfoMgr.instance.GameData.challenge_group;
         }
         if (PlayerPrefs.GetInt(CConfig.OnceEnterChallenge) == 1 && OfEatBleakTelescope)
         {
@@ -147,8 +168,9 @@ public class RoadBrother : MonoBehaviour
         
         //加载level
         EatBleak = AfterFollower.GetLevel(index);
-
+        //Debug.Log(EatBleak.LevelName());
         TradeHumor = new List<TileSpawnData>();
+        ChallengeTileList = new List<TileSpawnData>();
         AfterPoison.Recalculate();
         BleakMaidenLop.transform.position = AfterPoison.LevelFieldCenter;
         TileData[] availableObjects = AfterFollower.AvailableForLevel(EatBleak);
@@ -174,21 +196,82 @@ public class RoadBrother : MonoBehaviour
                         tileSpawnData.Value = layer;
                         tileSpawnData.ValueHoly = Kill;
                         TradeHumor.Add(tileSpawnData);
+                        ChallengeTileList.Add(tileSpawnData);
                     }
+                }
+            }
+        }
+        if (RoadTenuous.GetInstance().OfTelescope && PlayerPrefs.GetInt(CConfig.NowDayChallenAward) != 0)
+        {
+            for (int i = 0; i < initialTilesData.Length; i++)
+            {
+                //随机选择一个预制体样式
+                TileSpawnData firstTileSpawnData = ChallengeTileList.OrderBy(x => Random.value).OrderBy(x => x.ValueAlarm).FirstOrDefault();
+                ChallengeTileList.Remove(firstTileSpawnData);
+
+                if (LayerIndex != firstTileSpawnData.ValueAlarm)
+                {
+                    LayerIndex = firstTileSpawnData.ValueAlarm;
+                    ChallengeGroup = NetInfoMgr.instance.GameData.challenge_group;
+                }
+                else
+                {
+                    if (ChallengeGroup == 0)
+                    {
+                        continue;
+                    }
+                }
+                if (TradeHumor.FindAll(s => s.ValueAlarm == LayerIndex).Count < NetInfoMgr.instance.GameData.challenge_amount)
+                {
+                    continue;
+                }
+                TradeHumor.Remove(firstTileSpawnData);
+                
+                TileBehavior firstElementBehavior = LapisDrip(initialTilesData[i], firstTileSpawnData.ScholarDiffuses);
+                float totalWeight = 0;
+                foreach (TileSpawnData emptyTile in ChallengeTileList)
+                {
+                    emptyTile.AcquisitionMature(firstTileSpawnData.ValueAlarm);
+                    totalWeight += emptyTile.HardenMature;
+                }
+                for (int a = 0; a < 2; a++)
+                {
+                    TileSpawnData selectedTileData = null;
+
+                    if (ChallengeGroup > 0 && LayerIndex < NetInfoMgr.instance.GameData.challenge_limit)
+                    {
+                        selectedTileData = ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex)[Random.Range(0, ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex).Count)];
+                    }
+                    if (selectedTileData != null)
+                    {
+                        ChallengeTileList.Remove(selectedTileData);
+                        TradeHumor.Remove(selectedTileData);
+                        totalWeight -= selectedTileData.HardenMature;
+
+                        TileBehavior additionalElementBehavior = LapisDrip(initialTilesData[i], selectedTileData.ScholarDiffuses);
+                    }
+                }
+                initialTilesData[i] = null;
+                if (ChallengeGroup > 0)
+                {
+                    ChallengeGroup--;
                 }
             }
         }
         for (int i = 0; i < initialTilesData.Length; i++)
         {
+            if (initialTilesData[i] == null)
+            {
+                continue;
+            }
             //随机选择一个预制体样式
             TileSpawnData firstTileSpawnData = TradeHumor.OrderBy(x => Random.value).OrderBy(x => x.ScholarDiffuses.Y).FirstOrDefault();
             TradeHumor.Remove(firstTileSpawnData);
             TileBehavior firstElementBehavior = LapisDrip(initialTilesData[i], firstTileSpawnData.ScholarDiffuses);
-
             float totalWeight = 0;
             foreach (TileSpawnData emptyTile in TradeHumor)
             {
-                emptyTile.AcquisitionMature(firstTileSpawnData.ValueAlarm);
+                emptyTile.AcquisitionMature(firstTileSpawnData.ScholarDiffuses.LayerId);
                 totalWeight += emptyTile.HardenMature;
             }
 
@@ -197,6 +280,7 @@ public class RoadBrother : MonoBehaviour
                 float randomValue = Random.Range(0, totalWeight);
                 float currentWeight = 0;
                 TileSpawnData selectedTileData = null;
+
                 foreach (TileSpawnData emptyTile in TradeHumor)
                 {
                     currentWeight += emptyTile.HardenMature;
@@ -206,6 +290,7 @@ public class RoadBrother : MonoBehaviour
                         break;
                     }
                 }
+
                 if (selectedTileData != null)
                 {
                     TradeHumor.Remove(selectedTileData);
@@ -215,8 +300,7 @@ public class RoadBrother : MonoBehaviour
                 }
             }
         }
-        
-        
+
         if (!OfEatBleakTelescope)
         {
             //执行动画 挑战关卡不执行加载动画
@@ -436,27 +520,33 @@ public class RoadBrother : MonoBehaviour
     public void LidThaw()
     {
         PostEventScript.GetInstance().SendEvent("1009", "1");
+        RoadTenuous.GetInstance().ReliefStilt = false;
         ADManager.Instance.playRewardVideo((success) =>
         {
-            LidThawLop.SetActive(false);
-            PostEventScript.GetInstance().SendEvent("9007", "7");
-
-            ThawPotato.gameObject.SetActive(true);
-            ThawPotato.SettingOrder(7);
-            LieThawFire.Add(ThawPotato);
-            for (int i = 0; i < LieThawFire.Count; i++)
+            RoadTenuous.GetInstance().ReliefStilt = true;
+            if (success)
             {
-                if (LieThawFire[i].ActionValue())
-                {
-                    LieThawFire[i].ActionTileBehavior().transform.position = LieThawFire[i].transform.position;
-                }
-            }
+                LidThawLop.SetActive(false);
+                PostEventScript.GetInstance().SendEvent("9007", "7");
 
-            ThawEra.enabled = false;
-            Dy.SetActive(false);
-            StoveThawEra = false;
-            SewThawEra = false;
-            ThawEraPass = 0;
+                ThawPotato.gameObject.SetActive(true);
+                ThawPotato.SettingOrder(7);
+                LieThawFire.Add(ThawPotato);
+                //for (int i = 0; i < LieThawFire.Count; i++)
+                //{
+                //    if (LieThawFire[i].ActionValue())
+                //    {
+                //        LieThawFire[i].ActionTileBehavior().transform.position = LieThawFire[i].transform.position;
+                //    }
+                //}
+
+                ThawEra.enabled = false;
+                Dy.SetActive(false);
+                StoveThawEra = false;
+                SewThawEra = false;
+                ThawEraPass = 0;
+            }
+            
         }, "110");
         
     }
@@ -500,6 +590,7 @@ public class RoadBrother : MonoBehaviour
 
                     for (int i = 0; i < shuffleElements.Length; i++)
                     {
+                        allowedToShuffleTiles[i].transform.SetParent(Recede.Layers[shuffleElements[i].LayerId].LayerObject.transform);
                         allowedToShuffleTiles[i].transform.localScale = Vector3.zero;
                         allowedToShuffleTiles[i].transform.localPosition = LevelScaler.GetPosition(shuffleElements[i]);
                         allowedToShuffleTiles[i].SetPosition(shuffleElements[i]);
@@ -527,7 +618,6 @@ public class RoadBrother : MonoBehaviour
                     }
 
                     DrenchSalmon(true);
-
                     BookletWaterfall(ActiveTiles, 0.5f, 0.05f, 0.4f);
                 }
             }
@@ -557,7 +647,8 @@ public class RoadBrother : MonoBehaviour
         {
             delays[i] = delays[i] / duration;
         }
-        StartCoroutine(DripFosterWaterfall(tiles));
+        DripFosterWaterfall(tiles);
+        //StartCoroutine(DripFosterWaterfall(tiles));
     }
     //撤回tile
     public void BeltDareRDrip()
@@ -931,13 +1022,6 @@ public class RoadBrother : MonoBehaviour
                 StoveThawEra = false;
             }
         }
-
-        DownTime -= Time.deltaTime;
-        if (DownTime < 0)
-        {
-            RoadTenuous.GetInstance().MaidianData();
-            DownTime = 120;
-        }
     }
 
     //提取tile，移动，重置位置，重置状态
@@ -996,7 +1080,7 @@ public class RoadBrother : MonoBehaviour
         //消除
         for (int i = 0; i < LieThawFire.Count; i++)
         {
-            if (i + 1 < LieThawFire.Count && i + 2 < LieThawFire.Count)
+            if (i + 2 < LieThawFire.Count)
             {
                 if (LieThawFire[i + 1].ActionPrefabName() != "")
                 {
@@ -1004,7 +1088,7 @@ public class RoadBrother : MonoBehaviour
                     {
                         if (LieThawFire[i + 2].ActionPrefabName() != "")
                         {
-                            if (LieThawFire[i + 1].ActionTileBehavior().TileData == LieThawFire[i + 2].ActionTileBehavior().TileData)
+                            if (LieThawFire[i+1].ActionTileBehavior().TileData == LieThawFire[i + 2].ActionTileBehavior().TileData)
                             {
 
                                 //消除动画
@@ -1221,7 +1305,7 @@ public class RoadBrother : MonoBehaviour
     {
         // Reset objects
         List<TileBehavior> tileBehaviors = DripFire;
-        tileBehaviors.Sort((x, y) => { return x.transform.position.y.CompareTo(y.transform.position.y); });
+        tileBehaviors.Sort((x, y) => { return x.transform.localPosition.y.CompareTo(y.transform.localPosition.y); });
         //将tile尺寸改为0  并且设置成未激活状态
         foreach (TileBehavior tileBehavior in tileBehaviors)
         {
@@ -1255,7 +1339,7 @@ public class RoadBrother : MonoBehaviour
         DripFire.Sort((x, y) => { return x.transform.position.y.CompareTo(-y.transform.position.y); });
     }
 
-    public IEnumerator DripFosterWaterfall(List<TileBehavior> tileBehaviors)
+    public void DripFosterWaterfall(List<TileBehavior> tileBehaviors)
     {
         tileBehaviors.Sort((x, y) => { return x.transform.position.y.CompareTo(y.transform.position.y); });
         //将tile尺寸改为0  并且设置成未激活状态
@@ -1268,7 +1352,7 @@ public class RoadBrother : MonoBehaviour
         for (int i = 0; i < tileBehaviors.Count; i++)
         {
             tileBehaviors[i].SetState(OfDripUndisturbed(tileBehaviors[i]));
-            yield return null;
+            //yield return null;
             tileBehaviors[i].transform.DOKill();
             // 创建序列
             Sequence sequence = DOTween.Sequence();
@@ -1287,6 +1371,40 @@ public class RoadBrother : MonoBehaviour
             });
         }
     }
+
+    //public IEnumerator DripFosterWaterfall(List<TileBehavior> tileBehaviors)
+    //{
+    //    tileBehaviors.Sort((x, y) => { return x.transform.position.y.CompareTo(y.transform.position.y); });
+    //    //将tile尺寸改为0  并且设置成未激活状态
+    //    foreach (TileBehavior tileBehavior in tileBehaviors)
+    //    {
+    //        tileBehavior.transform.localScale = Vector3.zero;
+    //        tileBehavior.SetState(false, false);
+    //    }
+
+    //    for (int i = 0; i < tileBehaviors.Count; i++)
+    //    {
+    //        tileBehaviors[i].SetState(OfDripUndisturbed(tileBehaviors[i]));
+    //        yield return null;
+    //        tileBehaviors[i].transform.DOKill();
+    //        // 创建序列
+    //        Sequence sequence = DOTween.Sequence();
+
+    //        // 添加放大动画
+    //        sequence.Append(tileBehaviors[i].transform.DOScale(1.5f, 0.2f)
+    //            .SetEase(Ease.OutQuad));
+
+    //        // 添加缩小动画 (回到原始大小)
+    //        sequence.Append(tileBehaviors[i].transform.DOScale(1, 0.2f)
+    //            .SetEase(Ease.OutQuad));
+
+    //        // 设置动画完成后自动销毁
+    //        sequence.OnComplete(() =>
+    //        {
+    //            // 这里可以添加动画完成后的逻辑
+    //        });
+    //    }
+    //}
 
     //更新tile状态
     public void DrenchSalmon(bool withAnimation = false)

@@ -80,6 +80,10 @@ public class RoadLoder : BaseUIForms
     private string[] ChallengeAwardNumber;
 
     private Sequence WangzhuanScale;
+
+    private int UseRollBack = 0;
+    private int UseRemind = 0;
+    private int UseRefresh = 0;
     protected override void Awake()
     {
         base.Awake();
@@ -162,6 +166,10 @@ public class RoadLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        UseRollBack = 0;
+        UseRemind = 0;
+        UseRefresh = 0;
+        WangzhuanObj.GetComponent<CashOutEnter>().UpdateData();
         ButtonMask.SetActive(false);
         CoinNumber.text = PlayerPrefs.GetInt(CConfig.CoinNumber).ToString();
         RoadTenuous.GetInstance().ReliefStilt = true;
@@ -185,6 +193,7 @@ public class RoadLoder : BaseUIForms
         {
             if (RoadTenuous.GetInstance().OfTelescope)
             {
+                PostEventScript.GetInstance().SendEvent("1022", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
                 FervorBleak.SetActive(false);
                 //TelescopeBleak.SetActive(true);
                 TelescopeSocial.SetActive(true);
@@ -217,6 +226,7 @@ public class RoadLoder : BaseUIForms
             }
             else
             {
+                PostEventScript.GetInstance().SendEvent("1021", (PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1).ToString());
                 BookletBorrow = PlayerPrefs.GetInt(CConfig.RefreshNumber);
                 ForgetBorrow = PlayerPrefs.GetInt(CConfig.RemingNumber);
                 BeltDareBorrow = PlayerPrefs.GetInt(CConfig.RollBackNumber);
@@ -381,6 +391,9 @@ public class RoadLoder : BaseUIForms
                 RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
                 if (RoadTenuous.GetInstance().OfTelescope)
                 {
+                    UseRemind++;
+                    RoadTenuous.GetInstance().UseRemind = UseRemind;
+                    PostEventScript.GetInstance().SendEvent("1019", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), UseRemind.ToString());
                     if (ForgetBorrow <= 0 && TelescopeForgetBorrow == 0)
                     {
                         ForgetHat.interactable = false;
@@ -422,6 +435,9 @@ public class RoadLoder : BaseUIForms
             BookletBorrow--;
             if (RoadTenuous.GetInstance().OfTelescope)
             {
+                UseRefresh++;
+                RoadTenuous.GetInstance().UseRefresh = UseRefresh;
+                PostEventScript.GetInstance().SendEvent("1020", RoadTenuous.GetInstance().GetChallengeLevel().ToString(), UseRefresh.ToString());
                 if (BookletBorrow <= 0 && TelescopeBookletBorrow == 0)
                 {
                     BookletHat.interactable = false;
@@ -451,6 +467,9 @@ public class RoadLoder : BaseUIForms
                 RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
                 if (RoadTenuous.GetInstance().OfTelescope)
                 {
+                    UseRollBack++;
+                    RoadTenuous.GetInstance().UseRollBack = UseRollBack;
+                    PostEventScript.GetInstance().SendEvent("1018",RoadTenuous.GetInstance().GetChallengeLevel().ToString(), UseRollBack.ToString());
                     if (BeltDareBorrow <= 0 && TelescopeBeltBorrow == 0)
                     {
                         BeltDareHat.interactable = false;

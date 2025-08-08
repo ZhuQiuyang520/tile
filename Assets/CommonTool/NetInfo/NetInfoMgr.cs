@@ -56,6 +56,8 @@ public class NetInfoMgr : MonoBehaviour
     //游戏内数据
     public Init InitData;
     public Game_Data GameData;
+    public LevelConfigInfo LevelList;
+    public ChallengeElementData ChallengeList;
     public Task_Data TaskData;
     //ADManager
     public GameObject adManager;
@@ -69,6 +71,8 @@ public class NetInfoMgr : MonoBehaviour
     int ready_count = 0;
     public bool ready = false;
     public BlockRuleData BlockRule;
+    //提现相关后台数据
+    public CashOutData CashOut_Data;
     //ios 获取idfa函数声明
 #if UNITY_IOS
     [DllImport("__Internal")]
@@ -81,7 +85,7 @@ public class NetInfoMgr : MonoBehaviour
         LoginUrl = BaseLoginUrl + GameCode + "&channel=" + Channel + "&version=" + Application.version;
         ConfigUrl = BaseConfigUrl + GameCode + "&channel=" + Channel + "&version=" + Application.version;
         AdjustUrl = BaseAdjustUrl + GameCode;
-        Application.targetFrameRate = 300; // 锁定300帧 
+        Application.targetFrameRate = 60; // 锁定300帧 
     }
     private void Start()
     {
@@ -109,6 +113,8 @@ public class NetInfoMgr : MonoBehaviour
         }
         //获取config数据
         GetConfigData();
+        //提现登录
+        CashOutManager.GetInstance().Login();
     }
 
     /// <summary>
@@ -182,7 +188,7 @@ public class NetInfoMgr : MonoBehaviour
     public void Login()
     {
         //提现登录
-        CashOutManager.GetInstance().Login();
+        //CashOutManager.GetInstance().Login();
         //获取本地缓存的Local用户ID
         string localId = SaveDataManager.GetString(CConfig.sv_LocalUserId);
 
@@ -301,6 +307,7 @@ public class NetInfoMgr : MonoBehaviour
         },
         () => {
             Debug.Log("ConfigData 失败");
+            GetLoactionData();
         });
     }
 
@@ -362,6 +369,9 @@ public class NetInfoMgr : MonoBehaviour
                     break;
             }
             GameData = JsonMapper.ToObject<Game_Data>(ConfigData.game_data);
+            CashOut_Data = JsonMapper.ToObject<CashOutData>(ConfigData.CashOut_Data);
+            LevelList = JsonMapper.ToObject<LevelConfigInfo>(ConfigData.level_change);
+            ChallengeList = JsonMapper.ToObject<ChallengeElementData>(ConfigData.challenge_num);
             if (!string.IsNullOrEmpty(ConfigData.BlockRule))
                 BlockRule = JsonMapper.ToObject<BlockRuleData>(ConfigData.BlockRule);
             GetUserInfo();
@@ -414,51 +424,51 @@ public class NetInfoMgr : MonoBehaviour
         CashOutManager.GetInstance().ReportAdjustID();
     }
 
-    //轮询检查Adjust归因信息
-    int CheckCount = 0;
-    [HideInInspector] public string Event_TrackerName; //打点用参数
-    bool _CheckOk = false;
-    [HideInInspector]
-    public bool AdjustTracker_Ready //是否成功获取到归因信息
-    {
-        get
-        {
-            if (Application.isEditor) //编译器跳过检查
-                return true;
-            return _CheckOk;
-        }
-    }
-    public void CheckAdjustNetwork() //检查Adjust归因信息
-    {
-        if (Application.isEditor) //编译器跳过检查
-            return;
-        if (!string.IsNullOrEmpty(Event_TrackerName)) //已经拿到归因信息
-            return;
+    ////轮询检查Adjust归因信息
+    //int CheckCount = 0;
+    //[HideInInspector] public string Event_TrackerName; //打点用参数
+    //bool _CheckOk = false;
+    //[HideInInspector]
+    //public bool AdjustTracker_Ready //是否成功获取到归因信息
+    //{
+    //    get
+    //    {
+    //        if (Application.isEditor) //编译器跳过检查
+    //            return true;
+    //        return _CheckOk;
+    //    }
+    //}
+    //public void CheckAdjustNetwork() //检查Adjust归因信息
+    //{
+    //    if (Application.isEditor) //编译器跳过检查
+    //        return;
+    //    if (!string.IsNullOrEmpty(Event_TrackerName)) //已经拿到归因信息
+    //        return;
 
 
-        CancelInvoke(nameof(CheckAdjustNetwork));
-        if (!string.IsNullOrEmpty(ConfigData.fall_down) && ConfigData.fall_down == "fall")
-        {
-            print("Adjust 无归因相关配置或未联网 跳过检查");
-            _CheckOk = true;
-        }
-        try
-        {
-            AdjustAttribution Info = Adjust.getAttribution();
-            print("Adjust 获取信息成功 归因渠道：" + Info.trackerName);
-            Event_TrackerName = "TrackerName: " + Info.trackerName;
-            CommonUtil.Adjust_TrackerName = Info.trackerName;
-            _CheckOk = true;
-        }
-        catch (System.Exception e)
-        {
-            CheckCount++;
-            Debug.Log("Adjust 获取信息失败：" + e.Message + " 重试次数：" + CheckCount);
-            if (CheckCount >= 10)
-                _CheckOk = true;
-            Invoke(nameof(CheckAdjustNetwork), 1);
-        }
-    }
+    //    CancelInvoke(nameof(CheckAdjustNetwork));
+    //    if (!string.IsNullOrEmpty(ConfigData.fall_down) && ConfigData.fall_down == "fall")
+    //    {
+    //        print("Adjust 无归因相关配置或未联网 跳过检查");
+    //        _CheckOk = true;
+    //    }
+    //    try
+    //    {
+    //        AdjustAttribution Info = Adjust.getAttribution();
+    //        print("Adjust 获取信息成功 归因渠道：" + Info.trackerName);
+    //        Event_TrackerName = "TrackerName: " + Info.trackerName;
+    //        CommonUtil.Adjust_TrackerName = Info.trackerName;
+    //        _CheckOk = true;
+    //    }
+    //    catch (System.Exception e)
+    //    {
+    //        CheckCount++;
+    //        Debug.Log("Adjust 获取信息失败：" + e.Message + " 重试次数：" + CheckCount);
+    //        if (CheckCount >= 10)
+    //            _CheckOk = true;
+    //        Invoke(nameof(CheckAdjustNetwork), 1);
+    //    }
+    //}
 
 
     //获取用户信息
@@ -477,9 +487,8 @@ public class NetInfoMgr : MonoBehaviour
             return;
         }
 
-
         //检查归因渠道信息
-        CheckAdjustNetwork();
+        //CheckAdjustNetwork();
         //获取用户信息
         string CheckUrl = BaseUrl + "/api/client/user/checkUser";
         NetWorkManager.GetInstance().HttpGet(CheckUrl,

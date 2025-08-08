@@ -8,8 +8,12 @@
       "Value": "UIPanel\\TuskLoder"
     },
     {
-      "Key": "LidBothLoder",
-      "Value": "UIPanel\\LidBothLoder"
+        "Key": "LidBothLoder",
+        "Value": "UIPanel\\LidBothLoder"
+    },
+    {
+        "Key": "BlockPanel",
+        "Value": "UIPanel\\BlockPanel"
     },
     {
       "Key": "HarmonyLoder",

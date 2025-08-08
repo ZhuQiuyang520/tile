@@ -38,6 +38,7 @@ public class TelescopeOrbitLoder : BaseUIForms
 
     public void RatifyLike()
     {
+        PostEventScript.GetInstance().SendEvent("1012","1");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
@@ -45,11 +46,12 @@ public class TelescopeOrbitLoder : BaseUIForms
         RoadTenuous.GetInstance().OfTelescope = true;
         UIManager.GetInstance().ShowUIForms(nameof(RoadLoder));
         PlayerPrefs.SetInt(CConfig.NowDayChallenAward, 0);
-        RoadTenuous.GetInstance().StoveCrossbones();
+        RoadTenuous.GetInstance().StoveCrossbones(StartChallengeState.Pop);
     }
 
     public void RatifySpark()
     {
+        PostEventScript.GetInstance().SendEvent("1012", "0");
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);

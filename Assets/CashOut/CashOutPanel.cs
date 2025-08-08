@@ -16,6 +16,8 @@ public class CashOutPanel : BaseUIForms
     public Text LeftTimeText; // 剩余时间显示
     public Button CashOutBtn; // 提现按钮
     public GameObject CashOutBtn_Loading; // 提现按钮的加载
+    public GameObject CashOutBtn_Task; //未完成任务时 提现按钮
+    public Text CashOutBtn_Task_Text; //未完成任务时 提现按钮文字
     public Text AccountText; // 账户显示
     public Text IDText; // ID显示
     public Image MaxMoneyFill;
@@ -84,14 +86,16 @@ public class CashOutPanel : BaseUIForms
 
     private void Start()
     {
-        PostEventScript.GetInstance().SendEvent("1301", "6");
         CashOutManager.GetInstance()._CashOutPanel = this;
         CloseBtn.onClick.AddListener(() => {
-            RoadLoder.instance.SparkProboscisClaw();
+            if (RoadLoder.instance != null)
+            {
+                RoadLoder.instance.SparkProboscisClaw();
+            }
             CloseUIForm(nameof(CashOutPanel)); });
         CashOutBtn.onClick.AddListener(() => { OnCashOutBtn(); });
-        MoneyName = NetInfoMgr.instance.ConfigData.CashOut_MoneyName;
-        InfoText.text = NetInfoMgr.instance.ConfigData.CashOut_Description;
+        MoneyName = NetInfoMgr.instance.CashOut_Data.MoneyName;
+        InfoText.text = NetInfoMgr.instance.CashOut_Data.Description;
         InfoPanel_OpenBtn.onClick.AddListener(() => OpenPanel(InfoPanel));
         InfoPanel_CloseBtn.onClick.AddListener(() => ClosePanel(InfoPanel));
         ContactBtn.GetComponent<Text>().text = NetInfoMgr.instance.BaseUrl;
@@ -150,6 +154,7 @@ public class CashOutPanel : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        //CanvasScaler 分辨率处理
         transform.root.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1080, 1920);
         UpdateUserInfo();
     }
@@ -157,6 +162,7 @@ public class CashOutPanel : BaseUIForms
     public override void Hidding()
     {
         base.Hidding();
+        //CanvasScaler 分辨率处理
         transform.root.GetComponent<CanvasScaler>().referenceResolution = new Vector2(1080, 2340);
         CashOutManager.GetInstance().WaitToSendEvent1304();
     }
@@ -256,7 +262,7 @@ public class CashOutPanel : BaseUIForms
         DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), MoneyEnd, 1f);
         CashText.text = CashOutManager.GetInstance().Data.Cash.ToString("F2");
         //进度条动画
-        float MaxMoney = float.Parse(NetInfoMgr.instance.ConfigData.convert_goal, CultureInfo.CurrentCulture);
+        float MaxMoney = float.Parse(NetInfoMgr.instance.CashOut_Data.convert_goal, CultureInfo.CurrentCulture);
         DOTween.To(() => MaxMoneyFill.fillAmount, x => MaxMoneyFill.fillAmount = x, Mathf.Min(1, MoneyEnd / MaxMoney), 1f);
         DOTween.To(() => MoneyStart, x => MaxMoneyText.text = x.ToString("F2") + "/" + MaxMoney, MoneyEnd, 1f).OnComplete(() =>
         {
@@ -280,10 +286,43 @@ public class CashOutPanel : BaseUIForms
         DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), 0, 1f);
         DOTween.To(() => CashOutStart, x => CashText.text = x.ToString("F2"), CashOutEnd, 1f).SetDelay(.7f);
         //进度条动画
-        float MaxMoney = float.Parse(NetInfoMgr.instance.ConfigData.convert_goal, CultureInfo.CurrentCulture);
+        float MaxMoney = float.Parse(NetInfoMgr.instance.CashOut_Data.convert_goal, CultureInfo.CurrentCulture);
         DOTween.To(() => Mathf.Min(1, MoneyStart / MaxMoney), x => MaxMoneyFill.fillAmount = x, 0, 1f);
         DOTween.To(() => MoneyStart, x => MaxMoneyText.text = x.ToString("F2") + "/" + MaxMoney, 0, 1f);
         DesText.text = $"The more {MoneyName} you collect,the more rewards will be converted!";
+    }
+
+    public void UpdateTask() //刷新任务
+    {
+        if (CashOutManager.GetInstance().Data.TaskData != null && CashOutManager.GetInstance().Data.TaskData.Name != "Null")
+        {
+            // Cash余额任务 不走前端进度统计 使用后台Data.Cash数值
+            if (CashOutManager.GetInstance().Data.TaskData.Name == "Cash" && CashOutManager.GetInstance().Data.Cash < CashOutManager.GetInstance().Data.TaskData.Target)
+            {
+                CashOutBtn.gameObject.SetActive(false);
+                CashOutBtn_Task.SetActive(true);
+                CashOutBtn_Task_Text.text = string.Format(CashOutManager.GetInstance().Data.TaskData.Description, CashOutManager.GetInstance().Data.Cash, CashOutManager.GetInstance().Data.TaskData.Target);
+            }
+            // 其他任务 前端统计任务完成进度 
+            else if (CashOutManager.GetInstance().Data.TaskData.Name != "Cash" && CashOutManager.GetInstance().Data.TaskData.NowValue < CashOutManager.GetInstance().Data.TaskData.Target)
+            {
+                CashOutBtn.gameObject.SetActive(false);
+                CashOutBtn_Task.SetActive(true);
+                CashOutBtn_Task_Text.text = string.Format(CashOutManager.GetInstance().Data.TaskData.Description, CashOutManager.GetInstance().Data.TaskData.NowValue, CashOutManager.GetInstance().Data.TaskData.Target);
+            }
+            // 任务完成 显示提现按钮
+            else
+            {
+                CashOutBtn.gameObject.SetActive(true);
+                CashOutBtn_Task.SetActive(false);
+            }
+        }
+        // 无任务 显示提现按钮
+        else
+        {
+            CashOutBtn.gameObject.SetActive(true);
+            CashOutBtn_Task.SetActive(false);
+        }
     }
 
     public void UpdateRecord(int Page = 0) //更新单页10个提现记录
@@ -368,7 +407,7 @@ public class CashOutPanel : BaseUIForms
 
     void ShowGuide()
     {
-        if (GuideStep == 3)
+        if (GuideStep == 4)
         {
             ClosePanel(GuidePanel);
             PlayerPrefs.SetInt("CashOut_Guide", 1);
@@ -377,14 +416,16 @@ public class CashOutPanel : BaseUIForms
 
         string[] Titles = new string[]
         {
-            "Play & Earn Points",
+            "Earn Easily",
             "Convert Automatically",
-            "Redeem Rapidly"
+            "Redeem Easily",
+            "Arriving Rapidly"
         };
         string[] Descriptions = new string[]
         {
             "Play More! Earn More!",
             $"{MoneyName} convert every 3 Hrs.",
+            "1 easy task per day unlocks instant redeem!",
             "Redeem your rewards to your PAYPAL account."
         };
         if (GuideStep == 0)
@@ -392,9 +433,11 @@ public class CashOutPanel : BaseUIForms
             GuideItems1[0].localPosition = Vector2.zero;
             GuideItems1[1].localPosition = new Vector2(0, -300);
             GuideItems1[2].localPosition = new Vector2(0, -300);
+            GuideItems1[3].localPosition = new Vector2(0, -300);
             GuideItems2[0].localPosition = Vector2.zero;
             GuideItems2[1].localPosition = new Vector2(0, -300);
             GuideItems2[2].localPosition = new Vector2(0, -300);
+            GuideItems2[3].localPosition = new Vector2(0, -300);
             GuideNextBtn.GetComponentInChildren<Text>().text = "Continue";
         }
         else if (GuideStep == 1)
@@ -411,6 +454,14 @@ public class CashOutPanel : BaseUIForms
             GuideItems2[1].DOLocalMoveY(-300, .5f).SetEase(Ease.InBack);
             GuideItems1[2].DOLocalMoveY(0, .5f).SetEase(Ease.OutBack).SetDelay(.5f);
             GuideItems2[2].DOLocalMoveY(0, .5f).SetEase(Ease.OutBack).SetDelay(.5f);
+            GuideNextBtn.GetComponentInChildren<Text>().text = "Continue";
+        }
+        else if (GuideStep == 3)
+        {
+            GuideItems1[2].DOLocalMoveY(-300, .5f).SetEase(Ease.InBack);
+            GuideItems2[2].DOLocalMoveY(-300, .5f).SetEase(Ease.InBack);
+            GuideItems1[3].DOLocalMoveY(0, .5f).SetEase(Ease.OutBack).SetDelay(.5f);
+            GuideItems2[3].DOLocalMoveY(0, .5f).SetEase(Ease.OutBack).SetDelay(.5f);
             GuideNextBtn.GetComponentInChildren<Text>().text = "Get it!";
         }
         GuideStep2Go.SetActive(GuideStep == 1);
@@ -431,6 +482,9 @@ public class CashOutPanel : BaseUIForms
 
         //加载结束后 打点
         Invoke(nameof(SendEvent_1301), 1);
+
+        //刷新任务
+        UpdateTask();
 
         //新手引导
         if (PlayerPrefs.GetInt("CashOut_Guide") == 0)

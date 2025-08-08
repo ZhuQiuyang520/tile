@@ -29,6 +29,7 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
         if (ChallengeFailNumber > 0)
         {
             ChallengeFailNumber--;
+            Revive++;
             UIManager.GetInstance().ShowUIForms(nameof(TermLoder));
         }
         else
@@ -94,16 +95,26 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
         return string.Format("{0:D2}:{1:D2}:{2:D2}", hour, minute, seconds);
     }
 
-    private int challengeLevel;
+    private int challengeLevel = 0;
+    private int FirstsecondLevel = 0;
+    public int UseRollBack { get; set; }
+    public int UseRemind { get; set; }
+    public int UseRefresh { get; set; }
+    public int Revive { get; set; }
     //加载挑战关卡
-    public void StoveCrossbones()
+    public void StoveCrossbones(StartChallengeState state)
     {
         ChallengeFailNumber = NetInfoMgr.instance.GameData.Challenge_Revive;
+        UseRollBack = 0;
+        UseRemind = 0;
+        UseRefresh = 0;
+        Revive = 0;
         OfTelescopeBookletTerm = true;
         switch (PlayerPrefs.GetInt(CConfig.NowDayChallenAward))
         {
             case 0:
                 challengeLevel = 208;
+                FirstsecondLevel = 0;
                 RoadBrother.instance.BeamBleak(208);
                 break;
             case 1:
@@ -111,11 +122,36 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
                 RoadBrother.instance.BeamBleak(212);
                 break;
             case 2:
-                challengeLevel = TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)];
-                RoadBrother.instance.BeamBleak(challengeLevel);
+                if (FirstsecondLevel == 0)
+                {
+                    FirstsecondLevel = TelescopeBleak[UnityEngine.Random.Range(0, TelescopeBleak.Count)];
+                }
+                challengeLevel = FirstsecondLevel;
+                RoadBrother.instance.BeamBleak(FirstsecondLevel);
                 break;
             default:
                 UIManager.GetInstance().ShowUIForms(nameof(TuskLoder));
+                break;
+        }
+
+        switch (state)
+        {
+            case StartChallengeState.Challenge:
+                PostEventScript.GetInstance().SendEvent("1013", challengeLevel.ToString());
+                break;
+            case StartChallengeState.Pop:
+                PostEventScript.GetInstance().SendEvent("1014", challengeLevel.ToString());
+                break;
+            case StartChallengeState.SettingTryAgain:
+                PostEventScript.GetInstance().SendEvent("1015", challengeLevel.ToString());
+                break;
+            case StartChallengeState.FailTryAgain:
+                PostEventScript.GetInstance().SendEvent("1016", challengeLevel.ToString());
+                break;
+            case StartChallengeState.Win:
+                PostEventScript.GetInstance().SendEvent("1017", challengeLevel.ToString());
+                break;
+            default:
                 break;
         }
     }
@@ -191,13 +227,6 @@ public class RoadTenuous : MonoSingleton<RoadTenuous>
             skeleton.AnimationState.SetAnimation(trackIndex, animName, loop);
         }
     }
-    /// <summary>
-    /// cash  金币  累计cash  累计金币  当前关卡
-    /// </summary>
-    public void MaidianData()
-    {
-        PostEventScript.GetInstance().SendEvent("2001", CashOutManager.GetInstance().Data.Cash.ToString(), SaveDataManager.GetFloat("CashOut_Money").ToString(), "0", SaveDataManager.GetFloat("CashOut_Money_All").ToString(), (PlayerPrefs.GetInt(CConfig.sv_CurLevel)+1).ToString());
-    }
 }
 
 public class RewardPanelData
@@ -218,6 +247,15 @@ public static class MessageCode
 {
     public static string BookletBoth= "10001";
     public static string RoadElliot= "10003";
+}
+
+public enum StartChallengeState
+{
+    Challenge,
+    Pop,
+    SettingTryAgain,
+    FailTryAgain,
+    Win,
 }
 
 public enum PropType

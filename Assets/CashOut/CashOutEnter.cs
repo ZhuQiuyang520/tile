@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -29,6 +29,13 @@ public class CashOutEnter : MonoBehaviour
         UpdateMoney();
     }
 
+    public void UpdateData()
+    {
+        CashOutManager.GetInstance()._CashOutEnter = this;
+        OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
+        UpdateMoney();
+    }
+
     public void UpdateTime(string timeStr) //更新剩余时间
     {
         LeftTimeText.text = timeStr;
@@ -43,7 +50,7 @@ public class CashOutEnter : MonoBehaviour
         float MoneyStart = float.Parse(MoneyText.text, CultureInfo.CurrentCulture);
         MoneyTextAnim = DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), CashOutManager.GetInstance().Money, 1f);
         CashText.text = CashOutManager.GetInstance().Data.Cash.ToString("F2");
-        float MaxMoney = float.Parse(NetInfoMgr.instance.ConfigData.convert_goal, CultureInfo.CurrentCulture);
+        float MaxMoney = float.Parse(NetInfoMgr.instance.CashOut_Data.convert_goal, CultureInfo.CurrentCulture);
         float MoneyEnd = CashOutManager.GetInstance().Money;
         MaxMoneyFillAnim = DOTween.To(() => MaxMoneyFill.fillAmount, x => MaxMoneyFill.fillAmount = x, Mathf.Min(1, MoneyEnd / MaxMoney), 1f);
     }

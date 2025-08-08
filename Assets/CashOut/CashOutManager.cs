@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Security.Cryptography;
 using System.Text;
 using System.Globalization;
+using System.Linq;
 
 public enum LoginPlatform { Android, IOS }
 
@@ -19,7 +20,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     string WithdrawPlatform = "PAYPAL";
     string BaseUrl = "https://us.nicedramatv.com";
     [HideInInspector] public string Account;
-    [HideInInspector] public CashOutData Data;
+    [HideInInspector] public CashOutResponseData Data;
     [HideInInspector] public long LeftTime; // 剩余时间
     [HideInInspector] public CashOutPanel _CashOutPanel;
     [HideInInspector] public CashOutEnter _CashOutEnter;
@@ -30,6 +31,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     string ClientIP;
     string RealIP;
     [HideInInspector] public long StartTime;
+
 
     #region 游戏逻辑
     private void Start()
@@ -44,7 +46,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         if (pauseStatus && Seconds > 0)
         {
             string title = "Your reward is ready!";
-            string info = $"All {NetInfoMgr.instance.ConfigData.CashOut_MoneyName} have been converted,Please check your rewaeds!";
+            string info = $"All {NetInfoMgr.instance.CashOut_Data.MoneyName} have been converted,Please check your rewards!";
             NotificationManager.Instance.ClearNotification();
             NotificationManager.Instance.ScheduleNotification(title, info, (int)Seconds);
             for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
@@ -57,10 +59,11 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             ReportEvent(1006);
     }
 
-    void ConvertTimeCount() //Money转Cash倒计时
+    void TimeCount() //计时
     {
         if (Data != null)
         {
+            //转化时间倒计时
             long nowTime = System.DateTime.UtcNow.Ticks;
             LeftTime = Data.ConvertTime - nowTime;
             //倒计时结束 更新用户信息 
@@ -86,6 +89,41 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             }
             _CashOutPanel?.UpdateTime(timeStr);
             _CashOutEnter?.UpdateTime(timeStr);
+
+
+            //任务
+            if (NetInfoMgr.instance.CashOut_Data != null/* && NetInfoMgr.instance.CashOut_Data.TaskList.Count > 0*/)
+            {
+                //记录第一次登录日期utc
+                if (!PlayerPrefs.HasKey("CashOut_FirstLoginTime"))
+                {
+                    DateTime firstLaunchUTC = DateTime.UtcNow.Date;
+                    PlayerPrefs.SetString("CashOut_FirstLoginTime", firstLaunchUTC.ToString());
+                }
+                // 判断是否进入新的一天
+                bool isNewDay = false;
+                if (PlayerPrefs.HasKey("CashOut_LastCheckDate"))
+                {
+                    if (DateTime.TryParse(PlayerPrefs.GetString("CashOut_LastCheckDate"), out DateTime lastDate))
+                        isNewDay = !DateTime.UtcNow.Date.Equals(lastDate);
+                }
+                else
+                    isNewDay = true;
+                PlayerPrefs.SetString("CashOut_LastCheckDate", DateTime.UtcNow.Date.ToString());
+                if (isNewDay)
+                {
+                    PlayerPrefs.SetInt("TaskEventReported", 0);
+                    PlayerPrefs.SetFloat("CashOut_TaskValue", 0);
+                    _CashOutPanel?.UpdateTask();
+                }
+                //计算今天距离第一次登录过了几天
+                //int Day = (DateTime.UtcNow.Date - DateTime.Parse(PlayerPrefs.GetString("CashOut_FirstLoginTime"))).Days;
+                //if (Day >= NetInfoMgr.instance.CashOut_Data.TaskList.Count) //一天一任务 天数超出任务数量显示默认任务
+                //    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList.FirstOrDefault(t => t.IsDefault);
+                //else
+                //    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList[Day];
+               // Data.TaskData.NowValue = PlayerPrefs.GetFloat("CashOut_TaskValue");
+            }
         }
     }
 
@@ -142,6 +180,18 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     #region 短剧后台各类接口
     Dictionary<string, string> Headers() // 请求头
     {
+#if UNITY_EDITOR //编译器不传设备信息
+        return new Dictionary<string, string>
+        {
+            {"app-version", Application.version},
+            {"lang", I2.Loc.LocalizationManager.CurrentLanguageCode},
+            {"Authorization", SaveDataManager.GetString("CashOut_Token")},
+            {"platform", WithdrawPlatform},
+            {"os-version", ""},
+            {"device-name", ""},
+        };
+#endif
+
         return new Dictionary<string, string>
         {
             {"app-version", Application.version},
@@ -221,7 +271,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         SaveDataManager.SetString("CashOut_Token", response.data.token);
                         GetWithdrawRule();
                         //整理数据
-                        Data = new CashOutData();
+                        Data = new CashOutResponseData();
                         Data.UserID = response.data.id.ToString();
                         Data.Cash = float.Parse(response.data.cash, CultureInfo.InvariantCulture);
                         DateTime ConvertTime = DateTime.Parse(response.data.convert_time);
@@ -234,7 +284,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         }
                         Data.ConvertTime = ConvertTime.Ticks;
                         SaveDataManager.SetString("CashOut_ConvertTime", Data.ConvertTime.ToString());
-                        InvokeRepeating(nameof(ConvertTimeCount), 1, 1);
+                        InvokeRepeating(nameof(TimeCount), 1, 1);
 
                         // 更新UI
                         _CashOutPanel?.UpdateMoney();
@@ -271,13 +321,12 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             },
             timeout: 3f,
             headers: Headers()
-            
         );
     }
 
     public void UpdateUserInfo() // 更新用户信息
     {
-        CancelInvoke(nameof(ConvertTimeCount));
+        CancelInvoke(nameof(TimeCount));
         string url = $"{BaseUrl}/user";
         NetWorkManager.GetInstance().HttpGet(
             url: url,
@@ -321,7 +370,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         SaveDataManager.SetString("CashOut_ConvertTime", Data.ConvertTime.ToString());
                         Data.Cash = NewCash;
 
-                        InvokeRepeating(nameof(ConvertTimeCount), 0, 1);
+                        InvokeRepeating(nameof(TimeCount), 0, 1);
                         SaveDataManager.SetDouble("CashOut_Cash", Data.Cash);
                         _CashOutPanel?.CloseLoading_UpdateUI();
                     }
@@ -853,6 +902,23 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         }
     }
 
+    public void AddTaskValue(string Name, float Value) //增加任务值
+    {
+        if (Data.TaskData != null && Data.TaskData.Name == Name)
+        {
+            float OldValue = PlayerPrefs.GetFloat("CashOut_TaskValue");
+            float NewValue = OldValue + Value;
+            PlayerPrefs.SetFloat("CashOut_TaskValue", NewValue);
+            Data.TaskData.NowValue = NewValue;
+            _CashOutPanel?.UpdateTask();
+            if (PlayerPrefs.GetInt("TaskEventReported") == 0 && NewValue >= Data.TaskData.Target)
+            {
+                PostEventScript.GetInstance().SendEvent("1305", Name, NewValue.ToString(), Data.TaskData.IsDefault.ToString());
+                PlayerPrefs.SetInt("TaskEventReported", 1);
+            }
+        }
+    }
+
     #endregion
 
 }
@@ -861,12 +927,13 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
 // 各种接口数据汇总 UI常用数据
 [System.Serializable]
-public class CashOutData
+public class CashOutResponseData
 {
     public string UserID;
     public long ConvertTime;     // Money转Cash时间戳
     public float Cash;           // 当前Cash
     public List<WithdrawRecordItem> Record; // 提现记录
+    public CashOut_TaskData TaskData; //今日任务数据
 }
 
 // 基础响应模型

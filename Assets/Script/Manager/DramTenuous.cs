@@ -11,12 +11,19 @@ public class DramTenuous : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Application.targetFrameRate = 60;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+    //切前后台也需要检测屏蔽 防止游戏中途更改手机状态
+    private void OnApplicationFocus(bool focusStatus)
+    {
+        if (focusStatus)
+            CommonUtil.AndroidBlockCheck();
     }
 
     public void VoteBlue()

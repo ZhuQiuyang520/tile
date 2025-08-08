@@ -65,6 +65,7 @@ public class ServerData
     public string LocationList { get; set; } //黑位置列表
     public string HeiCity { get; set; } //城市黑名单列表
 
+    public string challenge_num { get; set; }
     public string init { get; set; }
     public string init_ru { get; set; }
     public string init_br { get; set; }
@@ -88,17 +89,38 @@ public class ServerData
     public string soho_shop_us { get; set; }
     public string game_data { get; set; }
 
+    public string level_change { get; set; }
+
     public string task_data { get; set; }
     public string task_data_jp { get; set; }
     public string task_data_br { get; set; }
     public string task_data_ru { get; set; }
     public string task_data_us { get; set; }
 
+    public string CashOut_Data { get; set; } //真提现数据
     public string CashOut_MoneyName { get; set; } //货币名称
     public string CashOut_Description { get; set; } //玩法描述
     public string convert_goal { get; set; } //兑换目标
 
 }
+
+public class CashOutData //提现
+{
+    public string MoneyName; //货币名称
+    public string Description; //玩法描述
+    public string convert_goal; //兑换目标
+    //public List<CashOut_TaskData> TaskList; //任务列表
+}
+
+public class CashOut_TaskData
+{
+    public string Name; //任务名称
+    public float NowValue; //当前值
+    public double Target; //目标值
+    public string Description; //任务描述
+    public bool IsDefault; //是否默认（循环）任务
+}
+
 public class Init
 {
     public List<SlotItem> slot_group { get; set; }
@@ -204,6 +226,26 @@ public class Game_Data
     public int Challenge_Revive;
     public string Privacy_Policy;
     public string Challenge_Reward;
+    public int challenge_group;
+    public int challenge_amount;
+    public int challenge_limit;
+
+}
+public class ChallengeElementData 
+{
+    public List<ChallengeElement> challenge;
+}
+
+public class ChallengeElement
+{
+    public int id;
+    public int tile_num;
+}
+
+
+public class LevelConfigInfo
+{
+    public List<LevelControl> level;
 }
 
 public class WheelMultiGroup
@@ -213,6 +255,12 @@ public class WheelMultiGroup
     public WheelMultiItem[] shuffle;
     public WheelMultiItem[] undo;
     public WheelMultiItem[] wand;
+}
+
+public class LevelControl
+{
+    public int LevelID;
+    public int LevelData;
 }
 
 public class WheelMultiItem

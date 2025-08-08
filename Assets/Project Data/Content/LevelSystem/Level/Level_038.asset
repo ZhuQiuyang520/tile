@@ -178,9 +178,9 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 1
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
       - IsFilled: 1
         Effect: 0
@@ -195,9 +195,9 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 1
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
       - IsFilled: 1
         Effect: 0
@@ -258,13 +258,7 @@ MonoBehaviour:
         Effect: 0
   - rows:
     - cells:
-      - IsFilled: 1
-        Effect: 0
       - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
         Effect: 0
       - IsFilled: 0
         Effect: 0
@@ -272,61 +266,7 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 1
         Effect: 0
-    - cells:
       - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-    - cells:
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-    - cells:
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-    - cells:
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 0
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
-        Effect: 0
-      - IsFilled: 1
         Effect: 0
       - IsFilled: 0
         Effect: 0
@@ -348,8 +288,6 @@ MonoBehaviour:
       - IsFilled: 0
         Effect: 0
     - cells:
-      - IsFilled: 1
-        Effect: 0
       - IsFilled: 0
         Effect: 0
       - IsFilled: 0
@@ -358,9 +296,71 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 0
         Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+    - cells:
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
       - IsFilled: 0
         Effect: 0
       - IsFilled: 1
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+    - cells:
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+    - cells:
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+    - cells:
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 1
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
+        Effect: 0
+      - IsFilled: 0
         Effect: 0
   - rows:
     - cells:
@@ -421,9 +421,9 @@ MonoBehaviour:
         Effect: 0
       - IsFilled: 1
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
-      - IsFilled: 1
+      - IsFilled: 0
         Effect: 0
       - IsFilled: 1
         Effect: 0
@@ -502,6 +502,6 @@ MonoBehaviour:
   bottomLayerWidth: 8
   bottomLayerHeight: 8
   useInRandomizer: 1
-  elementsPerLevel: 12
+  elementsPerLevel: 5
   coinsReward: 20
-  editorNote: ' sets: 31'
+  editorNote: ' sets: 26'

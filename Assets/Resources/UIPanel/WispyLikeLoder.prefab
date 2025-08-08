@@ -559,8 +559,8 @@ MonoBehaviour:
     UIForm_LucencyType: 1
     UIForm_animationType: 0
   close_button: {fileID: 0}
-  CloseBtn: {fileID: 5257237825418638820}
-  AniObj: {fileID: 0}
+  SparkHat: {fileID: 5257237825418638820}
+  EraLop: {fileID: 8131297074309047647}
 --- !u!1 &8847818302740637796
 GameObject:
   m_ObjectHideFlags: 0

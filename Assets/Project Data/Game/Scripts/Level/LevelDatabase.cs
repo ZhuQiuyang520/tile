@@ -99,8 +99,17 @@ namespace Watermelon
                     //result.Add(tiles[i]);
                 }
             }
-
             int elementsPerLevel = Mathf.Clamp(levelData.ElementsPerLevel, 1, ResultReserve.Count);
+            if (RoadTenuous.GetInstance().OfTelescope && PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
+            {
+                foreach (var item in NetInfoMgr.instance.ChallengeList.challenge)
+                {
+                    if (item.id == levelId)
+                    {
+                        elementsPerLevel = Mathf.Clamp(item.tile_num, 1, ResultReserve.Count);
+                    }
+                }
+            }
 
             if (ResultReserve.Count > elementsPerLevel)
             {

@@ -15,11 +15,6 @@ namespace Watermelon
 
         public static Vector2 SlotSize { get; private set; }
 
-        private void Awake()
-        {
-            
-        }
-
         private void Start()
         {
             float cameraHeight = Camera.main.orthographicSize * 2;

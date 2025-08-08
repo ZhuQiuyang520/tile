@@ -219,7 +219,7 @@ public class ADManager : MonoBehaviour
             rewardCallBackAction?.Invoke(true);
 
             AfterAdPlaySuccess(ADType.Rewarded);
-            PostEventScript.GetInstance().SendEvent("9007", rewardIndex);
+            //PostEventScript.GetInstance().SendEvent("9007", rewardIndex);
         }
         else
         {
@@ -390,7 +390,7 @@ public class ADManager : MonoBehaviour
         {
             // 打点
             rewardIndex = index;
-            PostEventScript.GetInstance().SendEvent("9002", index);
+            //PostEventScript.GetInstance().SendEvent("9002", index);
             isShowingAd = true;
             rewardSuccess = false;
             string placement = index + "_" + rewardNetworkName;
@@ -629,6 +629,9 @@ public class ADManager : MonoBehaviour
 
         // 看广告总数+1
         SaveDataManager.SetInt(CConfig.sv_total_ad_num + adType.ToString(), SaveDataManager.GetInt(CConfig.sv_total_ad_num + adType.ToString()) + 1);
+        // 真提现任务 
+        if (adType == ADType.Rewarded)
+            CashOutManager.GetInstance().AddTaskValue("Ad",1);
 
         // 回调
         if (adPlayingCallbacks != null && adPlayingCallbacks.Count > 0)

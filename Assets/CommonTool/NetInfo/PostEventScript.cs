@@ -63,11 +63,18 @@ public class PostEventScript : MonoSingleton<PostEventScript>
         }
         if (valueList == null)
         {
-            valueList = new List<string>() { 
-                SaveDataManager.GetInt(CConfig.sv_CumulativeGoldCoin).ToString(),
-                SaveDataManager.GetInt(CConfig.sv_AlreadyPassLevels).ToString(),
-                SaveDataManager.GetString(CConfig.sv_CumulativeCash),
-                SaveDataManager.GetFloat(CConfig.sv_TotalGameTime).ToString()
+            valueList = new List<string>() {
+
+                SaveDataManager.GetFloat("CashOut_Money").ToString(),
+                SaveDataManager.GetString(CConfig.CoinNumber),
+                SaveDataManager.GetFloat("CashOut_Money_All").ToString(),
+                SaveDataManager.GetFloat(CConfig.CoinNumber_All).ToString(),
+                (SaveDataManager.GetInt(CConfig.sv_CurLevel) + 1).ToString(),
+
+                //SaveDataManager.GetInt(CConfig.sv_CumulativeGoldCoin).ToString(),
+                //SaveDataManager.GetInt(CConfig.sv_AlreadyPassLevels).ToString(),
+                //SaveDataManager.GetString(CConfig.sv_CumulativeCash),
+                //SaveDataManager.GetFloat(CConfig.sv_TotalGameTime).ToString()
                 //SaveDataManager.GetInt(SlotConfig.sv_SlotSpinCount).ToString()
             };
         }

@@ -17,6 +17,10 @@ public class TermLoder : BaseUIForms
     public override void Display(object uiFormParams)
     {
         base.Display(uiFormParams);
+        if (RoadTenuous.GetInstance().OfTelescope)
+        {
+            PostEventScript.GetInstance().SendEvent("1026", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+        } 
         RoadTenuous.GetInstance().ReliefStilt = false;
     }
 
@@ -35,18 +39,21 @@ public class TermLoder : BaseUIForms
         ADManager.Instance.playRewardVideo((success) =>
         {
             RoadTenuous.GetInstance().ReliefStilt = true;
-            if (RoadTenuous.GetInstance().OfTelescope)
+            if (success)
             {
-                PostEventScript.GetInstance().SendEvent("9007", "6");
-                
+                if (RoadTenuous.GetInstance().OfTelescope)
+                {
+                    PostEventScript.GetInstance().SendEvent("9007", "6");
+
+                }
+                else
+                {
+                    PostEventScript.GetInstance().SendEvent("9007", "5");
+
+                }
+                CloseUIForm(GetType().Name);
+                RoadBrother.instance.UpwindThaw();
             }
-            else
-            {
-                PostEventScript.GetInstance().SendEvent("9007", "5");
-                
-            }
-            CloseUIForm(GetType().Name);
-            RoadBrother.instance.UpwindThaw();
         }, "110");
     }
     public void RatifySpark()

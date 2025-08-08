@@ -125,77 +125,123 @@ public class LidBothLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
-        switch (Hard)
+        if (RoadTenuous.GetInstance().OfTelescope)
         {
-            case PropType.Roll:
-                PostEventScript.GetInstance().SendEvent("1003", "0");
-                break;
-            case PropType.Remind:
-                PostEventScript.GetInstance().SendEvent("1004", "0");
-                break;
-            case PropType.Refresh:
-                PostEventScript.GetInstance().SendEvent("1005", "0");
-                break;
-            default:
-                break;
+            switch (Hard)
+            {
+                case PropType.Roll:
+                    PostEventScript.GetInstance().SendEvent("1040", "0", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+                    break;
+                case PropType.Remind:
+                    PostEventScript.GetInstance().SendEvent("1041", "0", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+                    break;
+                case PropType.Refresh:
+                    PostEventScript.GetInstance().SendEvent("1042", "0", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
+                    break;
+                default:
+                    break;
+            }
         }
+        else
+        {
+            switch (Hard)
+            {
+                case PropType.Roll:
+                    PostEventScript.GetInstance().SendEvent("1003", "0");
+                    break;
+                case PropType.Remind:
+                    PostEventScript.GetInstance().SendEvent("1004", "0");
+                    break;
+                case PropType.Refresh:
+                    PostEventScript.GetInstance().SendEvent("1005", "0");
+                    break;
+                default:
+                    break;
+            }
+        }
+        
         CloseUIForm(GetType().Name);
     }
 
     private void RatifyHurl()
     {
-        switch (Hard)
-        {
-            case PropType.Roll:
-                PostEventScript.GetInstance().SendEvent("1003", "1");
-                break;
-            case PropType.Remind:
-                PostEventScript.GetInstance().SendEvent("1004", "1");
-                break;
-            case PropType.Refresh:
-                PostEventScript.GetInstance().SendEvent("1005", "1");
-                break;
-            default:
-                break;
-        }
-        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
-        RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
-        ADManager.Instance.playRewardVideo((success) =>
+        if (RoadTenuous.GetInstance().OfTelescope)
         {
             switch (Hard)
             {
                 case PropType.Roll:
-                    PostEventScript.GetInstance().SendEvent("9007", "1");
-                    
-                    if (!RoadTenuous.GetInstance().OfTelescope)
-                    {
-                        PlayerPrefs.SetInt(CConfig.RollBackNumber, StaffJob);
-                    }
-                    
+                    PostEventScript.GetInstance().SendEvent("1040", "1",RoadTenuous.GetInstance().GetChallengeLevel().ToString());
                     break;
                 case PropType.Remind:
-                    PostEventScript.GetInstance().SendEvent("9007", "2");
-                    
-                    if (!RoadTenuous.GetInstance().OfTelescope)
-                    {
-                        PlayerPrefs.SetInt(CConfig.RemingNumber, StaffJob);
-                    }
-                    
+                    PostEventScript.GetInstance().SendEvent("1041", "1", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
                     break;
                 case PropType.Refresh:
-                    PostEventScript.GetInstance().SendEvent("9007", "3");
-                    
-                    if (!RoadTenuous.GetInstance().OfTelescope)
-                    {
-                        PlayerPrefs.SetInt(CConfig.RefreshNumber, StaffJob);
-                    }
+                    PostEventScript.GetInstance().SendEvent("1042", "1", RoadTenuous.GetInstance().GetChallengeLevel().ToString());
                     break;
                 default:
                     break;
             }
+        }
+        else
+        {
+            switch (Hard)
+            {
+                case PropType.Roll:
+                    PostEventScript.GetInstance().SendEvent("1003", "1");
+                    break;
+                case PropType.Remind:
+                    PostEventScript.GetInstance().SendEvent("1004", "1");
+                    break;
+                case PropType.Refresh:
+                    PostEventScript.GetInstance().SendEvent("1005", "1");
+                    break;
+                default:
+                    break;
+            }
+        }
+       
+        RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
+        RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
+        ADManager.Instance.playRewardVideo((success) =>
+        {
             RoadTenuous.GetInstance().ReliefStilt = true;
-            SqueezeTenuous.GetInstance().Caucasian(MessageCode.BookletBoth, Hard);
-            CloseUIForm(GetType().Name);
+            if (success)
+            {
+                switch (Hard)
+                {
+                    case PropType.Roll:
+                        PostEventScript.GetInstance().SendEvent("9007", "1");
+
+                        if (!RoadTenuous.GetInstance().OfTelescope)
+                        {
+                            PlayerPrefs.SetInt(CConfig.RollBackNumber, StaffJob);
+                        }
+
+                        break;
+                    case PropType.Remind:
+                        PostEventScript.GetInstance().SendEvent("9007", "2");
+
+                        if (!RoadTenuous.GetInstance().OfTelescope)
+                        {
+                            PlayerPrefs.SetInt(CConfig.RemingNumber, StaffJob);
+                        }
+
+                        break;
+                    case PropType.Refresh:
+                        PostEventScript.GetInstance().SendEvent("9007", "3");
+
+                        if (!RoadTenuous.GetInstance().OfTelescope)
+                        {
+                            PlayerPrefs.SetInt(CConfig.RefreshNumber, StaffJob);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                
+                SqueezeTenuous.GetInstance().Caucasian(MessageCode.BookletBoth, Hard);
+                CloseUIForm(GetType().Name);
+            }
         }, "110");
     }
 
@@ -207,22 +253,25 @@ public class LidBothLoder : BaseUIForms
         EatWingBorrow -= EatWarmer;
         PlayerPrefs.SetInt(CConfig.CoinNumber, EatWingBorrow);
         //ADManager.Instance.NoThanksAddCount();
-        switch (Hard)
+        if (!RoadTenuous.GetInstance().OfTelescope)
         {
-            case PropType.Roll:
-                PostEventScript.GetInstance().SendEvent("1003", "2");
-                PlayerPrefs.SetInt(CConfig.RollBackNumber, StaffJob);
-                break;
-            case PropType.Remind:
-                PostEventScript.GetInstance().SendEvent("1004", "2");
-                PlayerPrefs.SetInt(CConfig.RemingNumber, StaffJob);
-                break;
-            case PropType.Refresh:
-                PostEventScript.GetInstance().SendEvent("1005", "2");
-                PlayerPrefs.SetInt(CConfig.RefreshNumber, StaffJob);
-                break;
-            default:
-                break;
+            switch (Hard)
+            {
+                case PropType.Roll:
+                    PostEventScript.GetInstance().SendEvent("1003", "2");
+                    PlayerPrefs.SetInt(CConfig.RollBackNumber, StaffJob);
+                    break;
+                case PropType.Remind:
+                    PostEventScript.GetInstance().SendEvent("1004", "2");
+                    PlayerPrefs.SetInt(CConfig.RemingNumber, StaffJob);
+                    break;
+                case PropType.Refresh:
+                    PostEventScript.GetInstance().SendEvent("1005", "2");
+                    PlayerPrefs.SetInt(CConfig.RefreshNumber, StaffJob);
+                    break;
+                default:
+                    break;
+            }
         }
         SqueezeTenuous.GetInstance().Caucasian(MessageCode.BookletBoth, Hard);
         CloseUIForm(GetType().Name);

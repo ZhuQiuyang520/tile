@@ -110,28 +110,27 @@ public class CommonUtil
             }
             StepLog += "4:" + Save_AP;
         }
-        Debug.Log(NetInfoMgr.instance.BlockRule);
         //判断自然量
         if (!string.IsNullOrEmpty(NetInfoMgr.instance.BlockRule.fall_down))
         {
-            if (NetInfoMgr.instance.BlockRule.fall_down == "bottom") //仅判断Organic
-            {
-                if (Adjust_TrackerName == "Organic") //打开自然量 且 归因渠道是Organic 审模式
-                {
-                    Save_AP = "A";
-                    if (string.IsNullOrEmpty(Reason))
-                        Reason = "FallDown";
-                }
-            }
-            else if (NetInfoMgr.instance.BlockRule.fall_down == "down") //判断Organic + NoUserConsent
-            {
-                if (Adjust_TrackerName == "Organic" || Adjust_TrackerName == "No User Consent") //打开自然量 且 归因渠道是Organic或NoUserConsent 审模式
-                {
-                    Save_AP = "A";
-                    if (string.IsNullOrEmpty(Reason))
-                        Reason = "FallDown";
-                }
-            }
+            //if (NetInfoMgr.instance.BlockRule.fall_down == "bottom") //仅判断Organic
+            //{
+            //    if (Adjust_TrackerName == "Organic") //打开自然量 且 归因渠道是Organic 审模式
+            //    {
+            //        Save_AP = "A";
+            //        if (string.IsNullOrEmpty(Reason))
+            //            Reason = "FallDown";
+            //    }
+            //}
+            //else if (NetInfoMgr.instance.BlockRule.fall_down == "down") //判断Organic + NoUserConsent
+            //{
+            //    if (Adjust_TrackerName == "Organic" || Adjust_TrackerName == "No User Consent") //打开自然量 且 归因渠道是Organic或NoUserConsent 审模式
+            //    {
+            //        Save_AP = "A";
+            //        if (string.IsNullOrEmpty(Reason))
+            //            Reason = "FallDown";
+            //    }
+            //}
         }
         StepLog += "5:" + Save_AP;
 
@@ -226,6 +225,75 @@ public class CommonUtil
             SendEvent();
     }
 
+    public static void SendEvent()
+    {
+        //打点
+        if (NetInfoMgr.instance.UserData != null)
+        {
+            string Info1 = "[" + (Save_AP == "A" ? "审" : "正常") + "] [" + Reason + "]";
+            string Info2 = "[" + NetInfoMgr.instance.UserData.lat + "," + NetInfoMgr.instance.UserData.lon + "] [" + NetInfoMgr.instance.UserData.regionName + "] [" + Distances + "]";
+            string Info3 = "[" + NetInfoMgr.instance.UserData.query + "] [Null]";  // [" + Adjust_TrackerName + "]";
+            PostEventScript.GetInstance().SendEvent("3000", Info1, Info2, Info3);
+        }
+        else
+            PostEventScript.GetInstance().SendEvent("3000", "No UserData");
+        PostEventScript.GetInstance().SendEvent("3001", (Save_AP == "A" ? "审" : "正常"), StepLog, NetInfoMgr.instance.DataFrom);
+        PlayerPrefs.SetInt("SendedEvent", 1);
+    }
+
+    // 安卓平台特殊屏蔽规则 被屏蔽玩家显示提示 阻止进入
+    public static bool AndroidBlockCheck()
+    {
+        if (Application.platform == RuntimePlatform.Android && NetInfoMgr.instance.BlockRule != null)
+        {
+            AndroidJavaClass aj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject p = aj.GetStatic<AndroidJavaObject>("currentActivity");
+            string Info = "";
+            if (NetInfoMgr.instance.BlockRule.BlockVPN)
+            {
+                bool isVpnConnected = p.CallStatic<bool>("isVpn");
+                if (isVpnConnected)
+                    Info = "Please turn off your VPN, restart the game and try again.";
+            }
+            if (NetInfoMgr.instance.BlockRule.BlockSimulator)
+            {
+                bool isSimulator = p.CallStatic<bool>("isSimulator");
+                if (isSimulator)
+                    Info = "This game cannot be run on emulators.";
+            }
+            if (NetInfoMgr.instance.BlockRule.BlockRoot)
+            {
+                bool isRoot = p.CallStatic<bool>("isRoot");
+                if (isRoot)
+                    Info = "This game cannot be played on rooted devices.";
+            }
+            if (NetInfoMgr.instance.BlockRule.BlockDeveloper)
+            {
+                bool isDeveloper = p.CallStatic<bool>("isDeveloper");
+                if (isDeveloper)
+                    Info = "Please switch off Developer Option, restart the game and try again.";
+            }
+            if (NetInfoMgr.instance.BlockRule.BlockUsb)
+            {
+                bool isUsb = p.CallStatic<bool>("isUsb");
+                if (isUsb)
+                    Info = "Please switch off USB debugging, restart the game and try again.";
+            }
+            if (NetInfoMgr.instance.BlockRule.BlockSimCard)
+            {
+                bool isSimCard = p.CallStatic<bool>("isSimcard");
+                if (!isSimCard)
+                    Info = "Please check if the SIM card is inserted, then restart the game and try again.";
+            }
+            if (!string.IsNullOrEmpty(Info))
+            {
+                UIManager.GetInstance().ShowUIForms(nameof(BlockPanel)).GetComponent<BlockPanel>().ShowInfo(Info);
+                return true;
+            }
+        }
+        return false;
+    }
+
     static float GetDistance(float lat1, float lon1, float lat2, float lon2)
     {
         const float R = 6371f; // 地球半径，单位：公里
@@ -308,21 +376,5 @@ public class CommonUtil
 
         // 将结果从本地坐标系转换为世界坐标系
         return rectTransform.root.TransformPoint(worldPosition);
-    }
-
-    public static void SendEvent()
-    {
-        //打点
-        if (NetInfoMgr.instance.UserData != null)
-        {
-            string Info1 = "[" + (Save_AP == "A" ? "审" : "正常") + "] [" + Reason + "]";
-            string Info2 = "[" + NetInfoMgr.instance.UserData.lat + "," + NetInfoMgr.instance.UserData.lon + "] [" + NetInfoMgr.instance.UserData.regionName + "] [" + Distances + "]";
-            string Info3 = "[" + NetInfoMgr.instance.UserData.query + "] [" + Adjust_TrackerName + "]";
-            PostEventScript.GetInstance().SendEvent("3000", Info1, Info2, Info3);
-        }
-        else
-            PostEventScript.GetInstance().SendEvent("3000", "No UserData");
-        PostEventScript.GetInstance().SendEvent("3001", (Save_AP == "A" ? "审" : "正常"), StepLog, NetInfoMgr.instance.DataFrom);
-        PlayerPrefs.SetInt("SendedEvent", 1);
     }
 }
