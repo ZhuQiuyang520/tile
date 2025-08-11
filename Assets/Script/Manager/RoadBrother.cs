@@ -299,8 +299,11 @@ public class RoadBrother : MonoBehaviour
 
         if (!OfEatBleakTelescope)
         {
+            RoadTenuous.GetInstance().ReliefStilt = false;
+            RoadLoder.instance.IsButtonMask(true);
             //执行动画 挑战关卡不执行加载动画
             StartCoroutine(MobAcidicHumor());
+           
         }
         else
         {
@@ -313,6 +316,7 @@ public class RoadBrother : MonoBehaviour
                 DripFire[i].SetState(OfDripUndisturbed(DripFire[i]));
             }
         }
+        
     }
 
     private List<TileBehavior> FrescoHumor;
@@ -1299,6 +1303,9 @@ public class RoadBrother : MonoBehaviour
     //给tile赋值
     private IEnumerator MobAcidicHumor()
     {
+        //加载动画完成，给tilelist排序，为自动收牌和魔法棒做准备
+        DripFire.Sort((x, y) => { return x.transform.position.y.CompareTo(-y.transform.position.y); });
+        
         // Reset objects
         List<TileBehavior> tileBehaviors = DripFire;
         tileBehaviors.Sort((x, y) => { return x.transform.localPosition.y.CompareTo(y.transform.localPosition.y); });
@@ -1330,9 +1337,8 @@ public class RoadBrother : MonoBehaviour
                 // 这里可以添加动画完成后的逻辑
             });
         }
-
-        //加载动画完成，给tilelist排序，为自动收牌和魔法棒做准备
-        DripFire.Sort((x, y) => { return x.transform.position.y.CompareTo(-y.transform.position.y); });
+        RoadLoder.instance.IsButtonMask(false);
+        RoadTenuous.GetInstance().ReliefStilt = true;
     }
 
     public void DripFosterWaterfall(List<TileBehavior> tileBehaviors)

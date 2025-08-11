@@ -42,7 +42,9 @@ public class TelescopeOrbitLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().ReliefStilt = true;
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
-        UIManager.GetInstance().ClearAllUI();
+        
+        CloseUIForm(GetType().Name);
+        CloseUIForm(nameof(TuskLoder));
         RoadTenuous.GetInstance().OfTelescope = true;
         UIManager.GetInstance().ShowUIForms(nameof(RoadLoder));
         PlayerPrefs.SetInt(CConfig.NowDayChallenAward, 0);

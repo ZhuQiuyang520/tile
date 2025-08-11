@@ -125,7 +125,6 @@ public class TuskLoder : BaseUIForms
     private void WickDuringPass(DateTime time)
     {
         // 将DateTime转换为长整型（Ticks）存储
-        Debug.Log(time.Ticks.ToString());
         PlayerPrefs.SetString(CConfig.Last_Logout_Time_Key, time.Ticks.ToString());
         PlayerPrefs.Save();
 
