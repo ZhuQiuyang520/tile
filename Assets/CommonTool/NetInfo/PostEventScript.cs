@@ -64,9 +64,9 @@ public class PostEventScript : MonoSingleton<PostEventScript>
         if (valueList == null)
         {
             valueList = new List<string>() {
-
+                
                 SaveDataManager.GetFloat("CashOut_Money").ToString(),
-                SaveDataManager.GetString(CConfig.CoinNumber),
+                SaveDataManager.GetInt(CConfig.CoinNumber).ToString(),
                 SaveDataManager.GetFloat("CashOut_Money_All").ToString(),
                 SaveDataManager.GetFloat(CConfig.CoinNumber_All).ToString(),
                 (SaveDataManager.GetInt(CConfig.sv_CurLevel) + 1).ToString(),

@@ -35,6 +35,7 @@ public class DramTenuous : MonoBehaviour
             // 新用户
             SaveDataManager.SetBool(CConfig.sv_IsNewPlayer, false);
             PlayerPrefs.SetInt(CConfig.CoinNumber, NetInfoMgr.instance.GameData.win_coins);
+            SaveDataManager.SetFloat(CConfig.CoinNumber_All, NetInfoMgr.instance.GameData.win_coins);
             PlayerPrefs.SetInt(CConfig.RollBackNumber, NetInfoMgr.instance.GameData.Undo_nums);
             PlayerPrefs.SetInt(CConfig.RemingNumber, NetInfoMgr.instance.GameData.Wand_nums);
             PlayerPrefs.SetInt(CConfig.RefreshNumber, NetInfoMgr.instance.GameData.Shuffle_nums);
