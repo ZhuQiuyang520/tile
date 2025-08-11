@@ -76,8 +76,8 @@
       "Value": "UIPanel\\ClueNoLoder"
     },
     {
-      "Key": "CashOutPanel",
-      "Value": "UIPanel\\YourFluLoder"
+        "Key": "CashOutPanel",
+        "Value": "UIPanel\\CashOutPanel"
     },
     {
       "Key": "DailyGiftPanel",

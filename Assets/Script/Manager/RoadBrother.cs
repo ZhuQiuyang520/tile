@@ -221,7 +221,7 @@ public class RoadBrother : MonoBehaviour
                         continue;
                     }
                 }
-                if (TradeHumor.FindAll(s => s.ValueAlarm == LayerIndex).Count < NetInfoMgr.instance.GameData.challenge_amount)
+                if (ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex).Count < NetInfoMgr.instance.GameData.challenge_amount || LayerIndex >= NetInfoMgr.instance.GameData.challenge_limit)
                 {
                     continue;
                 }
@@ -237,17 +237,13 @@ public class RoadBrother : MonoBehaviour
                 for (int a = 0; a < 2; a++)
                 {
                     TileSpawnData selectedTileData = null;
-
-                    if (ChallengeGroup > 0 && LayerIndex < NetInfoMgr.instance.GameData.challenge_limit)
-                    {
-                        selectedTileData = ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex)[Random.Range(0, ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex).Count)];
-                    }
+                    Debug.Log(ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex).Count);
+                    selectedTileData = ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex)[Random.Range(0, ChallengeTileList.FindAll(s => s.ValueAlarm == LayerIndex).Count)];
                     if (selectedTileData != null)
                     {
                         ChallengeTileList.Remove(selectedTileData);
                         TradeHumor.Remove(selectedTileData);
                         totalWeight -= selectedTileData.HardenMature;
-
                         TileBehavior additionalElementBehavior = LapisDrip(initialTilesData[i], selectedTileData.ScholarDiffuses);
                     }
                 }

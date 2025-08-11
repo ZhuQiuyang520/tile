@@ -46,6 +46,7 @@ public class ElliotLoder : BaseUIForms
     {
         base.Display(uiFormParams);
         RoadLoder.instance.IsButtonMask(false);
+        CashOutManager.GetInstance().AddTaskValue("Level", 1);
         Hurl.interactable = true;
         ThawBG.OralCrimp();
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);

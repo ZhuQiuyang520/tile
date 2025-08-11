@@ -28,11 +28,13 @@ public class GirlNewlyLoder : BaseUIForms
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.Success);
         RoadTenuous.GetInstance().ReliefStilt = false;
         RiftVenice.SetActive(false);
-        BellCanopy.onClick.RemoveAllListeners();
-        BellCanopy.onClick.AddListener(Bell);
         BellCanopy.gameObject.SetActive(true);
         OralQueen();
         _SparseNeck = new RewardPanelData();
+    }
+    private void Start()
+    {
+        BellCanopy.onClick.AddListener(Bell);
     }
 
     void OralQueen()
@@ -81,6 +83,7 @@ public class GirlNewlyLoder : BaseUIForms
     }
     public void Bell()
     {
+        CashOutManager.GetInstance().AddTaskValue("Wheel", 1);
         RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.LightImpact);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_BigWheel);
         RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_UIButton);
@@ -106,6 +109,7 @@ public class GirlNewlyLoder : BaseUIForms
             }));
         });
         BellCanopy.gameObject.SetActive(false);
+        
     }
     IEnumerator StencilWaterfall()
     {

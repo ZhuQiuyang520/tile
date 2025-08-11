@@ -84,6 +84,7 @@ public class LidBothLoder : BaseUIForms
                 {
                     StaffJob = NetInfoMgr.instance.GameData.Shuffle_ad_nums;
                 }
+                
                 BothBorrow.text = "×" + StaffJob.ToString();
                 EatWarmer = NetInfoMgr.instance.GameData.Shuffle_price;
                 BuyBorrow.text = EatWarmer.ToString();
@@ -91,7 +92,6 @@ public class LidBothLoder : BaseUIForms
             default:
                 break;
         }
-
         if (EatWingBorrow < EatWarmer)
         {
             MobWing.interactable = false;

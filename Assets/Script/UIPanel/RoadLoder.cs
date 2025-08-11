@@ -188,7 +188,6 @@ public class RoadLoder : BaseUIForms
                 FervorBleak.SetActive(true);
             }
             Bleak.text = "Level" + (PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1);
-            PostEventScript.GetInstance().SendEvent("1021", (PlayerPrefs.GetInt(CConfig.sv_CurLevel) + 1).ToString());
         }
         else
         {

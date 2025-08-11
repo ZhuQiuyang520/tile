@@ -109,7 +109,7 @@ public class CashOutData //提现
     public string MoneyName; //货币名称
     public string Description; //玩法描述
     public string convert_goal; //兑换目标
-    //public List<CashOut_TaskData> TaskList; //任务列表
+    public List<CashOut_TaskData> TaskList; //任务列表
 }
 
 public class CashOut_TaskData

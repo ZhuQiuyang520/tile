@@ -22,12 +22,12 @@ public class CashOutEnter : MonoBehaviour
     Tweener MaxMoneyFillAnim;
 
 
-    //void Start()
-    //{
-    //    CashOutManager.GetInstance()._CashOutEnter = this;
-    //    OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
-    //    UpdateMoney();
-    //}
+    void Start()
+    {
+        CashOutManager.GetInstance()._CashOutEnter = this;
+        OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
+        UpdateMoney();
+    }
 
     public void UpdateData()
     {

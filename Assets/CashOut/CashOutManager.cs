@@ -92,7 +92,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
 
             //任务
-            if (NetInfoMgr.instance.CashOut_Data != null/* && NetInfoMgr.instance.CashOut_Data.TaskList.Count > 0*/)
+            if (NetInfoMgr.instance.CashOut_Data != null && NetInfoMgr.instance.CashOut_Data.TaskList.Count > 0)
             {
                 //记录第一次登录日期utc
                 if (!PlayerPrefs.HasKey("CashOut_FirstLoginTime"))
@@ -117,12 +117,12 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                     _CashOutPanel?.UpdateTask();
                 }
                 //计算今天距离第一次登录过了几天
-                //int Day = (DateTime.UtcNow.Date - DateTime.Parse(PlayerPrefs.GetString("CashOut_FirstLoginTime"))).Days;
-                //if (Day >= NetInfoMgr.instance.CashOut_Data.TaskList.Count) //一天一任务 天数超出任务数量显示默认任务
-                //    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList.FirstOrDefault(t => t.IsDefault);
-                //else
-                //    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList[Day];
-               // Data.TaskData.NowValue = PlayerPrefs.GetFloat("CashOut_TaskValue");
+                int Day = (DateTime.UtcNow.Date - DateTime.Parse(PlayerPrefs.GetString("CashOut_FirstLoginTime"))).Days;
+                if (Day >= NetInfoMgr.instance.CashOut_Data.TaskList.Count) //一天一任务 天数超出任务数量显示默认任务
+                    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList.FirstOrDefault(t => t.IsDefault);
+                else
+                    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList[Day];
+                Data.TaskData.NowValue = PlayerPrefs.GetFloat("CashOut_TaskValue");
             }
         }
     }
