@@ -1,41 +1,41 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BigWheelItem : MonoBehaviour
 {
-    public Text text;
-    public Image cashIcon;
-    public Image goldIcon;
-    public Image UndoIcon;
-    public Image ShuffleIcon;
-    public Image WandIcon;
+[UnityEngine.Serialization.FormerlySerializedAs("text")]    public Text Fail;
+[UnityEngine.Serialization.FormerlySerializedAs("cashIcon")]    public Image TermPost;
+[UnityEngine.Serialization.FormerlySerializedAs("goldIcon")]    public Image NamePost;
+[UnityEngine.Serialization.FormerlySerializedAs("UndoIcon")]    public Image CubePost;
+[UnityEngine.Serialization.FormerlySerializedAs("ShuffleIcon")]    public Image SuccessPost;
+[UnityEngine.Serialization.FormerlySerializedAs("WandIcon")]    public Image FarePost;
     
-    public void initIcon(string type)
+    public void FlawPost(string type)
     {
-        cashIcon.gameObject.SetActive(false);
-        goldIcon.gameObject.SetActive(false);
-        UndoIcon.gameObject.SetActive(false);
-        ShuffleIcon.gameObject.SetActive(false);
-        WandIcon.gameObject.SetActive(false);
+        TermPost.gameObject.SetActive(false);
+        NamePost.gameObject.SetActive(false);
+        CubePost.gameObject.SetActive(false);
+        SuccessPost.gameObject.SetActive(false);
+        FarePost.gameObject.SetActive(false);
         switch (type)
         {
             case "cash":
-                cashIcon.gameObject.SetActive(true);
+                TermPost.gameObject.SetActive(true);
                 break;
             case "gold":
-                goldIcon.gameObject.SetActive(true);
+                NamePost.gameObject.SetActive(true);
                 break;
 
             case "undo":
-                UndoIcon.gameObject.SetActive(true);
+                CubePost.gameObject.SetActive(true);
                 break;
             case "shuffle":
-                ShuffleIcon.gameObject.SetActive(true);
+                SuccessPost.gameObject.SetActive(true);
                 break;
             case "wand":
-                WandIcon.gameObject.SetActive(true);
+                FarePost.gameObject.SetActive(true);
                 break;
         }
 

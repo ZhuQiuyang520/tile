@@ -16,20 +16,20 @@ namespace Watermelon
         [SerializeField] int collectionID;
         public int CollectionID => collectionID;
 
-        private Gild pool;
-        public Gild Pool => pool;
+        private Lace pool;
+        public Lace Pool => pool;
 
         private int index;
 
         public void Initialise(int index)
         {
             this.index = index;
-            pool = new Gild(new GildMainland(string.Format("Tile_{0}_{1}", prefab.name, index), prefab, 0, true));
+            pool = new Lace(new LaceSunlight(string.Format("Tile_{0}_{1}", prefab.name, index), prefab, 0, true));
         }
 
         public void Unload()
         {
-            pool.RecoilOxGildCurriculum(true);
+            pool.MirrorMeLaceBitterness(true);
         }
 
         public override int GetHashCode()

@@ -62,12 +62,18 @@ namespace Watermelon
 
         private int RecordOrder;
 
+        public Sprite BackSprite;
         public virtual void Initialise(TileData tileData, ElementPosition elementPosition)
         {
             BackgroundSpriteRenderer.size = new Vector2(1, 1.09f);
             this.tileData = tileData;
             isBlocked = false;
             SetPosition(elementPosition);
+
+            if (CommonUtil.IsApple())
+            {
+                backgroundSpriteRenderer.sprite = BackSprite;
+            }
         }
 
         public void SetPosition(ElementPosition elementPosition)
@@ -190,12 +196,12 @@ namespace Watermelon
             bool isClickAllowed = true;
             if (isBlocked) isClickAllowed = false;
             if (!isClickable) isClickAllowed = false;
-            RoadTenuous.GetInstance().UsuallyCharm(MusicType.UIMusic.Sound_Click);
-            RoadTenuous.GetInstance().UsuallyStuff(HapticPatterns.PresetType.MediumImpact);
+            RaftNonself.GetInstance().QuicklyCanal(MusicType.UIMusic.Sound_Click);
+            RaftNonself.GetInstance().QuicklyArena(HapticPatterns.PresetType.MediumImpact);
             if (isClickAllowed)
             {
                 CloseAni();
-                RoadBrother.instance.EdibleScholar(this);
+                RaftMeeting.instance.ImposeAbreast(this);
             }
             else
             {
@@ -282,7 +288,7 @@ namespace Watermelon
         {
             gameObject.SetActive(false);
 
-            transform.SetParent(GildTenuous.MissionDiversifyGenuinely);
+            transform.SetParent(LaceNonself.FlamingArthritisComplaint);
 
             ResetSubmitState();
         }

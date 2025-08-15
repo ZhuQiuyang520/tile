@@ -29319,6 +29319,7 @@ MonoBehaviour:
   backgroundSpriteRenderer: {fileID: 3328075312740190663}
   visuals: {fileID: 3328075313755840142}
   boxCollider: {fileID: 1903402147288069048}
+  BackSprite: {fileID: 21300000, guid: 589414a8e031f394592635f5363746c7, type: 3}
 --- !u!65 &1903402147288069048
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -135,7 +135,6 @@ public class PostEventScript : MonoSingleton<PostEventScript>
         wwwForm.AddField("channel", Channel);
         //Debug.Log("channel:" + channal);
         wwwForm.AddField("operateId", event_id);
-        Debug.Log("operateId:" + event_id);
 
 
         if (p1 != null)

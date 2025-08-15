@@ -47,10 +47,10 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         {
             string title = "Your reward is ready!";
             string info = $"All {NetInfoMgr.instance.CashOut_Data.MoneyName} have been converted,Please check your rewards!";
-            NotificationManager.Instance.ClearNotification();
-            NotificationManager.Instance.ScheduleNotification(title, info, (int)Seconds);
+            PigmentationChronic.Chivalry.PanelPigmentation();
+            PigmentationChronic.Chivalry.IdentityPigmentation(title, info, (int)Seconds);
             for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
-                NotificationManager.Instance.ScheduleNotification(title, info, (int)Seconds + (i * 10800));
+                PigmentationChronic.Chivalry.IdentityPigmentation(title, info, (int)Seconds + (i * 10800));
         }
 
         if (pauseStatus)

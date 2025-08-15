@@ -88,9 +88,9 @@ public class CashOutPanel : BaseUIForms
     {
         CashOutManager.GetInstance()._CashOutPanel = this;
         CloseBtn.onClick.AddListener(() => {
-            if (RoadLoder.instance != null)
+            if (RaftNeedy.instance != null)
             {
-                RoadLoder.instance.SparkProboscisClaw();
+                RaftNeedy.instance.KrillIntensiveCall();
             }
             CloseUIForm(nameof(CashOutPanel)); });
         CashOutBtn.onClick.AddListener(() => { OnCashOutBtn(); });

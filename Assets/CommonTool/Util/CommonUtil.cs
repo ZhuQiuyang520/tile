@@ -287,7 +287,7 @@ public class CommonUtil
             }
             if (!string.IsNullOrEmpty(Info))
             {
-                UIManager.GetInstance().ShowUIForms(nameof(BlockPanel)).GetComponent<BlockPanel>().ShowInfo(Info);
+                UIManager.GetInstance().ShowUIForms(nameof(IdealSixth)).GetComponent<IdealSixth>().GoalBomb(Info);
                 return true;
             }
         }

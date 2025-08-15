@@ -91,6 +91,7 @@ namespace Watermelon
             List<TileData> result = new List<TileData>();
             List<TileData> ResultReserve = new List<TileData>();
 
+            
             for (int i = 0; i < tiles.Length; i++)
             {
                 if (tiles[i].AvailableFromLevel <= levelId)
@@ -100,7 +101,7 @@ namespace Watermelon
                 }
             }
             int elementsPerLevel = Mathf.Clamp(levelData.ElementsPerLevel, 1, ResultReserve.Count);
-            if (RoadTenuous.GetInstance().OfTelescope && PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
+            if (RaftNonself.GetInstance().MeOutrigger && PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
             {
                 foreach (var item in NetInfoMgr.instance.ChallengeList.challenge)
                 {
@@ -110,12 +111,19 @@ namespace Watermelon
                     }
                 }
             }
-
             if (ResultReserve.Count > elementsPerLevel)
             {
                 for (int i = 0; i < elementsPerLevel; i++)
                 {
-                    int index = Random.Range(0, ResultReserve.Count);
+                    int index = 0;
+                    if (CommonUtil.IsApple())
+                    {
+                        index = Random.Range(30, ResultReserve.Count);
+                    }
+                    else
+                    {
+                        index = Random.Range(0, ResultReserve.Count);
+                    }
                     result.Add(ResultReserve[index]);
                     ResultReserve.RemoveAt(index);
                 }
@@ -162,12 +170,12 @@ namespace Watermelon
 
                 int elementsRequired = Mathf.RoundToInt(levels[i].SetsAmount / desiredDifficulty);
 
-                DisruptionNylon.MonkeyTendencyDigestive<LevelData>(levels[i], "elementsPerLevel", elementsRequired);
+                InsulationWreck.RatherBallroomWomanhood<LevelData>(levels[i], "elementsPerLevel", elementsRequired);
 
-                TriumphSquashNylon.FinWhite(levels[i]);
+                SharperOnwardWreck.NowProof(levels[i]);
             }
 
-            TriumphSquashNylon.FinWhite(this);
+            SharperOnwardWreck.NowProof(this);
         }
 
         private float GetDifficulty(int setsAmount, int layersAmount)

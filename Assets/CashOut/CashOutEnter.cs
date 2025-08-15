@@ -32,7 +32,7 @@ public class CashOutEnter : MonoBehaviour
     public void UpdateData()
     {
         CashOutManager.GetInstance()._CashOutEnter = this;
-        OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
+        //OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
         UpdateMoney();
     }
 

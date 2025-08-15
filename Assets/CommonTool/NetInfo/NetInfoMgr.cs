@@ -246,16 +246,16 @@ public class NetInfoMgr : MonoBehaviour
         bool callBackReady = false;
         if (String.IsNullOrEmpty(country))
         {
-            //获取国家超时返回
-            StartCoroutine(NetWorkTimeOut(() =>
-            {
-                if (!callBackReady)
-                {
-                    country = "";
-                    callBackReady = true;
-                    cb?.Invoke();
-                }
-            }));
+            ////获取国家超时返回
+            //StartCoroutine(NetWorkTimeOut(() =>
+            //{
+            //    if (!callBackReady)
+            //    {
+            //        country = "";
+            //        callBackReady = true;
+            //        cb?.Invoke();
+            //    }
+            //}));
             NetWorkManager.GetInstance().HttpGet("https://a.mafiagameglobal.com/event/country/", (data) =>
             {
                 country = JsonMapper.ToObject<Dictionary<string, string>>(data.downloadHandler.text)["country"];
@@ -292,10 +292,10 @@ public class NetInfoMgr : MonoBehaviour
     private void GetConfigData()
     {
         Debug.Log("GetConfigData:" + ConfigUrl);
-        StartCoroutine(NetWorkTimeOut(() =>
-        {
-            GetLoactionData();
-        }));
+        //StartCoroutine(NetWorkTimeOut(() =>
+        //{
+        //    GetLoactionData();
+        //}));
 
         //获取并存入Config
         NetWorkManager.GetInstance().HttpGet(ConfigUrl,
@@ -369,11 +369,13 @@ public class NetInfoMgr : MonoBehaviour
                     break;
             }
             GameData = JsonMapper.ToObject<Game_Data>(ConfigData.game_data);
-            CashOut_Data = JsonMapper.ToObject<CashOutData>(ConfigData.CashOut_Data);
+            
             LevelList = JsonMapper.ToObject<LevelConfigInfo>(ConfigData.level_change);
             ChallengeList = JsonMapper.ToObject<ChallengeElementData>(ConfigData.challenge_num);
             if (!string.IsNullOrEmpty(ConfigData.BlockRule))
                 BlockRule = JsonMapper.ToObject<BlockRuleData>(ConfigData.BlockRule);
+            if (!string.IsNullOrEmpty(ConfigData.CashOut_Data))
+                CashOut_Data = JsonMapper.ToObject<CashOutData>(ConfigData.CashOut_Data);
             GetUserInfo();
         }
     }
@@ -390,16 +392,16 @@ public class NetInfoMgr : MonoBehaviour
 
 
 
-    /// <summary>
-    /// 超时处理
-    /// </summary>
-    /// <param name="finish"></param>
-    /// <returns></returns>
-    IEnumerator NetWorkTimeOut(Action finish)
-    {
-        yield return new WaitForSeconds(TIMEOUT);
-        finish();
-    }
+    ///// <summary>
+    ///// 超时处理
+    ///// </summary>
+    ///// <param name="finish"></param>
+    ///// <returns></returns>
+    //IEnumerator NetWorkTimeOut(Action finish)
+    //{
+    //    yield return new WaitForSeconds(TIMEOUT);
+    //    finish();
+    //}
 
     /// <summary>
     /// 向后台发送adjustId

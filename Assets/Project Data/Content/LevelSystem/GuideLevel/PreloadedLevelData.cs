@@ -34,7 +34,7 @@ namespace Watermelon
 
             public void Initialise()
             {
-                tileData = RoadBrother.Follower.GetTile(tileID);
+                tileData = RaftMeeting.Flagpole.GetTile(tileID);
             }
         }
     }

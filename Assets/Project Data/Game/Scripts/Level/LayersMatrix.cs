@@ -28,7 +28,7 @@ namespace Watermelon
                 layerGameObject.transform.SetParent(layersParent.transform);
                 layerGameObject.transform.ResetLocal();
 
-                var size = (RoadBrother.EatBleak.AmountOfLayers - i - 1) % 2 == 0 ? RoadBrother.SailValueHoly : RoadBrother.RobValueHoly;
+                var size = (RaftMeeting.BayGrant.AmountOfLayers - i - 1) % 2 == 0 ? RaftMeeting.TalkGrassCone : RaftMeeting.RagGrassCone;
                 LayerGrid layerRepresentation = new LayerGrid(layerGameObject, size.x, size.y);
 
                 layers.Add(layerRepresentation);
