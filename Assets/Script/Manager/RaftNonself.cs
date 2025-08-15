@@ -54,7 +54,7 @@ public class RaftNonself : MonoSingleton<RaftNonself>
 #if UNITY_EDITOR
         //Debug.Log("震动");
 #else
-         if (OfStuff)
+        if (MeArena)
         {
             HapticPatterns.PlayPreset(type);
         }
