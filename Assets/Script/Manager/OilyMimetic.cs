@@ -43,15 +43,11 @@ public class OilyMimetic : BeamNonliving<OilyMimetic>
     };
     public void RefinerCoral(HapticPatterns.PresetType type)
     {
-        
-#if UNITY_EDITOR
-        Debug.Log("震动");
-#else
-        if (IsVibra)
+        CashOutManager.
+        if (WeCoral)
         {
             HapticPatterns.PlayPreset(type);
         }
-#endif
     }
     public void RefinerHumid(WhaleSpur.UIMusic sfx)
     {
