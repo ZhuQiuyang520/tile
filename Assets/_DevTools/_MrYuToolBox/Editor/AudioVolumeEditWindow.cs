@@ -41,7 +41,7 @@ public class AudioVolumeEditWindow : EditorWindow
         }
 
         //UI
-        foreach(object music in Enum.GetValues(typeof(MusicType.UIMusic)))
+        foreach(object music in Enum.GetValues(typeof(WhaleSpur.UIMusic)))
         {
             string name = music.ToString();
             if (name == "None") continue;
@@ -60,7 +60,7 @@ public class AudioVolumeEditWindow : EditorWindow
         }
 
         // Scene
-        foreach (object music in Enum.GetValues(typeof(MusicType.SceneMusic)))
+        foreach (object music in Enum.GetValues(typeof(WhaleSpur.SceneMusic)))
         {
             string name = music.ToString();
             if (name == "None") continue;
@@ -90,8 +90,8 @@ public class AudioVolumeEditWindow : EditorWindow
     public void SaveJson(string Filepath)
     {
         Dictionary<string, AudioModel> dic = new Dictionary<string, AudioModel>();
-        MergeDictionaries.Merge(dic, UIAudioGroup);
-        MergeDictionaries.Merge(dic, SceneAudioGroup);
+        MergeDictionaries.Bongo(dic, UIAudioGroup);
+        MergeDictionaries.Bongo(dic, SceneAudioGroup);
         string JsonData = JsonMapper.ToJson(dic);
         StreamWriter ResourceWrite = new StreamWriter(Filepath);
         ResourceWrite.WriteLine(JsonData);

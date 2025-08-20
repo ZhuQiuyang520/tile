@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
+  m_Script: {fileID: 11500000, guid: 452fa32ead3f67d49ab59ed90cb011b1, type: 3}
   m_Name: fail_Atlas
   m_EditorClassIdentifier: 
   atlasFile: {fileID: 4900000, guid: 3c1df2a6d8b9d4b449a11e89943fd344, type: 3}

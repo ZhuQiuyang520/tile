@@ -91,7 +91,6 @@ namespace Watermelon
             List<TileData> result = new List<TileData>();
             List<TileData> ResultReserve = new List<TileData>();
 
-            
             for (int i = 0; i < tiles.Length; i++)
             {
                 if (tiles[i].AvailableFromLevel <= levelId)
@@ -100,30 +99,14 @@ namespace Watermelon
                     //result.Add(tiles[i]);
                 }
             }
+
             int elementsPerLevel = Mathf.Clamp(levelData.ElementsPerLevel, 1, ResultReserve.Count);
-            if (RaftNonself.GetInstance().MeOutrigger && PlayerPrefs.GetInt(CConfig.NowDayChallenAward) == 2)
-            {
-                foreach (var item in NetInfoMgr.instance.ChallengeList.challenge)
-                {
-                    if (item.id == levelId)
-                    {
-                        elementsPerLevel = Mathf.Clamp(item.tile_num, 1, ResultReserve.Count);
-                    }
-                }
-            }
+
             if (ResultReserve.Count > elementsPerLevel)
             {
                 for (int i = 0; i < elementsPerLevel; i++)
                 {
-                    int index = 0;
-                    if (CommonUtil.IsApple())
-                    {
-                        index = Random.Range(30, ResultReserve.Count);
-                    }
-                    else
-                    {
-                        index = Random.Range(0, ResultReserve.Count);
-                    }
+                    int index = Random.Range(0, ResultReserve.Count);
                     result.Add(ResultReserve[index]);
                     ResultReserve.RemoveAt(index);
                 }
@@ -170,12 +153,12 @@ namespace Watermelon
 
                 int elementsRequired = Mathf.RoundToInt(levels[i].SetsAmount / desiredDifficulty);
 
-                InsulationWreck.RatherBallroomWomanhood<LevelData>(levels[i], "elementsPerLevel", elementsRequired);
+                SongwriterSieve.AssertMonopolySurrender<LevelData>(levels[i], "elementsPerLevel", elementsRequired);
 
-                SharperOnwardWreck.NowProof(levels[i]);
+                PartialOnwardSieve.LayChalk(levels[i]);
             }
 
-            SharperOnwardWreck.NowProof(this);
+            PartialOnwardSieve.LayChalk(this);
         }
 
         private float GetDifficulty(int setsAmount, int layersAmount)

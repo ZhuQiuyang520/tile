@@ -63,14 +63,14 @@ namespace Watermelon
         private int RecordOrder;
 
         public Sprite BackSprite;
+
         public virtual void Initialise(TileData tileData, ElementPosition elementPosition)
         {
             BackgroundSpriteRenderer.size = new Vector2(1, 1.09f);
             this.tileData = tileData;
             isBlocked = false;
             SetPosition(elementPosition);
-
-            if (CommonUtil.IsApple())
+            if (TemperFile.WeSound())
             {
                 backgroundSpriteRenderer.sprite = BackSprite;
             }
@@ -196,22 +196,16 @@ namespace Watermelon
             bool isClickAllowed = true;
             if (isBlocked) isClickAllowed = false;
             if (!isClickable) isClickAllowed = false;
-            RaftNonself.GetInstance().QuicklyCanal(MusicType.UIMusic.Sound_Click);
-            RaftNonself.GetInstance().QuicklyArena(HapticPatterns.PresetType.MediumImpact);
+            OilyMimetic.PenMonopoly().RefinerHumid(WhaleSpur.UIMusic.Sound_Click);
+            OilyMimetic.PenMonopoly().RefinerCoral(HapticPatterns.PresetType.MediumImpact);
             if (isClickAllowed)
             {
                 CloseAni();
-                RaftMeeting.instance.ImposeAbreast(this);
+                OilyVillage.instance.RepeatExamine(this);
             }
             else
             {
-                gameObject.transform.DOShakePosition(
-            duration: 0.2f,
-            strength: new Vector3(0.1f, 0, 0),
-            vibrato: 50,
-            randomness: 90
-        );
-                //gameObject.transform.DOShakePosition(0.2f,0.08f);
+                gameObject.transform.DOShakePosition(0.02f, 0.08f);
             }
         }
 
@@ -288,7 +282,7 @@ namespace Watermelon
         {
             gameObject.SetActive(false);
 
-            transform.SetParent(LaceNonself.FlamingArthritisComplaint);
+            transform.SetParent(PoolManager.ObjectsContainerTransform);
 
             ResetSubmitState();
         }

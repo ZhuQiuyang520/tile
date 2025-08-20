@@ -1,211 +1,211 @@
 {
-    "ConfigInfo": [
-        {
-            "Key": "\u672C\u914D\u7F6E\u6587\u4EF6\u8BF4\u660E"
-        },
-        {
-            "Key": "TuckNeedy",
-            "Value": "UIPanel\\TuckNeedy"
-        },
-        {
-            "Key": "CoinSixth",
-            "Value": "UIPanel\\CoinSixth"
-        },
-        {
-            "Key": "PenSixth",
-            "Value": "UIPanel\\PenSixth"
-        },
-        {
-            "Key": "BoldSixth",
-            "Value": "UIPanel\\BoldSixth"
-        },
-        {
-            "Key": "WhipSixth",
-            "Value": "UIPanel\\WhipSixth"
-        },
-        {
-            "Key": "JanuarySixth",
-            "Value": "UIPanel\\JanuarySixth"
-        },
-        {
-            "Key": "SodNoseNeedy",
-            "Value": "UIPanel\\SodNoseNeedy"
-        },
-        {
-            "Key": "IdealSixth",
-            "Value": "UIPanel\\IdealSixth"
-        },
-        {
-            "Key": "PackageNeedy",
-            "Value": "UIPanel\\PackageNeedy"
-        },
-        {
-            "Key": "RaftNeedy",
-            "Value": "UIPanel\\RaftNeedy"
-        },
-        {
-            "Key": "QuicklyNeedy",
-            "Value": "UIPanel\\QuicklyNeedy"
-        },
-        {
-            "Key": "CattleNeedy",
-            "Value": "UIPanel\\CattleNeedy"
-        },
-        {
-            "Key": "YolkNeedy",
-            "Value": "UIPanel\\YolkNeedy"
-        },
-        {
-            "Key": "DarkOceanNeedy",
-            "Value": "UIPanel\\DarkOceanNeedy"
-        },
-        {
-            "Key": "FavorBlurNeedy",
-            "Value": "UIPanel\\FavorBlurNeedy"
-        },
-        {
-            "Key": "StyleGlueNeedy",
-            "Value": "UIPanel\\StyleGlueNeedy"
-        },
-        {
-            "Key": "OutriggerRiverNeedy",
-            "Value": "UIPanel\\OutriggerRiverNeedy"
-        },
-        {
-            "Key": "OutriggerTopNeedy",
-            "Value": "UIPanel\\OutriggerTopNeedy"
-        },
-        {
-            "Key": "OutriggerYolk",
-            "Value": "UIPanel\\OutriggerYolk"
-        },
-        {
-            "Key": "Toast",
-            "Value": "UIPanel\\Common\\Toast"
-        },
-        {
-            "Key": "CollectEffect",
-            "Value": "UIPanel\\Common\\CollectEffect"
-        },
-        {
-            "Key": "LevelCompletePanel",
-            "Value": "UIPanel\\LevelCompletePanel"
-        },
-        {
-            "Key": "FlatNoNeedy",
-            "Value": "UIPanel\\FlatNoNeedy"
-        },
-        {
-            "Key": "CashOutPanel",
-            "Value": "UIPanel\\CashOutPanel"
-        },
-        {
-            "Key": "DailyGiftPanel",
-            "Value": "UIPanel\\DailyGift\\DailyGiftPanel"
-        },
-        {
-            "Key": "RemoveAdPanel",
-            "Value": "UIPanel\\RemoveAd\\RemoveAdPanel"
-        },
-        {
-            "Key": "EndlessTreasurePanel",
-            "Value": "UIPanel\\EndlessTreasure\\EndlessTreasurePanel"
-        },
-        {
-            "Key": "RankStarPanel",
-            "Value": "UIPanel\\RankStar\\RankStarPanel"
-        },
-        {
-            "Key": "RewardPanel",
-            "Value": "UIPanel\\RewardPanel\\RewardPanel"
-        },
-        {
-            "Key": "NewUserGuidePanel",
-            "Value": "UIPanel\\NewUserGuidePanel"
-        },
-        {
-            "Key": "PortraitRedeemPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\RedeemPanel"
-        },
-        {
-            "Key": "PortraitWithdrawPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\WithdrawPanel"
-        },
-        {
-            "Key": "PortraitConfirmEmailPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\ConfirmEmailPanel"
-        },
-        {
-            "Key": "PortraitRecordPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\RecordPanel"
-        },
-        {
-            "Key": "PortraitGoldAmazonRedeemPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\GoldAmazonRedeemPanel"
-        },
-        {
-            "Key": "PortraitRedeemGiftPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\RedeemGiftPanel"
-        },
-        {
-            "Key": "PortraitAddressPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\AddressPanel"
-        },
-        {
-            "Key": "PortraitInstructionsPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\InstructionsPanel"
-        },
-        {
-            "Key": "PortraitRewardsGiftInstructionPanel",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\RewardsGiftInstructionPanel"
-        },
-        {
-            "Key": "PortraitCollectPuzzle",
-            "Value": "SOHOShop\\UIPanel\\Portrait\\CollectPuzzle"
-        },
-        {
-            "Key": "LandscapeRedeemPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\RedeemPanel"
-        },
-        {
-            "Key": "LandscapeWithdrawPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\WithdrawPanel"
-        },
-        {
-            "Key": "LandscapeConfirmEmailPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\ConfirmEmailPanel"
-        },
-        {
-            "Key": "LandscapeRecordPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\RecordPanel"
-        },
-        {
-            "Key": "LandscapeGoldAmazonRedeemPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\GoldAmazonRedeemPanel"
-        },
-        {
-            "Key": "LandscapeRedeemGiftPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\RedeemGiftPanel"
-        },
-        {
-            "Key": "LandscapeAddressPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\AddressPanel"
-        },
-        {
-            "Key": "LandscapeInstructionsPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\InstructionsPanel"
-        },
-        {
-            "Key": "LandscapeRewardsGiftInstructionPanel",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\RewardsGiftInstructionPanel"
-        },
-        {
-            "Key": "LandscapeCollectPuzzle",
-            "Value": "SOHOShop\\UIPanel\\Landscape\\CollectPuzzle"
-        },
-        {
-            "Key": "IfNonselfFlopNeedy",
-            "Value": "UIPanel\\Test\\IfNonselfFlopNeedy"
-        }
-    ]
+  "ConfigInfo": [
+    {
+      "Key": "\u672C\u914D\u7F6E\u6587\u4EF6\u8BF4\u660E"
+    },
+    {
+      "Key": "OvenToxic",
+      "Value": "UIPanel\\OvenToxic"
+    },
+    {
+      "Key": "HomePanelIOS",
+      "Value": "UIPanel\\HomePanelIOS"
+    },
+    {
+      "Key": "BurReadToxic",
+      "Value": "UIPanel\\BurReadToxic"
+    },
+    {
+      "Key": "NoveltyToxic",
+      "Value": "UIPanel\\NoveltyToxic"
+    },
+    {
+      "Key": "OilyToxic",
+      "Value": "UIPanel\\OilyToxic"
+    },
+    {
+      "Key": "OilyToxicIOS",
+      "Value": "UIPanel\\OilyToxicIOS"
+    },
+    {
+      "Key": "RefinerToxic",
+      "Value": "UIPanel\\RefinerToxic"
+    },
+    {
+      "Key": "RefinerToxicIOS",
+      "Value": "UIPanel\\RefinerToxicIOS"
+    },
+    {
+      "Key": "RedbudToxic",
+      "Value": "UIPanel\\RedbudToxic"
+    },
+    {
+      "Key": "RedbudToxicIOS",
+      "Value": "UIPanel\\RedbudToxicIOS"
+    },
+    {
+      "Key": "HoneToxicIOS",
+      "Value": "UIPanel\\HoneToxicIOS"
+    },
+    {
+      "Key": "HoneToxic",
+      "Value": "UIPanel\\HoneToxic"
+    },
+    {
+      "Key": "PlowBrantToxic",
+      "Value": "UIPanel\\PlowBrantToxic"
+    },
+    {
+      "Key": "EnterToxic",
+      "Value": "UIPanel\\EnterToxic"
+    },
+    {
+      "Key": "SpikyEasyToxic",
+      "Value": "UIPanel\\SpikyEasyToxic"
+    },
+    {
+      "Key": "ZebraJuneToxic",
+      "Value": "UIPanel\\ZebraJuneToxic"
+    },
+    {
+      "Key": "AdmissionInputToxic",
+      "Value": "UIPanel\\AdmissionInputToxic"
+    },
+    {
+      "Key": "AdmissionCutToxic",
+      "Value": "UIPanel\\AdmissionCutToxic"
+    },
+    {
+      "Key": "AdmissionHone",
+      "Value": "UIPanel\\AdmissionHone"
+    },
+    {
+      "Key": "Spear",
+      "Value": "UIPanel\\Common\\Spear"
+    },
+    {
+      "Key": "CollectEffect",
+      "Value": "UIPanel\\Common\\CollectEffect"
+    },
+    {
+      "Key": "LevelCompletePanel",
+      "Value": "UIPanel\\LevelCompletePanel"
+    },
+    {
+      "Key": "PinkUsToxic",
+      "Value": "UIPanel\\PinkUsToxic"
+    },
+    {
+      "Key": "CashOutPanel",
+      "Value": "UIPanel\\TuskShyToxic"
+    },
+    {
+      "Key": "DailyGiftPanel",
+      "Value": "UIPanel\\DailyGift\\DailyGiftPanel"
+    },
+    {
+      "Key": "RemoveAdPanel",
+      "Value": "UIPanel\\RemoveAd\\RemoveAdPanel"
+    },
+    {
+      "Key": "EndlessTreasurePanel",
+      "Value": "UIPanel\\EndlessTreasure\\EndlessTreasurePanel"
+    },
+    {
+      "Key": "RankStarPanel",
+      "Value": "UIPanel\\RankStar\\RankStarPanel"
+    },
+    {
+      "Key": "RewardPanel",
+      "Value": "UIPanel\\RewardPanel\\RewardPanel"
+    },
+    {
+      "Key": "NewUserGuidePanel",
+      "Value": "UIPanel\\NewUserGuidePanel"
+    },
+    {
+      "Key": "PortraitRedeemPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\RedeemPanel"
+    },
+    {
+      "Key": "PortraitWithdrawPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\WithdrawPanel"
+    },
+    {
+      "Key": "PortraitConfirmEmailPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\ConfirmEmailPanel"
+    },
+    {
+      "Key": "PortraitRecordPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\RecordPanel"
+    },
+    {
+      "Key": "PortraitGoldAmazonRedeemPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\GoldAmazonRedeemPanel"
+    },
+    {
+      "Key": "PortraitRedeemGiftPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\RedeemGiftPanel"
+    },
+    {
+      "Key": "PortraitAddressPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\AddressPanel"
+    },
+    {
+      "Key": "PortraitInstructionsPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\InstructionsPanel"
+    },
+    {
+      "Key": "PortraitRewardsGiftInstructionPanel",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\RewardsGiftInstructionPanel"
+    },
+    {
+      "Key": "PortraitCollectPuzzle",
+      "Value": "SOHOShop\\UIPanel\\Portrait\\CollectPuzzle"
+    },
+    {
+      "Key": "LandscapeRedeemPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\RedeemPanel"
+    },
+    {
+      "Key": "LandscapeWithdrawPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\WithdrawPanel"
+    },
+    {
+      "Key": "LandscapeConfirmEmailPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\ConfirmEmailPanel"
+    },
+    {
+      "Key": "LandscapeRecordPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\RecordPanel"
+    },
+    {
+      "Key": "LandscapeGoldAmazonRedeemPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\GoldAmazonRedeemPanel"
+    },
+    {
+      "Key": "LandscapeRedeemGiftPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\RedeemGiftPanel"
+    },
+    {
+      "Key": "LandscapeAddressPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\AddressPanel"
+    },
+    {
+      "Key": "LandscapeInstructionsPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\InstructionsPanel"
+    },
+    {
+      "Key": "LandscapeRewardsGiftInstructionPanel",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\RewardsGiftInstructionPanel"
+    },
+    {
+      "Key": "LandscapeCollectPuzzle",
+      "Value": "SOHOShop\\UIPanel\\Landscape\\CollectPuzzle"
+    },
+    {
+      "Key": "ToMimeticBushToxic",
+      "Value": "UIPanel\\Test\\ToMimeticBushToxic"
+    }
+  ]
 }

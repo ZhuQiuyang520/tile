@@ -42,15 +42,15 @@ public class DebugWindow : OdinEditorWindow
     public int level;
     private void StartLevel()
     {
-        LevelCtrl.Instance.StartLevel(level);
+        ClumpRule.Instance.CrampClump(level);
     }
     private void FinishLevel()
     {
-        LevelCtrl.Instance.LevelVictory();
+        ClumpRule.Instance.ClumpInclude();
     }
     private void StartNextLevel()
     {
         level++;
-        LevelCtrl.Instance.StartLevel(level);
+        ClumpRule.Instance.CrampClump(level);
     }
 }

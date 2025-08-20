@@ -24,15 +24,14 @@ public class CashOutEnter : MonoBehaviour
 
     void Start()
     {
-        CashOutManager.GetInstance()._CashOutEnter = this;
-        OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
+        CashOutManager.PenMonopoly()._CashOutEnter = this;
+        OpenPanelBtn.onClick.AddListener(() => { UIMimetic.PenMonopoly().BlueUIBasin(nameof(CashOutPanel)); });
         UpdateMoney();
     }
 
     public void UpdateData()
     {
-        CashOutManager.GetInstance()._CashOutEnter = this;
-        //OpenPanelBtn.onClick.AddListener(() => { UIManager.GetInstance().ShowUIForms(nameof(CashOutPanel)); });
+        CashOutManager.PenMonopoly()._CashOutEnter = this;
         UpdateMoney();
     }
 
@@ -48,10 +47,10 @@ public class CashOutEnter : MonoBehaviour
         MaxMoneyFillAnim?.Kill(true);
 
         float MoneyStart = float.Parse(MoneyText.text, CultureInfo.CurrentCulture);
-        MoneyTextAnim = DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), CashOutManager.GetInstance().Money, 1f);
-        CashText.text = CashOutManager.GetInstance().Data.Cash.ToString("F2");
-        float MaxMoney = float.Parse(NetInfoMgr.instance.CashOut_Data.convert_goal, CultureInfo.CurrentCulture);
-        float MoneyEnd = CashOutManager.GetInstance().Money;
+        MoneyTextAnim = DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), CashOutManager.PenMonopoly().Money, 1f);
+        CashText.text = CashOutManager.PenMonopoly().Data.Cash.ToString("F2");
+        float MaxMoney = float.Parse(SawSelfEke.instance.TuskShy_Have.convert_goal, CultureInfo.CurrentCulture);
+        float MoneyEnd = CashOutManager.PenMonopoly().Money;
         MaxMoneyFillAnim = DOTween.To(() => MaxMoneyFill.fillAmount, x => MaxMoneyFill.fillAmount = x, Mathf.Min(1, MoneyEnd / MaxMoney), 1f);
     }
     public void MoneyToCashAnim(bool IconFly)
@@ -62,7 +61,7 @@ public class CashOutEnter : MonoBehaviour
 
         float MoneyStart = float.Parse(MoneyText.text, CultureInfo.CurrentCulture);
         float CashOutStart = float.Parse(CashText.text, CultureInfo.CurrentCulture);
-        float CashOutEnd = CashOutManager.GetInstance().Data.Cash;
+        float CashOutEnd = CashOutManager.PenMonopoly().Data.Cash;
         MoneyTextAnim = DOTween.To(() => MoneyStart, x => MoneyText.text = x.ToString("F2"), 0, 1f);
         CashTextAnim = DOTween.To(() => CashOutStart, x => CashText.text = x.ToString("F2"), CashOutEnd, 1f).SetDelay(.7f);
 
@@ -78,7 +77,7 @@ public class CashOutEnter : MonoBehaviour
                 img.transform.DOMove(FlyEnd.transform.position, .7f).SetEase(Ease.Linear).SetDelay(i * 0.1f).OnComplete(() =>
                 {
                     img.gameObject.SetActive(false);
-                    MusicMgr.GetInstance().PlayEffect(MusicType.UIMusic.Sound_GoldCoin);
+                    WhaleEke.PenMonopoly().JuneOxygen(WhaleSpur.UIMusic.Sound_GoldCoin);
                 });
             }
         }

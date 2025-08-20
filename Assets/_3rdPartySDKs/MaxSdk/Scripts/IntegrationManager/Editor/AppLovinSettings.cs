@@ -1,4 +1,4 @@
-//
+﻿//
 //  AppLovinSettings.cs
 //  AppLovin MAX Unity Plugin
 //
@@ -6,8 +6,8 @@
 //  Copyright © 2019 AppLovin. All rights reserved.
 //
 
-using System;
 using AppLovinMax.Scripts.IntegrationManager.Editor;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using UnityEditor;

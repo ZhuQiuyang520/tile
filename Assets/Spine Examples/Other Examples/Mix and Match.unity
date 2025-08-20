@@ -576,7 +576,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4f554405f8f06164db0773d689da243c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afa9324a7e8bfee4193c54e12eaff053, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544416362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f4be1e900da7f4992e48e38d48b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: a467507a4ffb1d542a558739b2fede77, type: 2}
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544416362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3501002f468384b80d5853d04e19ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 71200491203a8834aab5e71011feb359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonColor: {r: 0.8866126, g: 0.7977941, b: 0.9117647, a: 1}
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703211037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f4be1e900da7f4992e48e38d48b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: a467507a4ffb1d542a558739b2fede77, type: 2}
@@ -1052,15 +1052,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703211037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd7c8b428f700c438a6a14addca0346, type: 3}
+  m_Script: {fileID: 11500000, guid: bcf87c03fb381534eaa4f24af9a7deef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   templateAttachmentsSkin: base
   sourceMaterial: {fileID: 2100000, guid: 1455e88fdb81ccc45bdeaedd657bad4d, type: 2}
-  visorSprite: {fileID: 21300000, guid: 4f554405f8f06164db0773d689da243c, type: 3}
+  visorSprite: {fileID: 21300000, guid: afa9324a7e8bfee4193c54e12eaff053, type: 3}
   visorSlot: goggles
   visorKey: goggles
-  gunSprite: {fileID: 21300000, guid: 02c4cbcce432ae74bb2d965060e64d29, type: 3}
+  gunSprite: {fileID: 21300000, guid: 136282ad6c9b5664597eae77993e0468, type: 3}
   gunSlot: gun
   gunKey: gun
   repack: 1
@@ -1142,15 +1142,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958410248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e24c5293ec0b444eba7a2680caa925f, type: 3}
+  m_Script: {fileID: 11500000, guid: 321a713df354b9d4e81355c9fe8dfe78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseSkinName: base
   sourceMaterial: {fileID: 2100000, guid: 1455e88fdb81ccc45bdeaedd657bad4d, type: 2}
-  visorSprite: {fileID: 21300000, guid: 4f554405f8f06164db0773d689da243c, type: 3}
+  visorSprite: {fileID: 21300000, guid: afa9324a7e8bfee4193c54e12eaff053, type: 3}
   visorSlot: goggles
   visorKey: goggles
-  gunSprite: {fileID: 21300000, guid: 02c4cbcce432ae74bb2d965060e64d29, type: 3}
+  gunSprite: {fileID: 21300000, guid: 136282ad6c9b5664597eae77993e0468, type: 3}
   gunSlot: gun
   gunKey: gun
   repack: 1
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1958410248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d85b887af7e6c3f45a2e2d2920d641bc, type: 3}
+  m_Script: {fileID: 11500000, guid: a4158a64953aa2e46b72641a112b701d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: b66cf7a186d13054989b33a5c90044e4, type: 2}
@@ -1295,7 +1295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 02c4cbcce432ae74bb2d965060e64d29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 136282ad6c9b5664597eae77993e0468, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

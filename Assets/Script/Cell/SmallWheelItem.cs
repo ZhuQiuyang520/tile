@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SmallWheelItem : MonoBehaviour
 {
-[UnityEngine.Serialization.FormerlySerializedAs("text")]    public Text Fail;
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {

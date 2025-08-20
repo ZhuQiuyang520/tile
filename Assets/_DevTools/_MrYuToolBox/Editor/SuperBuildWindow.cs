@@ -89,6 +89,8 @@ public class SuperBuildWindow : UnityEditor.EditorWindow
         GUILayout.Label("Adjust_APP_ID:  " + info.Adjust_APP_ID);
         GUILayout.Label("GameCode:  " + info.GameCode);
         GUILayout.Label("Rate_ID:  " + info.Rate_ID);
+        GUILayout.Label("真提现 登录平台:  " + (LoginPlatform)info.ZT_LoginPlatform);
+        GUILayout.Label("真提现 短剧后台产品ID:  " + info.ZT_ID);
         GUILayout.Space(50);
         GUILayout.BeginHorizontal();
         if (info.DesState == "DES")
@@ -96,7 +98,7 @@ public class SuperBuildWindow : UnityEditor.EditorWindow
             if (GUILayout.Button("解密Applovin_SDK_KEY"))
             {
                 info.DesState = "STR";
-                info.Applovin_SDK_KEY = GetSystemData.DecryptDES(info.Applovin_SDK_KEY);
+                info.Applovin_SDK_KEY = PenSystemHave.WrestleDES(info.Applovin_SDK_KEY);
 
             }
         }
@@ -105,7 +107,7 @@ public class SuperBuildWindow : UnityEditor.EditorWindow
             if (GUILayout.Button("加密Applovin_SDK_KEY"))
             {
                 info.DesState = "DES";
-                info.Applovin_SDK_KEY = GetSystemData.EncryptDES(info.Applovin_SDK_KEY);
+                info.Applovin_SDK_KEY = PenSystemHave.LegallyDES(info.Applovin_SDK_KEY);
 
             }
         }
@@ -125,10 +127,4 @@ public class SuperBuildWindow : UnityEditor.EditorWindow
 
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

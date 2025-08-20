@@ -36,7 +36,7 @@ public class GameUtil
             {
                 if (type == RewardType.cash)
                 {
-                    float random = Random.Range((float)NetInfoMgr.instance.InitData.cash_random[0], (float)NetInfoMgr.instance.InitData.cash_random[1]);
+                    float random = Random.Range((float)SawSelfEke.instance.BullHave.cash_random[0], (float)SawSelfEke.instance.BullHave.cash_random[1]);
                     return item.multi * (1 + random);
                 }
                 else
@@ -53,17 +53,17 @@ public class GameUtil
     /// <returns></returns>
     public static double GetCashMultiWithOutRandom()
     {
-        return GetMultiWithOutRandom(SaveDataManager.GetDouble(CConfig.sv_CumulativeCash),
-            NetInfoMgr.instance.InitData.cash_group);
+        return GetMultiWithOutRandom(LuckHaveMimetic.PenZigzag(CLagoon.No_WintertimeTusk),
+            SawSelfEke.instance.BullHave.cash_group);
     }
     public static double GetGoldMulti()
     {
-        return GetMulti(RewardType.gold, SaveDataManager.GetDouble(CConfig.sv_CumulativeGoldCoin), NetInfoMgr.instance.InitData.gold_group);
+        return GetMulti(RewardType.gold, LuckHaveMimetic.PenZigzag(CLagoon.No_WintertimeIsleBank), SawSelfEke.instance.BullHave.gold_group);
     }
 
     public static double GetCashMulti()
     {
-        return GetMulti(RewardType.cash, SaveDataManager.GetDouble(CConfig.sv_CumulativeCash), NetInfoMgr.instance.InitData.cash_group);
+        return GetMulti(RewardType.cash, LuckHaveMimetic.PenZigzag(CLagoon.No_WintertimeTusk), SawSelfEke.instance.BullHave.cash_group);
     }
     /// <summary>
     /// 获取权重系数
@@ -89,8 +89,8 @@ public class GameUtil
     /// <returns></returns>
     public static double GetCashWeightMulti()
     {
-        return GetWeightMulti(SaveDataManager.GetDouble(CConfig.sv_CumulativeCash),
-            NetInfoMgr.instance.InitData.cash_group);
+        return GetWeightMulti(LuckHaveMimetic.PenZigzag(CLagoon.No_WintertimeTusk),
+            SawSelfEke.instance.BullHave.cash_group);
     }
 
     /// <summary>
@@ -105,7 +105,6 @@ public class GameUtil
         {
             allweight += data.weight;
         }
-
         float r = Random.Range(0, (float)allweight);
         int index = 0;
         float nowWeight = 0;
@@ -115,6 +114,8 @@ public class GameUtil
             if (r < nowWeight)
             {
                 index = i;
+
+                Debug.Log(i + "," + list[i].num);
                 break;
             }
         }
@@ -126,23 +127,23 @@ public class GameUtil
         List<WheelMultiItem> list = new List<WheelMultiItem>();
         if (type == "cash")
         {
-            list = new List<WheelMultiItem>(NetInfoMgr.instance.GameData.wheel_reward_multi.cash);
+            list = new List<WheelMultiItem>(SawSelfEke.instance.OilyHave.wheel_reward_multi.cash);
         }
         else if (type == "gold")
         {
-            list = new List<WheelMultiItem>(NetInfoMgr.instance.GameData.wheel_reward_multi.gold);
+            list = new List<WheelMultiItem>(SawSelfEke.instance.OilyHave.wheel_reward_multi.gold);
         }
         else if(type == "shuffle")
         {
-            list = new List<WheelMultiItem>(NetInfoMgr.instance.GameData.wheel_reward_multi.shuffle);
+            list = new List<WheelMultiItem>(SawSelfEke.instance.OilyHave.wheel_reward_multi.shuffle);
         }
         else if (type == "undo")
         {
-            list = new List<WheelMultiItem>(NetInfoMgr.instance.GameData.wheel_reward_multi.undo);
+            list = new List<WheelMultiItem>(SawSelfEke.instance.OilyHave.wheel_reward_multi.undo);
         }
         else if (type == "wand")
         {
-            list = new List<WheelMultiItem>(NetInfoMgr.instance.GameData.wheel_reward_multi.wand);
+            list = new List<WheelMultiItem>(SawSelfEke.instance.OilyHave.wheel_reward_multi.wand);
         }
         double allweight = 0;
         foreach (WheelMultiItem data in list)

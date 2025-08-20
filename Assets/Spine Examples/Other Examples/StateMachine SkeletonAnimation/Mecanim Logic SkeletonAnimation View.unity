@@ -306,7 +306,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 391192147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f4be1e900da7f4992e48e38d48b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 2f899e95232e6144786de8fb99678a8d, type: 2}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 391192147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d55a3bd6ac81af44b2f9a4447f2ae72, type: 3}
+  m_Script: {fileID: 11500000, guid: bf4d6591811b57943952288cb3c6c66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 391192148}
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 939164930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782062825deffd64ba7e7e9f978788e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 69b8882f4b6198b4394e94743ef382f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   logicAnimator: {fileID: 939164932}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 939164930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd8d49de34fd0724ca8c1ae3c44afe59, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e87ef60de9105b439f41f2e73a3bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 391192148}

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc0ba1b5ef6b4a6b9dd53d7eadfea16, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b40232a17b13934fb5e8a804e9dd6fd, type: 3}
   m_Name: AppLovinSettings
   m_EditorClassIdentifier: 
   qualityServiceEnabled: 1
-  sdkKey: QL3XprAs5GbKuJn5YYPJwb5lbqxLXppEIfqZoQyfJE/uu9JDKK/gfss3qjpwGTwHwTVp9RYJoIhGIJ58aueDFNidBgkBeei1N6WtfsVRcRSygfmi517ELg==
+  sdkKey: 9bU5YzJg14jcf4hZ+sxDZk4ttaZd+tgDFVq7Cz00Y6J9U6IIbX75V96gswAoD6D/VgWlsgrJymdOmAL/YNaNbOqAxygM34XukR0o7Ed+uJ8NJkwc5jViug==
   customGradleVersionUrl: 
   customGradleToolsVersion: 
   adMobAndroidAppId: 

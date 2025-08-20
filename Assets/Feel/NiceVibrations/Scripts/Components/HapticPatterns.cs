@@ -1,4 +1,4 @@
-﻿// Copyright (c) Meta Platforms, Inc. and affiliates. 
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
 
 using System;
 using UnityEngine;
@@ -33,15 +33,11 @@ namespace Lofelt.NiceVibrations
         public enum PresetType
         {
             Selection = 0,
-            //过关
             Success = 1,
             Warning = 2,
             Failure = 3,
-            //按钮
             LightImpact = 4,
-            //点击 转盘
             MediumImpact = 5,
-            //消除
             HeavyImpact = 6,
             RigidImpact = 7,
             SoftImpact = 8,

@@ -360,7 +360,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 806260513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa24ce3e8b4a445479906686d9756911, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff5c175bdb2db94494d0d5c38c6e941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1902172108
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902172108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6767a180de870304caa2013b2772dd62, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e3793dde3f95804fb8906ea151cf1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1902172110
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902172108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600c02144c4813244abd262cbcbe8825, type: 3}
+  m_Script: {fileID: 11500000, guid: edd4c534c9070db4bb4b238bde1298ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   show: 0
@@ -408,35 +408,35 @@ MonoBehaviour:
   fps: 0
   fpsText: 
   images:
-    clearImage: {fileID: 2800000, guid: 112c6fcf56e349449ab2e6ad76b67816, type: 3}
-    collapseImage: {fileID: 2800000, guid: 4623f326a884a2546ab39078bf7822c3, type: 3}
-    clearOnNewSceneImage: {fileID: 2800000, guid: 3a6bc61a8319b1949ab9f1f2db1302b4,
+    clearImage: {fileID: 2800000, guid: 424555ab45d7ac64e9c3743e01f90530, type: 3}
+    collapseImage: {fileID: 2800000, guid: 3868427f36e2ff1429026cbada556db2, type: 3}
+    clearOnNewSceneImage: {fileID: 2800000, guid: 78680518a9b70d946968793ded523007,
       type: 3}
-    showTimeImage: {fileID: 2800000, guid: 782e03669fa4a614e89ef56252134250, type: 3}
-    showSceneImage: {fileID: 2800000, guid: ff4dfb29f203a174ab8e4c498afe908a, type: 3}
-    userImage: {fileID: 2800000, guid: 2bcdc012e7356f1449ce7d3a31dc458c, type: 3}
-    showMemoryImage: {fileID: 2800000, guid: f447d62f2dacf9843be7cbf168a3a9d0, type: 3}
-    softwareImage: {fileID: 2800000, guid: 6c91fc88ee6c791468318d85febfb48d, type: 3}
-    dateImage: {fileID: 2800000, guid: a7561cd0a9f62a84e99bff1abce2a222, type: 3}
-    showFpsImage: {fileID: 2800000, guid: 90b2f48155dc0e74f8e428561ac79da5, type: 3}
-    infoImage: {fileID: 2800000, guid: 2954bef266e6d794aba08ceacc887a0f, type: 3}
+    showTimeImage: {fileID: 2800000, guid: c6fbc81c6bdf6dd4ab8758b6bb13ab60, type: 3}
+    showSceneImage: {fileID: 2800000, guid: 2a67016f787aecf4a9dfe65ddeaa7952, type: 3}
+    userImage: {fileID: 2800000, guid: ba7ef4b93b1b0fe4fa7cf39b54ac6711, type: 3}
+    showMemoryImage: {fileID: 2800000, guid: 049a880d45bf63e4482ac0740dc4faf7, type: 3}
+    softwareImage: {fileID: 2800000, guid: 413ef2da442a03b44a1cdd5aba0997be, type: 3}
+    dateImage: {fileID: 2800000, guid: d8b5d14e39bf2d54fb1bc5631940157a, type: 3}
+    showFpsImage: {fileID: 2800000, guid: 40919fec07ddf2d4bb0190c288e5c84e, type: 3}
+    infoImage: {fileID: 2800000, guid: 9658338be03cf3a4492b424cabc36fe5, type: 3}
     saveLogsImage: {fileID: 0}
-    searchImage: {fileID: 2800000, guid: bfef37b5a26d2264798616d960451329, type: 3}
+    searchImage: {fileID: 2800000, guid: ee814b6ae0e2c4f41918adfe9c992778, type: 3}
     copyImage: {fileID: 0}
-    closeImage: {fileID: 2800000, guid: b65e9be99974bc94eab5d6698811d0b8, type: 3}
-    buildFromImage: {fileID: 2800000, guid: 8702be598dd9f504ca33be2afee2ca33, type: 3}
-    systemInfoImage: {fileID: 2800000, guid: e9011b1dc9256ad4d9c19a31c595f95f, type: 3}
-    graphicsInfoImage: {fileID: 2800000, guid: 999d31716332cc04eb4abc9c9270b0ca, type: 3}
-    backImage: {fileID: 2800000, guid: a0632a18e7c665641b94fea66506ab50, type: 3}
-    logImage: {fileID: 2800000, guid: e876b803a4dd5c5488078071d15aa9c0, type: 3}
-    warningImage: {fileID: 2800000, guid: 1066be8e7b994b94c8a182b8dbe30705, type: 3}
-    errorImage: {fileID: 2800000, guid: 7640ebf8b3a92124d821d3b4b8b3fd7e, type: 3}
-    barImage: {fileID: 2800000, guid: 8128d4f4c0193e34586f9631ef7d4787, type: 3}
-    button_activeImage: {fileID: 2800000, guid: 2580a2e903691e44282e56ed6e0ff37a,
+    closeImage: {fileID: 2800000, guid: 1262aeb02c4677d479739bd14ff62afd, type: 3}
+    buildFromImage: {fileID: 2800000, guid: 4b3728a7cc2bb4e459eefb8a79ebadb6, type: 3}
+    systemInfoImage: {fileID: 2800000, guid: 2593c3c4c48d3ec4ca33a002723f8c82, type: 3}
+    graphicsInfoImage: {fileID: 2800000, guid: faec025dabc3fc34a9536d305f1743fd, type: 3}
+    backImage: {fileID: 2800000, guid: 3248100786c32664bb1c2ce9e550fd3b, type: 3}
+    logImage: {fileID: 2800000, guid: 8ddf75efdd2ceda409838ad62e7d700c, type: 3}
+    warningImage: {fileID: 2800000, guid: 07ff99908caf19c43aade18d970b3616, type: 3}
+    errorImage: {fileID: 2800000, guid: 540f7ee5150e0f0479f10b58c0d636ea, type: 3}
+    barImage: {fileID: 2800000, guid: b594f097dac606d43ac1bd3e30302f5b, type: 3}
+    button_activeImage: {fileID: 2800000, guid: 3aa0ceca990775644b5b5214239d3326,
       type: 3}
-    even_logImage: {fileID: 2800000, guid: d27aad55b568c6544b0b95a95da44bc7, type: 3}
-    odd_logImage: {fileID: 2800000, guid: 8ffbb44a2c3adae45913474e4fd487f5, type: 3}
-    selectedImage: {fileID: 2800000, guid: 17117a429b08e7e43b0b6c8421de69fe, type: 3}
+    even_logImage: {fileID: 2800000, guid: aac0ca16c866b6c49885159ad225fb2c, type: 3}
+    odd_logImage: {fileID: 2800000, guid: 46593f0a13ef50a47b79ebc752fe04c2, type: 3}
+    selectedImage: {fileID: 2800000, guid: f31fe1f86636d5d49923dfc8cfdc3895, type: 3}
     reporterScrollerSkin: {fileID: 11400000, guid: 1cc68832d00d3284a9324a4dc05be753,
       type: 2}
   size: {x: 32, y: 32}
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902172108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cac68c003767bec459aa60dc282ff67d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a267bb0dad81e841ac7654e5e4f2c46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   logTestCount: 100

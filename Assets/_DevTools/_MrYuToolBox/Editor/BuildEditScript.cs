@@ -12,7 +12,7 @@ using AppLovinMax.Scripts.IntegrationManager.Editor;
 [ExecuteInEditMode]
 public class BuildEditScript : MonoBehaviour
 {
-    
+
     static SuperBuildWindow buildWindow;
     //static BuildInfoData info;
     [MenuItem("遇先生工具包/一键[打包]")]
@@ -44,40 +44,32 @@ public class BuildEditScript : MonoBehaviour
             isSame = false;
             Debug.Log("包名");
         }
-        if (Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseUrl != info.BaseUrl)
+        if (Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormTop != info.BaseUrl)
         {
             isSame = false;
             Debug.Log("域名");
         }
-#if UNITY_ANDROID
         if (AppLovinSettings.Instance.SdkKey != info.Applovin_SDK_KEY)
         {
             isSame = false;
             Debug.Log("max key");
         }
-#else
-        if (AppLovinSettings.Instance.SdkKey != info.Applovin_SDK_KEY)
-        {
-            isSame = false;
-            Debug.Log("max key");
-        }
-#endif
-        if (Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_SDK_KEY != info.Applovin_SDK_KEY)
+        if (Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_SDK_KEY != info.Applovin_SDK_KEY)
         {
             isSame = false;
             Debug.Log("admanager key");
         }
-        if (Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_REWARD_ID != info.Applovin_REWARD_ID)
+        if (Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_REWARD_ID != info.Applovin_REWARD_ID)
         {
             isSame = false;
             Debug.Log("reward id");
         }
-        if (Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_INTER_ID != info.Applovin_INTER_ID)
+        if (Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_INTER_ID != info.Applovin_INTER_ID)
         {
             isSame = false;
             Debug.Log("inter id");
         }
-        if (Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].GameCode != info.GameCode)
+        if (Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].OilyDime != info.GameCode)
         {
             isSame = false;
             Debug.Log("gamecode");
@@ -86,6 +78,16 @@ public class BuildEditScript : MonoBehaviour
         {
             isSame = false;
             Debug.Log("adjust");
+        }
+        if (GameObject.Find("MainManager").GetComponent<CashOutManager>()._LoginPlatform != (LoginPlatform)info.ZT_LoginPlatform)
+        {
+            isSame = false;
+            Debug.Log("真提现平台");
+        }
+        if (GameObject.Find("MainManager").GetComponent<CashOutManager>().AppInfo != info.ZT_ID)
+        {
+            isSame = false;
+            Debug.Log("真提现短剧后台产品id");
         }
         if (!isSame)
         {
@@ -130,7 +132,7 @@ public class BuildEditScript : MonoBehaviour
         PlayerSettings.bundleVersion = buildWindow.Version;
         PlayerSettings.productName = info.GameName;
         PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Unknown, new Texture2D[] { buildWindow.LogoTexture });
-        PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
+        //PlayerSettings.defaultInterfaceOrientation = UIOrientation.Portrait;
         if (buildTargetIndex == 0)
         {
             PlayerSettings.iOS.buildNumber = info.BuildCode.ToString();
@@ -138,8 +140,8 @@ public class BuildEditScript : MonoBehaviour
         }
         else
         {
-            //PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel22;
-            //PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel30;
+            PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel28;
+            //PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevel33;
             PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
             AndroidArchitecture aac = AndroidArchitecture.ARM64 | AndroidArchitecture.ARMv7;
             PlayerSettings.Android.targetArchitectures = aac;
@@ -147,21 +149,16 @@ public class BuildEditScript : MonoBehaviour
             EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
             PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, info.PackageName);
         }
-
-#if UNITY_ANDROID
         AppLovinSettings.Instance.SdkKey = info.Applovin_SDK_KEY;
-#else
-        AppLovinSettings.Instance.SdkKey = info.Applovin_SDK_KEY;
-#endif
         EditorUtility.SetDirty(AppLovinSettings.Instance);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
         //EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
 
-        Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_SDK_KEY = info.Applovin_SDK_KEY;
-        Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_REWARD_ID = info.Applovin_REWARD_ID;
-        Resources.FindObjectsOfTypeAll<ADManager>()[0].MAX_INTER_ID = info.Applovin_INTER_ID;
-        
+        Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_SDK_KEY = info.Applovin_SDK_KEY;
+        Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_REWARD_ID = info.Applovin_REWARD_ID;
+        Resources.FindObjectsOfTypeAll<ADMimetic>()[0].MAX_INTER_ID = info.Applovin_INTER_ID;
+
         UnityEditorInternal.ComponentUtility.CopyComponent(GameObject.Find("Adjust").GetComponent<com.adjust.sdk.Adjust>());
         GameObject adjustObj = new GameObject();
         UnityEditorInternal.ComponentUtility.PasteComponentAsNew(adjustObj);
@@ -174,67 +171,72 @@ public class BuildEditScript : MonoBehaviour
         adjustObj.GetComponent<com.adjust.sdk.Adjust>().eventBuffering = false;
         adjustObj.GetComponent<com.adjust.sdk.Adjust>().sendInBackground = false;
         adjustObj.GetComponent<com.adjust.sdk.Adjust>().launchDeferredDeeplink = true;
-        if (!GameObject.Find("MainManager") || !GameObject.Find("MainManager").GetComponent<AdjustInitManager>())
+        if (!GameObject.Find("MainManager") || !GameObject.Find("MainManager").GetComponent<ShrimpBullMimetic>())
         {
             if (GameObject.Find("MainManager"))
             {
-                GameObject.Find("MainManager").AddComponent<AdjustInitManager>();
+                GameObject.Find("MainManager").AddComponent<ShrimpBullMimetic>();
             }
             else
             {
                 GameObject mainObj = new GameObject("MainManager");
-                mainObj.AddComponent<AdjustInitManager>();
+                mainObj.AddComponent<ShrimpBullMimetic>();
             }
         }
-        GameObject.Find("MainManager").GetComponent<AdjustInitManager>().adjustID = info.Adjust_APP_ID;
+        GameObject.Find("MainManager").GetComponent<ShrimpBullMimetic>().StrictID = info.Adjust_APP_ID;
 
-        if (!GameObject.Find("MainManager").GetComponent<RateUsManager>())
+        if (!GameObject.Find("MainManager").GetComponent<PinkUpMimetic>())
         {
-            GameObject.Find("MainManager").AddComponent<RateUsManager>();
+            GameObject.Find("MainManager").AddComponent<PinkUpMimetic>();
         }
 
 #if UNITY_IOS
-        GameObject.Find("MainManager").GetComponent<RateUsManager>().appid = info.Rate_ID;
+        GameObject.Find("MainManager").GetComponent<PinkUpMimetic>().appid = info.Rate_ID;
 #endif
 #if UNITY_ANDROID
-        GameObject.Find("MainManager").GetComponent<RateUsManager>().appid = info.PackageName;
+        GameObject.Find("MainManager").GetComponent<PinkUpMimetic>().appid = info.PackageName;
 #endif
 
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].GameCode = info.GameCode;
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseUrl = info.BaseUrl;
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseLoginUrl = info.BaseUrl + CConfig.LoginUrl;
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseConfigUrl = info.BaseUrl + CConfig.ConfigUrl;
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseTimeUrl = info.BaseUrl + CConfig.TimeUrl;
-        Resources.FindObjectsOfTypeAll<NetInfoMgr>()[0].BaseAdjustUrl = info.BaseUrl + CConfig.AdjustUrl;
+        GameObject.Find("MainManager").GetComponent<CashOutManager>()._LoginPlatform = (LoginPlatform)info.ZT_LoginPlatform;
+        GameObject.Find("MainManager").GetComponent<CashOutManager>().AppInfo = info.ZT_ID;
+
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].OilyDime = info.GameCode;
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormTop = info.BaseUrl;
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormChafeTop = info.BaseUrl + CLagoon.ChafeTop;
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormLagoonTop = info.BaseUrl + CLagoon.ConfigTop;
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormQuitTop = info.BaseUrl + CLagoon.QuitTop;
+        Resources.FindObjectsOfTypeAll<SawSelfEke>()[0].FormShrimpTop = info.BaseUrl + CLagoon.ShrimpTop;
         EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
 
 #if UNITY_IOS
-        string url = info.BaseUrl + CConfig.ConfigUrl + info.GameCode + "&channel=" + "AppStore" + "&version=" + buildWindow.Version;
+        string url = info.BaseUrl + CLagoon.ConfigTop + info.GameCode + "&channel=" + "AppStore" + "&version=" + buildWindow.Version;
 #elif UNITY_ANDROID
-        string url = info.BaseUrl + CConfig.ConfigUrl + info.GameCode + "&channel=" + "GooglePlay" + "&version=" + buildWindow.Version;
+        string url = info.BaseUrl + CLagoon.ConfigUrl + info.GameCode + "&channel=" + "GooglePlay" + "&version=" + buildWindow.Version;
 #else
-        string url = info.BaseUrl + CConfig.ConfigUrl + info.GameCode + "&channel=" + "GooglePlay" + "&version=" + buildWindow.Version;
+        string url = info.BaseUrl + CLagoon.ConfigUrl + info.GameCode + "&channel=" + "GooglePlay" + "&version=" + buildWindow.Version;
 #endif
 
-        NetWorkManager.GetInstance().HttpGet(url,
-       (data) => {
+        SawBreaMimetic.PenMonopoly().BothPen(url,
+       (data) =>
+       {
            Debug.Log("ServerData 成功" + data.downloadHandler.text);
-           SaveDataManager.SetString("OnlineData", data.downloadHandler.text);
+           LuckHaveMimetic.LayAcross("OnlineData", data.downloadHandler.text);
            RootData rootData = JsonMapper.ToObject<RootData>(data.downloadHandler.text);
-           if (rootData.data.apple_pie != "apple")
+           //if (rootData.data.apple_pie != "apple")
            {
                rootData.data.apple_pie = "apple";
                string locationStr = JsonMapper.ToJson(rootData);
-               EditorUtility.DisplayDialog("改值成功","", "确定");
+               EditorUtility.DisplayDialog("改值成功", "", "确定");
                WriteJsonFromStreamingAssetsPath("/" + "LocationJson" + "/" + "LocationData.txt", locationStr);
                Debug.Log("Build Success");
                if (GameObject.Find("NetWorkManager"))
                {
-                    DestroyImmediate(GameObject.Find("NetWorkManager"));
+                   DestroyImmediate(GameObject.Find("NetWorkManager"));
                }
            }
        },
-       () => {
+       () =>
+       {
            Debug.Log("ServerData 失败");
            EditorUtility.DisplayDialog("改值失败", "请检查网络", "确定");
            if (GameObject.Find("NetWorkManager"))
@@ -245,7 +247,7 @@ public class BuildEditScript : MonoBehaviour
        });
 
 
-       
+
 
 
     }
@@ -282,7 +284,7 @@ public class BuildEditScript : MonoBehaviour
     [MenuItem("遇先生工具包/一键[压图]")]
     static void UpdatePlatformSpecificImageCompression()
     {
-        if (EditorUtility.DisplayDialog("警告", "是否开始压缩,时间很长", "确定","取消"))
+        if (EditorUtility.DisplayDialog("警告", "是否开始压缩,时间很长", "确定", "取消"))
         {
             var destFmt = TextureImporterFormat.ASTC_5x5;
             var numChanges = 0;
@@ -399,16 +401,6 @@ public class BuildEditScript : MonoBehaviour
         streamWrite.Close();
     }
 
-    private void OnEnable()
-    {
-    }
-    private void OnGUI()
-    {
-        //if (EditorWindow.HasOpenInstances<UnityEditor.BuildPlayerWindow>())
-        //{
-        //    Debug.Log("BuildPlayerWindow Open");
-        //}
-    }
 }
 class BaseJsonData
 {
@@ -429,4 +421,6 @@ public class BuildInfoData
     public string GameCode;
     public string Rate_ID;
     public string Build_path;
+    public int ZT_LoginPlatform; //真提现 登录平台
+    public string ZT_ID; //真提现 短剧后台ID
 }

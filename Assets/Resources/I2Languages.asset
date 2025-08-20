@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb2e6cee44237548b5f5cba12316139, type: 3}
   m_Name: I2Languages
   m_EditorClassIdentifier: 
   mSource:
@@ -30,7 +30,8 @@ MonoBehaviour:
       - "\u60CA\u4EBA\u7684\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Almost there! Please complete the task to obtain your gift
       TermType: 0
@@ -47,8 +48,9 @@ MonoBehaviour:
       - "\u0422\u044B \u041F\u043E\u0447\u0442\u0438 \u0422\u0430\u043C! \u0412\u044B\u043F\u043E\u043B\u043D\u044F\u0439\u0442\u0435
         \u0417\u0430\u0434\u0430\u043D\u0438\u044F \u0418 \u041F\u043E\u043B\u0443\u0447\u0430\u0439\u0442\u0435
         \u041F\u043E\u0434\u0430\u0440\u043A\u0438."
+      - 
       - "Quase l\xE1! Por favor, complete a tarefa para obter o seu presente."
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: BACK HOME
       TermType: 0
@@ -62,8 +64,9 @@ MonoBehaviour:
       - Balik Rumah
       - "\u56DE\u5BB6"
       - "\u0414\u043E\u043C\u043E\u0439"
+      - 
       - De Volta Para Casa
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: BONUS
       TermType: 0
@@ -77,8 +80,9 @@ MonoBehaviour:
       - Bonus
       - "\u5956\u91D1"
       - "\u0411\u043E\u043D\u0443\u0441"
+      - 
       - "B\xF4nus"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: BRLNSDB
       TermType: 1
@@ -93,7 +97,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Back Home
       TermType: 0
@@ -107,8 +112,9 @@ MonoBehaviour:
       - Balik Rumah
       - "\u56DE\u5BB6"
       - "\u0414\u043E\u043C\u043E\u0439"
+      - 
       - De Volta Para Casa
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: CHFonts
       TermType: 1
@@ -122,8 +128,9 @@ MonoBehaviour:
       - 
       - 
       - FRAHV
+      - 
       - FRAHV
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: CLAIM
       TermType: 0
@@ -137,8 +144,9 @@ MonoBehaviour:
       - Dapatkan
       - "\u83B7\u5F97"
       - "\u0422\u0440\u0435\u0431\u043E\u0432\u0430\u0442\u044C"
+      - 
       - Alegar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: COMBOS
       TermType: 0
@@ -152,8 +160,9 @@ MonoBehaviour:
       - Kombo
       - "\u8FDE\u51FB"
       - "\u041A\u043E\u043C\u0431\u043E"
+      - 
       - Combos
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: CONGRATULATIONS
       TermType: 0
@@ -167,8 +176,9 @@ MonoBehaviour:
       - Tahniah
       - "\u795D\u8D3A"
       - "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F"
+      - 
       - "Parab\xE9ns"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Characters
       TermType: 0
@@ -182,8 +192,9 @@ MonoBehaviour:
       - Peranan dan kulit
       - "\u4EBA\u7269"
       - "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0438"
+      - 
       - Personagens
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Check in for 7 consecutive days
       TermType: 0
@@ -197,8 +208,9 @@ MonoBehaviour:
       - Daftar masuk selama 7 hari berturut-turut
       - "\u8FDE\u7EED7\u5929\u7B7E\u5230"
       - "\u0417\u0430\u0435\u0437\u0434 \u043D\u0430 7 \u0434\u043D\u0435\u0439"
+      - 
       - Check-in por 7 dias
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Claim
       TermType: 0
@@ -212,8 +224,9 @@ MonoBehaviour:
       - Dapatkan
       - "\u83B7\u5F97"
       - "\u0422\u0440\u0435\u0431\u043E\u0432\u0430\u0442\u044C"
+      - 
       - Alegar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Claim x3
       TermType: 0
@@ -228,7 +241,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Coins
       TermType: 0
@@ -243,7 +257,8 @@ MonoBehaviour:
       - "\u786C\u5E01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Collect skinpieces by playing the game. Watch the video to speed up the
         collection of pieces. Cheating is strictly prohibited. Once collected, enter
@@ -276,7 +291,8 @@ MonoBehaviour:
         ID \u8FDB\u884C\u7533\u8BF7\u3002"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Combo
       TermType: 0
@@ -291,7 +307,8 @@ MonoBehaviour:
       - "\u7EC4\u5408"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Combo merge brings you lots of Diamonds
       TermType: 0
@@ -307,7 +324,8 @@ MonoBehaviour:
       - "\u7EC4\u5408\u5408\u5E76\u4E3A\u60A8\u5E26\u6765\u5F88\u591A\u94BB\u77F3"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Contact Us
       TermType: 0
@@ -321,8 +339,9 @@ MonoBehaviour:
       - Hubungi Kami
       - "\u8054\u7CFB\u6211\u4EEC"
       - "\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F \u0421 \u041D\u0430\u043C\u0438"
+      - 
       - Contate-Nos
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Continue
       TermType: 0
@@ -336,8 +355,9 @@ MonoBehaviour:
       - Teruskan
       - "\u7EE7\u7EED"
       - "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C"
+      - 
       - Continuar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Continue Playing
       TermType: 0
@@ -352,7 +372,8 @@ MonoBehaviour:
       - "\u7EE7\u7EED\u73A9"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Country
       TermType: 0
@@ -366,8 +387,9 @@ MonoBehaviour:
       - Negara
       - "\u56FD\u5BB6"
       - "\u0421\u0442\u0440\u0430\u043D\u0430"
+      - 
       - "Pa\xEDs"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: CountryFonts
       TermType: 1
@@ -382,7 +404,8 @@ MonoBehaviour:
       - RobloxShop/RobloxFonts/CHFonts
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Crazy!
       TermType: 0
@@ -397,7 +420,8 @@ MonoBehaviour:
       - "\u75AF\u72C2\u7684\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: DAILY BONUS
       TermType: 0
@@ -412,7 +436,8 @@ MonoBehaviour:
       - "\u6BCF\u65E5\u5956\u91D1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: DONE
       TermType: 0
@@ -427,7 +452,8 @@ MonoBehaviour:
       - "\u5B8C\u6BD5"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 1
       TermType: 0
@@ -442,7 +468,8 @@ MonoBehaviour:
       - "\u7B2C\u4E00\u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 2
       TermType: 0
@@ -457,7 +484,8 @@ MonoBehaviour:
       - "\u7B2C 2 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 3
       TermType: 0
@@ -472,7 +500,8 @@ MonoBehaviour:
       - "\u7B2C 3 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 4
       TermType: 0
@@ -487,7 +516,8 @@ MonoBehaviour:
       - "\u7B2C 4 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 5
       TermType: 0
@@ -502,7 +532,8 @@ MonoBehaviour:
       - "\u7B2C 5 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 6
       TermType: 0
@@ -517,7 +548,8 @@ MonoBehaviour:
       - "\u7B2C 6 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Day 7
       TermType: 0
@@ -532,7 +564,8 @@ MonoBehaviour:
       - "\u7B2C 7 \u5929"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Diamonds
       TermType: 0
@@ -547,7 +580,8 @@ MonoBehaviour:
       - "\u94BB\u77F3"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: ERROR
       TermType: 0
@@ -562,7 +596,8 @@ MonoBehaviour:
       - "\u9519\u8BEF"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: EnglishTishi
       TermType: 5
@@ -577,7 +612,8 @@ MonoBehaviour:
       - EnglishTishi
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: FAILED
       TermType: 0
@@ -592,7 +628,8 @@ MonoBehaviour:
       - "\u5931\u8D25"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Free
       TermType: 0
@@ -607,7 +644,8 @@ MonoBehaviour:
       - "\u81EA\u7531"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Free Spin
       TermType: 0
@@ -622,7 +660,8 @@ MonoBehaviour:
       - "\u81EA\u7531\u65CB\u8F6C"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: GAME OVER
       TermType: 0
@@ -636,8 +675,9 @@ MonoBehaviour:
       - Permainan Tamat
       - "\u6E38\u620F\u7ED3\u675F"
       - "\u0418\u0433\u0440\u0430 \u0417\u0430\u043A\u043E\u043D\u0447\u0435\u043D\u0430"
+      - 
       - Game Over
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get
       TermType: 0
@@ -651,8 +691,9 @@ MonoBehaviour:
       - Dapatkan
       - "\u5F97\u5230"
       - "\u041F\u043E\u043B\u0443\u0447\u0430\u0442\u044C"
+      - 
       - Pegar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get 25 more fishes
       TermType: 0
@@ -666,8 +707,9 @@ MonoBehaviour:
       - Dapatkan 25 ikan
       - "\u83B7\u5F97 25 \u6761\u9C7C"
       - 
+      - 
       - Consiga mais 25 peixes
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get All
       TermType: 0
@@ -682,7 +724,8 @@ MonoBehaviour:
       - "\u5F97\u5230\u6240\u6709"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get More
       TermType: 0
@@ -696,8 +739,9 @@ MonoBehaviour:
       - Dapatkan
       - "\u83B7\u53D6\u66F4\u591A"
       - "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0411\u043E\u043B\u044C\u0448\u0435"
+      - 
       - Pegue Mais
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get Random One
       TermType: 0
@@ -712,7 +756,8 @@ MonoBehaviour:
       - "\u968F\u673A\u83B7\u5F97\u4E00\u4E2A"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Good!
       TermType: 0
@@ -727,7 +772,8 @@ MonoBehaviour:
       - "\u597D\u7684\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Great!
       TermType: 0
@@ -742,7 +788,8 @@ MonoBehaviour:
       - "\u4F1F\u5927\u7684\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: INFORMATION
       TermType: 0
@@ -757,7 +804,8 @@ MonoBehaviour:
       - "\u4FE1\u606F"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: If you have any opinions, please let us know
       TermType: 0
@@ -775,8 +823,9 @@ MonoBehaviour:
         \u043A\u0430\u043A\u0438\u0435-\u043B\u0438\u0431\u043E \u043C\u043D\u0435\u043D\u0438\u044F,
         \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0441\u043E\u043E\u0431\u0449\u0438\u0442\u0435
         \u043D\u0430\u043C"
+      - 
       - "Se voc\xEA tiver alguma opini\xE3o, por favor nos avise"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: In the free spin you get the above rewards
       TermType: 0
@@ -794,8 +843,9 @@ MonoBehaviour:
       - "\u0412 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\u043C \u0432\u0440\u0430\u0449\u0435\u043D\u0438\u0438
         \u0432\u044B \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0435 \u0432\u044B\u0448\u0435\u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u0435
         \u043D\u0430\u0433\u0440\u0430\u0434\u044B"
+      - 
       - "No giro gr\xE1tis, voc\xEA recebe as recompensas acima"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: JACKPOT TASK
       TermType: 0
@@ -810,7 +860,8 @@ MonoBehaviour:
       - "\u5934\u5956\u4EFB\u52A1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Kesalahan
       TermType: 0
@@ -825,7 +876,8 @@ MonoBehaviour:
       - "\u9519\u8BEF"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Lilita-One
       TermType: 1
@@ -839,8 +891,9 @@ MonoBehaviour:
       - RobloxShop/RobloxFonts/Lilita-One
       - "RobloxShop/RobloxFonts/\u65B9\u6B63\u5927\u9ED1\u7B80\u4F53"
       - FRAHV
+      - 
       - FRAHV
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Loading...
       TermType: 0
@@ -854,8 +907,9 @@ MonoBehaviour:
       - Memuatkan...
       - "\u52A0\u8F7D..."
       - "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."
+      - 
       - Carregando...
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Mengeklaim
       TermType: 0
@@ -870,7 +924,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Merge 100 max level emoji (45 100)
       TermType: 0
@@ -892,7 +947,8 @@ MonoBehaviour:
       - "\u5408\u5E76 100 \u4E2A\u6700\u9AD8\u7EA7\u522B\u7684\u8868\u60C5\u7B26\u53F7\n(45/100)"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Merge 100 times then you will win 1 million Robux!
       TermType: 0
@@ -909,7 +965,8 @@ MonoBehaviour:
       - "\u5408\u5E76100\u6B21\u5373\u53EF\u83B7\u5F97100\u4E07Robux\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Merge 50 max level emoji
       TermType: 0
@@ -926,7 +983,8 @@ MonoBehaviour:
       - "\u5408\u5E76 50 \u4E2A\u6700\u9AD8\u7EA7\u522B\u7684\u8868\u60C5\u7B26\u53F7"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: More Chances
       TermType: 0
@@ -941,7 +999,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: NEW TASK
       TermType: 0
@@ -956,7 +1015,8 @@ MonoBehaviour:
       - "\u65B0\u4EFB\u52A1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: NO,THANKS
       TermType: 0
@@ -971,7 +1031,8 @@ MonoBehaviour:
       - "\u4E0D\u7528\u4E86\uFF0C\u8C22\u8C22"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: No Thanks
       TermType: 0
@@ -985,8 +1046,9 @@ MonoBehaviour:
       - Tidak, Terima Kasih
       - "\u4E0D\u7528\u4E86\uFF0C\u8C22\u8C22"
       - "\u041D\u0435\u0442, \u0421\u043F\u0430\u0441\u0438\u0431\u043E"
+      - 
       - "N\xE3o, Obrigado"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: No ads right now, please try it later.
       TermType: 0
@@ -1004,8 +1066,9 @@ MonoBehaviour:
       - "\u0412 \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0435\u0435 \u0432\u0440\u0435\u043C\u044F
         \u043D\u0435\u0442 \u0440\u0435\u043A\u043B\u0430\u043C\u044B, \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435
         \u043F\u043E\u043F\u044B\u0442\u043A\u0443 \u043F\u043E\u0437\u0436\u0435."
+      - 
       - "Sem an\xFAncios no momento, tente mais tarde."
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Not enough coins to play, please get more coins!
       TermType: 0
@@ -1024,8 +1087,9 @@ MonoBehaviour:
         \u043C\u043E\u043D\u0435\u0442 \u0434\u043B\u044F \u0438\u0433\u0440\u044B,
         \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435
         \u0431\u043E\u043B\u044C\u0448\u0435 \u043C\u043E\u043D\u0435\u0442!"
+      - 
       - "N\xE3o h\xE1 moedas suficientes para jogar, por favor, pegue mais moedas!"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Not enough coins to spin, get more coins to play!
       TermType: 0
@@ -1045,8 +1109,9 @@ MonoBehaviour:
         \u043C\u043E\u043D\u0435\u0442 \u0434\u043B\u044F \u0432\u0440\u0430\u0449\u0435\u043D\u0438\u044F,
         \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435
         \u043C\u043E\u043D\u0435\u0442 \u0434\u043B\u044F \u0438\u0433\u0440\u044B!"
+      - 
       - "N\xE3o h\xE1 moedas suficientes para girar, pegue mais moedas para jogar!"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: OK
       TermType: 0
@@ -1061,7 +1126,8 @@ MonoBehaviour:
       - "\u597D\u7684"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: One...
       TermType: 0
@@ -1076,7 +1142,8 @@ MonoBehaviour:
       - "\u4E00..."
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Opps!
       TermType: 0
@@ -1091,7 +1158,8 @@ MonoBehaviour:
       - "\u54CE\u5440\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Play
       TermType: 0
@@ -1106,7 +1174,8 @@ MonoBehaviour:
       - "\u73A9"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Play game and collect skin pieces
       TermType: 0
@@ -1121,7 +1190,8 @@ MonoBehaviour:
       - "\u73A9\u6E38\u620F\u5E76\u6536\u96C6\u76AE\u80A4\u788E\u7247"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please Enter your Roblox ID.
       TermType: 0
@@ -1137,7 +1207,8 @@ MonoBehaviour:
       - " \u8BF7\u8F93\u5165\u60A8\u7684 Roblox ID\u3002"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please Re-enter The ID.
       TermType: 0
@@ -1152,7 +1223,8 @@ MonoBehaviour:
       - " \u8BF7\u91CD\u65B0\u8F93\u5165 ID\u3002"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please Re-enter the ID
       TermType: 0
@@ -1167,7 +1239,8 @@ MonoBehaviour:
       - "      \u8BF7\u91CD\u65B0\u8F93\u5165\u8EAB\u4EFD\u8BC1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please enter your Account ID
       TermType: 0
@@ -1182,7 +1255,8 @@ MonoBehaviour:
       - "      \u8BF7\u8F93\u5165\u60A8\u7684\u5E10\u53F7"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please wait a few days for your gift
       TermType: 0
@@ -1204,7 +1278,8 @@ MonoBehaviour:
       - "\u8BF7\u7B49\u51E0\u5929\n\u7ED9\u4F60\u7684\u793C\u7269"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Props
       TermType: 0
@@ -1219,7 +1294,8 @@ MonoBehaviour:
       - "\u9053\u5177"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: RATE US
       TermType: 0
@@ -1234,7 +1310,8 @@ MonoBehaviour:
       - "\u8BC4\u4EF7\u6211\u4EEC"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: RESTART
       TermType: 0
@@ -1249,7 +1326,8 @@ MonoBehaviour:
       - "\u91CD\u65B0\u5F00\u59CB"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Restart
       TermType: 0
@@ -1264,7 +1342,8 @@ MonoBehaviour:
       - "\u91CD\u65B0\u5F00\u59CB"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Reward
       TermType: 0
@@ -1279,7 +1358,8 @@ MonoBehaviour:
       - "\u5956\u52B1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: SETTING
       TermType: 0
@@ -1293,8 +1373,9 @@ MonoBehaviour:
       - Tetapan
       - "\u8BBE\u7F6E"
       - "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430"
+      - 
       - "Configura\xE7\xE3o"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Select 3 Characters
       TermType: 0
@@ -1309,7 +1390,8 @@ MonoBehaviour:
       - "\u9009\u62E93\u79CD\u5956\u52B1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Slot Game
       TermType: 0
@@ -1324,7 +1406,8 @@ MonoBehaviour:
       - "\u8001\u864E\u673A\u6E38\u620F"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Start from beginning
       TermType: 0
@@ -1339,7 +1422,8 @@ MonoBehaviour:
       - "\u4ECE\u5934\u5F00\u59CB"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Stop
       TermType: 0
@@ -1354,7 +1438,8 @@ MonoBehaviour:
       - "\u505C\u6B62"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Submit
       TermType: 0
@@ -1368,8 +1453,9 @@ MonoBehaviour:
       - Serahkan
       - "\u63D0\u4EA4"
       - "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C"
+      - 
       - Submeter
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Switch
       TermType: 5
@@ -1384,7 +1470,8 @@ MonoBehaviour:
       - Switch
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: TARGET NOT REACHED
       TermType: 0
@@ -1399,7 +1486,8 @@ MonoBehaviour:
       - "\u76EE\u6807\u672A\u8FBE\u5230"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: THE RULES
       TermType: 0
@@ -1414,7 +1502,8 @@ MonoBehaviour:
       - "\u89C4\u5219"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Tap to drop the emoji down
       TermType: 0
@@ -1430,7 +1519,8 @@ MonoBehaviour:
       - "\u70B9\u6309\u4EE5\u653E\u4E0B\u8868\u60C5\u7B26\u53F7"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: The chance of getting these Characters will be increased!!!
       TermType: 0
@@ -1446,7 +1536,8 @@ MonoBehaviour:
       - "\u8FD9\u4E9B\u5956\u52B1\u7684\u83B7\u5F97\u673A\u4F1A\u5C06\u4F1A\u589E\u52A0"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: The two entered ID do not match.
       TermType: 0
@@ -1461,7 +1552,8 @@ MonoBehaviour:
       - " \u8F93\u5165\u7684 ID \u4E0D\u76F8\u540C\u3002"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: This task is not finished
       TermType: 0
@@ -1476,7 +1568,8 @@ MonoBehaviour:
       - "\u8FD9\u4E2A\u4EFB\u52A1\u8FD8\u6CA1\u6709\u5B8C\u6210"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: TishiAndrooid
       TermType: 5
@@ -1491,7 +1584,8 @@ MonoBehaviour:
       - English
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Try to get BIGGER emoji to get great rewards!
       TermType: 0
@@ -1508,7 +1602,8 @@ MonoBehaviour:
       - "\u5C1D\u8BD5\u83B7\u5F97\u66F4\u5927\u7684\u8868\u60C5\u7B26\u53F7\u4EE5\u83B7\u5F97\u4E30\u539A\u7684\u5956\u52B1\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Try to merge two same emoji
       TermType: 0
@@ -1524,7 +1619,8 @@ MonoBehaviour:
       - "\u5C1D\u8BD5\u5408\u5E76\u4E24\u4E2A\u76F8\u540C\u7684\u8868\u60C5\u7B26\u53F7"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Use diamond and gold to claim
       TermType: 0
@@ -1539,7 +1635,8 @@ MonoBehaviour:
       - "\u4F7F\u7528\u94BB\u77F3\u548C\u9EC4\u91D1\u6765\u4EA4\u6362"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Watch Moive
       TermType: 0
@@ -1554,7 +1651,8 @@ MonoBehaviour:
       - "\u770B\u7535\u5F71"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Watch rewarded video 100 times
       TermType: 0
@@ -1570,7 +1668,8 @@ MonoBehaviour:
       - "\u89C2\u770B\u5956\u52B1\u89C6\u9891 100 \u6B21"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You can start from
       TermType: 0
@@ -1585,7 +1684,8 @@ MonoBehaviour:
       - "\u4F60\u53EF\u4EE5\u4ECE"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You don't have enough coins.
       TermType: 0
@@ -1600,7 +1700,8 @@ MonoBehaviour:
       - "\u4F60\u6CA1\u6709\u8DB3\u591F\u7684\u786C\u5E01\u3002"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You have enough coins, try to get more rewards in the slot machine!
       TermType: 0
@@ -1619,7 +1720,8 @@ MonoBehaviour:
       - "\u60A8\u6709\u8DB3\u591F\u7684\u786C\u5E01\uFF0C\u5C1D\u8BD5\u5728\u8001\u864E\u673A\u4E2D\u83B7\u5F97\u66F4\u591A\u5956\u52B1\uFF01"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You have reached
       TermType: 0
@@ -1634,7 +1736,8 @@ MonoBehaviour:
       - "\u4F60\u5DF2\u7ECF\u8FBE\u5230\u4E86"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You still have some tokens are you sure to give up them?
       TermType: 0
@@ -1656,7 +1759,8 @@ MonoBehaviour:
       - "\u4F60\u8FD8\u6709\u4E00\u4E9B\u4EE3\u5E01\uFF0C\n\u4F60\u786E\u5B9A\u8981\u653E\u5F03\u4ED6\u4EEC\u5417\uFF1F"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Your coin is not insufficient
       TermType: 0
@@ -1671,7 +1775,8 @@ MonoBehaviour:
       - "\u4F60\u7684\u786C\u5E01\u4E0D\u591F\u7528"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Your token is not insufficient
       TermType: 0
@@ -1686,7 +1791,8 @@ MonoBehaviour:
       - "\u4F60\u7684token\u4E0D\u591F"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: id...
       TermType: 0
@@ -1701,7 +1807,8 @@ MonoBehaviour:
       - ID...
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: leelawdb
       TermType: 1
@@ -1716,7 +1823,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: merge times to get rewards
       TermType: 0
@@ -1732,7 +1840,8 @@ MonoBehaviour:
       - "\u5408\u5E76{[merge_task_time]}\u6B21\u83B7\u5F97\u5956\u52B1"
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: "\xE1nh Gi\xE1"
       TermType: 0
@@ -1747,7 +1856,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: 'Address:'
       TermType: 0
@@ -1761,8 +1871,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0410\u0434\u0440\u0435\u0441:"
+      - 
       - "Endere\xE7o:"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: All rewards will be redeemable after the countdown ends
       TermType: 0
@@ -1779,9 +1890,10 @@ MonoBehaviour:
         \u0431\u0443\u0434\u0435\u0442 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C
         \u043F\u043E\u0441\u043B\u0435 \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F
         \u043E\u0431\u0440\u0430\u0442\u043D\u043E\u0433\u043E \u043E\u0442\u0441\u0447\u0435\u0442\u0430."
+      - 
       - "Todas as recompensas ser\xE3o resgat\xE1veis \u200B\u200Bap\xF3s o t\xE9rmino
         da contagem regressiva"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Amazon is not enough
       TermType: 0
@@ -1795,8 +1907,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0431\u0440\u0438\u043B\u043B\u0438\u0430\u043D\u0442\u0430 \u043D\u0435\u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E"
+      - 
       - "diamante n\xE3o \xE9 suficiente"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Approving
       TermType: 0
@@ -1810,8 +1923,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0434\u043E\u0431\u0440\u044F\u044E\u0449\u0438\u0439"
+      - 
       - Aprovando
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Arial
       TermType: 1
@@ -1826,7 +1940,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Cancel
       TermType: 0
@@ -1840,8 +1955,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0442\u043C\u0435\u043D\u0430"
+      - 
       - Cancelar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Cash Out
       TermType: 0
@@ -1855,8 +1971,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0431\u043D\u0430\u043B\u0438\u0447\u0438\u0442\u044C"
+      - 
       - Sacar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Cash is not enough
       TermType: 0
@@ -1870,8 +1987,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0414\u0435\u043D\u0435\u0433 \u043D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442"
+      - 
       - "Dinheiro n\xE3o \xE9 suficiente"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: CashOut
       TermType: 0
@@ -1885,8 +2003,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0431\u043D\u0430\u043B\u0438\u0447\u0438\u0442\u044C"
+      - 
       - Sacar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Collection completed
       TermType: 0
@@ -1900,8 +2019,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041A\u043E\u043B\u043B\u0435\u043A\u0446\u0438\u044F \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0430"
+      - 
       - "Cole\xE7\xE3o conclu\xEDda"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Confirm
       TermType: 0
@@ -1915,8 +2035,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0442\u044C"
+      - 
       - Confirme
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Details
       TermType: 0
@@ -1930,8 +2051,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0441\u0442\u0438"
+      - 
       - Detalhes
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Fever time
       TermType: 0
@@ -1945,8 +2067,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u0440\u0435\u043C\u044F \u043B\u0438\u0445\u043E\u0440\u0430\u0434\u043A\u0438"
+      - 
       - tempo de febre
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get Reward
       TermType: 0
@@ -1960,8 +2083,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0412\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u0435"
+      - 
       - Obter Recompensa
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Get more reward
       TermType: 0
@@ -1976,8 +2100,9 @@ MonoBehaviour:
       - 
       - "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435
         \u0432\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u044F"
+      - 
       - Obter mais recompensa
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Gold is not enough
       TermType: 0
@@ -1991,8 +2116,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0417\u043E\u043B\u043E\u0442\u0430 \u043D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442"
+      - 
       - "Ouro n\xE3o \xE9 suficiente"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Golden Piggy Not Full
       TermType: 0
@@ -2007,8 +2133,9 @@ MonoBehaviour:
       - 
       - "\u0417\u043E\u043B\u043E\u0442\u0430\u044F \u0421\u0432\u0438\u043D\u043A\u0430
         \u041D\u0435 \u041F\u043E\u043B\u043D\u0430\u044F"
+      - 
       - "Porquinho Dourado N\xE3o Est\xE1 Cheio"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: If you have any opinions please let us know
       TermType: 0
@@ -2024,8 +2151,9 @@ MonoBehaviour:
       - "\u0415\u0441\u043B\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044C
         \u043A\u0430\u043A\u0438\u0435-\u043B\u0438\u0431\u043E \u043C\u043D\u0435\u043D\u0438\u044F\n\u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430
         \u0434\u0430\u0439 \u043D\u0430\u043C \u0437\u043D\u0430\u0442\u044C"
+      - 
       - "Se voc\xEA tem qualquer opini\xE3o\nPor favor nos informe"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Instructions
       TermType: 0
@@ -2039,8 +2167,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0418\u043D\u0441\u0442\u0440\u0443\u043A\u0446\u0438\u0438"
+      - 
       - "Instru\xE7\xF5es"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: InstructionsDetial
       TermType: 0
@@ -2092,6 +2221,7 @@ MonoBehaviour:
         \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u043A\u043E\u043C\u043B\u0435\u043D\u0438\u044F
         \u0441 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C\u0438
         \u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438."
+      - 
       - "suas recompensas ser\xE3o enviadas para voc\xEA em 3 a 15 dias \xFAteis
         [fins de semana n\xE3o inclu\xEDdos].\n\nOs representantes dos comerciantes
         n\xE3o s\xE3o patrocinadores das recompensas ou de outra forma afiliados
@@ -2099,7 +2229,7 @@ MonoBehaviour:
         s\xE3o marcas registradas e de propriedade de cada empresa representada e/ou
         suas afiliadas.\n\nvisite o site de cada empresa para obter os termos e condi\xE7\xF5es
         adicionais."
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Keep playing to redeem more!
       TermType: 0
@@ -2115,8 +2245,9 @@ MonoBehaviour:
       - "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0439\u0442\u0435 \u0438\u0433\u0440\u0430\u0442\u044C,
         \u0447\u0442\u043E\u0431\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C
         \u0431\u043E\u043B\u044C\u0448\u0435!"
+      - 
       - Continue jogando para resgatar mais!
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Later
       TermType: 0
@@ -2130,8 +2261,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041F\u043E\u0437\u0436\u0435"
+      - 
       - Mais Tarde
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: LuckiestGuy-Regular
       TermType: 1
@@ -2145,8 +2277,9 @@ MonoBehaviour:
       - 
       - 
       - FRAHV
+      - 
       - FRAHV
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: MORE REWARD
       TermType: 0
@@ -2160,8 +2293,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0411\u043E\u043B\u044C\u0448\u0435 \u041D\u0430\u0433\u0440\u0430\u0434\u044B"
+      - 
       - Mais Recompensa
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: 'Name:'
       TermType: 0
@@ -2175,8 +2309,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0418\u043C\u044F:"
+      - 
       - 'Nome:'
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: NewStep_1
       TermType: 0
@@ -2200,12 +2335,13 @@ MonoBehaviour:
         \u043C\u0435\u0441\u0442\u0430, \u043A\u0443\u0434\u0430 \u0434\u043E\u043B\u0436\u043D\u044B
         \u043F\u0440\u0438\u0437\u0435\u043C\u043B\u0438\u0442\u044C\u0441\u044F
         \u0448\u0430\u0440\u044B."
+      - 
       - 'Clique em um local vazio para soltar as bolas
 
 
         Mova-se para determinar
         onde as bolas devem cair.'
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: NewStep_2
       TermType: 0
@@ -2224,9 +2360,10 @@ MonoBehaviour:
         \u0432 \u0441\u043B\u043E\u0442\n\u0432\u044B \u0431\u0443\u0434\u0435\u0442\u0435
         \u0432\u043E\u0437\u043D\u0430\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u044B
         \u0431\u043E\u043D\u0443\u0441\u043D\u044B\u043C\u0438 \u0431\u0430\u043B\u043B\u0430\u043C\u0438"
+      - 
       - "Quando uma bola cai em um slot\nvoc\xEA ser\xE1 recompensado com pontos
         de b\xF4nus"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: NewStep_3
       TermType: 0
@@ -2252,9 +2389,10 @@ MonoBehaviour:
         \u0441\u044B\u0433\u0440\u0430\u0442\u044C \u0432 \u0438\u0433\u0440\u043E\u0432\u044B\u0435
         \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u044B \u0443\u0434\u0430\u0447\u0438\n\n\u0414\u0436\u0435\u043A\u043F\u043E\u0442
         \u0436\u0434\u0435\u0442 \u0432\u0430\u0441!"
+      - 
       - "Tente acender todas as 8 l\xE2mpadas!\n\nVoc\xEA ter\xE1 a chance de jogar
         o Lucky Slot\n\n 777 est\xE1 esperando!"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: No ads right now, please try it later
       TermType: 0
@@ -2269,8 +2407,9 @@ MonoBehaviour:
       - 
       - "\u0421\u0435\u0439\u0447\u0430\u0441 \u043D\u0435\u0442 \u0440\u0435\u043A\u043B\u0430\u043C\u044B,
         \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u043F\u043E\u0437\u0436\u0435"
+      - 
       - "Sem an\xFAncios no momento, tente mais tarde"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: No record at the moment
       TermType: 0
@@ -2285,8 +2424,9 @@ MonoBehaviour:
       - 
       - "\u041D\u0430 \u0434\u0430\u043D\u043D\u044B\u0439 \u043C\u043E\u043C\u0435\u043D\u0442
         \u043D\u0435\u0442 \u0437\u0430\u043F\u0438\u0441\u0438"
+      - 
       - Sem registro no momento
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: ONE MORE SLOT
       TermType: 0
@@ -2300,8 +2440,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0415\u0449\u0435 \u041E\u0434\u0438\u043D \u0421\u043B\u043E\u0442"
+      - 
       - mais um giro
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Payment successful
       TermType: 0
@@ -2316,8 +2457,9 @@ MonoBehaviour:
       - 
       - "\u041E\u043F\u043B\u0430\u0442\u0430 \u043F\u0440\u043E\u0448\u043B\u0430
         \u0443\u0441\u043F\u0435\u0448\u043D\u043E"
+      - 
       - Pagamento bem sucedido
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: PiggyTitle
       TermType: 5
@@ -2331,8 +2473,9 @@ MonoBehaviour:
       - 
       - 
       - "DUI_\u043F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F"
+      - 
       - "DUI_Parab\xE9ns"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: 'Please confirm sberbank accout:'
       TermType: 0
@@ -2347,8 +2490,9 @@ MonoBehaviour:
       - 
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435
         \u0441\u0447\u0435\u0442 \u0441\u0431\u0435\u0440\u0431\u0430\u043D\u043A\u0430:"
+      - 
       - 'Por favor, confirme a conta do sberbank:'
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please enter your PayPal accout
       TermType: 0
@@ -2363,8 +2507,9 @@ MonoBehaviour:
       - 
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435
         \u0441\u0432\u043E\u0439 \u0441\u0447\u0435\u0442 PayPal"
+      - 
       - Insira sua conta do PayPal
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please enter your receiving information to receive the prize
       TermType: 0
@@ -2380,8 +2525,9 @@ MonoBehaviour:
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435
         \u0441\u0432\u043E\u0438 \u0434\u0430\u043D\u043D\u044B\u0435 \u0434\u043B\u044F
         \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F \u043F\u0440\u0438\u0437\u0430"
+      - 
       - "Insira suas informa\xE7\xF5es de recebimento para receber o pr\xEAmio"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please enter your withdrawal account
       TermType: 0
@@ -2397,8 +2543,9 @@ MonoBehaviour:
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435
         \u0441\u0432\u043E\u0439 \u0441\u0447\u0435\u0442 \u0434\u043B\u044F \u0432\u044B\u0432\u043E\u0434\u0430
         \u0441\u0440\u0435\u0434\u0441\u0442\u0432"
+      - 
       - Por favor, insira sua conta de saque
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please enter your {0} accout
       TermType: 0
@@ -2414,8 +2561,9 @@ MonoBehaviour:
       - 
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435
         \u0441\u0432\u043E\u0439 \u0430\u043A\u043A\u0430\u0443\u043D\u0442 {0}"
+      - 
       - Insira sua conta {0}
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Please fill in your account
       TermType: 0
@@ -2430,8 +2578,9 @@ MonoBehaviour:
       - 
       - "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435
         \u0441\u0432\u043E\u0439 \u0430\u043A\u043A\u0430\u0443\u043D\u0442"
+      - 
       - Por favor, preencha sua conta
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: ProGressing......
       TermType: 0
@@ -2445,8 +2594,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0432 \u0445\u043E\u0434\u0435 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F..."
+      - 
       - Progredir......
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Queuing
       TermType: 0
@@ -2460,8 +2610,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0447\u0435\u0440\u0435\u0434\u044C"
+      - 
       - Fila
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Rate us
       TermType: 0
@@ -2475,8 +2626,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041E\u0446\u0435\u043D\u0438\u0442\u0435 \u043D\u0430\u0441"
+      - 
       - Nos avalie
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Record
       TermType: 0
@@ -2490,8 +2642,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0417\u0430\u043F\u0438\u0441\u044C"
+      - 
       - Registro
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Redeem
       TermType: 0
@@ -2505,8 +2658,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u044B\u043A\u0443\u043F\u0430\u0442\u044C"
+      - 
       - Resgatar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Revise
       TermType: 0
@@ -2520,8 +2674,9 @@ MonoBehaviour:
       - 
       - 
       - "\u043F\u0435\u0440\u0435\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C"
+      - 
       - Rever
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: 'Tel:'
       TermType: 0
@@ -2535,8 +2690,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0422\u0435\u043B:"
+      - 
       - 'Tel:'
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Try Again
       TermType: 0
@@ -2550,8 +2706,9 @@ MonoBehaviour:
       - 
       - 
       - "\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439 \u0441\u043D\u043E\u0432\u0430"
+      - 
       - Tente Novamente
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_AmazonIcon
       TermType: 5
@@ -2565,8 +2722,9 @@ MonoBehaviour:
       - 
       - 
       - SOHOShop/UI_Redeem/UI_ShopZ[UI_ShopZ]
+      - 
       - SOHOShop/UI_Redeem/UI_ShopZ[UI_ShopZ]
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_Congratulation
       TermType: 5
@@ -2580,8 +2738,9 @@ MonoBehaviour:
       - 
       - 
       - "DUI_\u043F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F"
+      - 
       - "DUI_Parab\xE9ns"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_GuaguaAm
       TermType: 5
@@ -2595,8 +2754,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_GuaguaAmZ
+      - 
       - DUI_GuaguaAmZ
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_GuaguaCash
       TermType: 5
@@ -2610,8 +2770,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_GuaguaR
+      - 
       - DUI_GuaguaP
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_JL_Am
       TermType: 5
@@ -2625,8 +2786,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_JL_Am 1
+      - 
       - DUI_JL_Am 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_JZ_Am
       TermType: 5
@@ -2640,8 +2802,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_JZ_Am 1
+      - 
       - DUI_JZ_Am 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_JZ_Cash
       TermType: 5
@@ -2655,8 +2818,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_JZ_Cash 1
+      - 
       - DUI_JZ_Cash 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_J_Am
       TermType: 5
@@ -2670,8 +2834,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_J_Am 1
+      - 
       - DUI_J_Am 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_J_Cash
       TermType: 5
@@ -2685,8 +2850,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_J_R
+      - 
       - DUI_J_P
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_L_Cash
       TermType: 5
@@ -2700,8 +2866,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_L_R
+      - 
       - DUI_L_P
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_PayPal
       TermType: 5
@@ -2715,8 +2882,9 @@ MonoBehaviour:
       - 
       - 
       - SOHOShop/UI_Redeem/UserAccountMethod/UI_QIWI[UI_QIWI]
+      - 
       - SOHOShop/UI_Redeem/UserAccountMethod/UI_pix[UI_pix]
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_ReviseBtn
       TermType: 5
@@ -2730,8 +2898,9 @@ MonoBehaviour:
       - 
       - 
       - SOHOShop/UI_Redeem/UI_ReviseBtn_RU[UI_ReviseBtn_RU]
+      - 
       - SOHOShop/UI_Redeem/UI_ReviseBtn_P[UI_ReviseBtn_P]
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_TopBarAm
       TermType: 5
@@ -2745,8 +2914,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_TopBarAm 1
+      - 
       - DUI_TopBarAm 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_TopBarcash
       TermType: 5
@@ -2760,8 +2930,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_TopBarR
+      - 
       - DUI_TopBarP
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: UI_Z_Cash
       TermType: 5
@@ -2775,8 +2946,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_Z_R
+      - 
       - DUI_Z_P
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: USFonts
       TermType: 1
@@ -2791,7 +2963,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: WINNING NUMBER
       TermType: 0
@@ -2805,8 +2978,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u044B\u0438\u0433\u0440\u044B\u0448\u043D\u044B\u0439 \u041D\u043E\u043C\u0435\u0440"
+      - 
       - "N\xFAmero Vencedor"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Within
       TermType: 0
@@ -2820,8 +2994,9 @@ MonoBehaviour:
       - 
       - 
       - " \u0412 \u041F\u0440\u0435\u0434\u0435\u043B\u0430\u0445 "
+      - 
       - ' Dentro De '
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: YOU NUMBER
       TermType: 0
@@ -2835,8 +3010,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0422\u0432\u043E\u0439 \u041D\u043E\u043C\u0435\u0440"
+      - 
       - "Seu N\xFAmero"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You have collected
       TermType: 0
@@ -2850,8 +3026,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u044B \u0441\u043E\u0431\u0440\u0430\u043B\u0438 "
+      - 
       - "voc\xEA coletou "
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: You received
       TermType: 0
@@ -2865,8 +3042,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438"
+      - 
       - "Voc\xEA recebeu"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Your current queue position is
       TermType: 0
@@ -2881,8 +3059,9 @@ MonoBehaviour:
       - 
       - "\u0412\u0430\u0448\u0430 \u0442\u0435\u043A\u0443\u0449\u0430\u044F \u043F\u043E\u0437\u0438\u0446\u0438\u044F
         \u0432 \u043E\u0447\u0435\u0440\u0435\u0434\u0438 "
+      - 
       - "Sua posi\xE7\xE3o atual na fila \xE9 "
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Your current rewards
       TermType: 0
@@ -2896,8 +3075,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0412\u0430\u0448\u0438 \u0442\u0435\u043A\u0443\u0449\u0438\u0435 \u043D\u0430\u0433\u0440\u0430\u0434\u044B"
+      - 
       - Suas recompensas atuais
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Your personal information will only be saved on the device, and will
         only be uploaded when you submit a claim applicaation
@@ -2919,9 +3099,10 @@ MonoBehaviour:
         \u0442\u043E\u043B\u044C\u043A\u043E \u043F\u0440\u0438 \u043F\u043E\u0434\u0430\u0447\u0435
         \u0437\u0430\u044F\u0432\u043B\u0435\u043D\u0438\u044F \u043D\u0430 \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u0435
         \u043F\u0440\u0435\u0442\u0435\u043D\u0437\u0438\u0438."
+      - 
       - "Suas informa\xE7\xF5es pessoais ser\xE3o salvas apenas no dispositivo e
         ser\xE3o carregadas apenas quando voc\xEA enviar um pedido de reivindica\xE7\xE3o"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: 'Your queue position is :'
       TermType: 0
@@ -2936,8 +3117,9 @@ MonoBehaviour:
       - 
       - "\u0412\u0430\u0448\u0430 \u043F\u043E\u0437\u0438\u0446\u0438\u044F \u0432
         \u043E\u0447\u0435\u0440\u0435\u0434\u0438:"
+      - 
       - "Sua posi\xE7\xE3o na fila \xE9:"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: cashRewardImg
       TermType: 5
@@ -2951,8 +3133,9 @@ MonoBehaviour:
       - 
       - 
       - DUI_JL_Cash 1
+      - 
       - DUI_JL_Cash 1
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: coinSign
       TermType: 0
@@ -2966,8 +3149,9 @@ MonoBehaviour:
       - 
       - 
       - "\u20BD "
+      - 
       - 'R$ '
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: from GoldenPiggy Bonus!
       TermType: 0
@@ -2982,7 +3166,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: "\u30B4\u30FC\u30EB\u30C7\u30F3\u30D6\u30BF\u306E\u30DC\u30FC\u30CA\u30B9\u304B\u3089"
       TermType: 0
@@ -2997,7 +3182,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: giftInstructions
       TermType: 0
@@ -3099,6 +3285,7 @@ MonoBehaviour:
         or disputesabout the rules,this activity or theapplication,please contact
         us by sending anE-mail to:yutianxiang19921223@Gmail.com\nGoogle is not a
         sponsor nor is involved in anyway with these contests or sweepstakes."
+      - 
       - "\n    1. A forma como voc\xEA obt\xE9m os quebra-cabe\xE7as, o n\xFAmero
         de quebra-cabe\xE7as obtidos de cada maneira e as recompensas podem mudar
         de tempos em tempos.\nConsulte a p\xE1gina de atividades no aplicativo para
@@ -3145,7 +3332,7 @@ MonoBehaviour:
         em contato conosco enviando um e-mail para: yutianxiang19921223@Gmail.com\nO
         Google n\xE3o \xE9 patrocinador nem est\xE1 envolvido de forma alguma com
         esses concursos ou sorteios."
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: lottoPlay
       TermType: 0
@@ -3159,8 +3346,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0418\u0433\u0440\u0430\u0442\u044C"
+      - 
       - Jogar
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: st4_1
       TermType: 0
@@ -3174,8 +3362,9 @@ MonoBehaviour:
       - 
       - 
       - "\u0438\u043C\u0435\u0442\u044C"
+      - 
       - "H\xE1 "
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: st4_2
       TermType: 0
@@ -3194,9 +3383,10 @@ MonoBehaviour:
         \u043E\u0431\u043D\u043E\u0432\u043B\u044F\u0442\u044C\u0441\u044F \u043A\u0430\u0436\u0434\u0443\u044E
         \u043C\u0438\u043D\u0443\u0442\u0443. \u0421\u043F\u0430\u0441\u0438\u0431\u043E
         \u0437\u0430 \u0442\u0435\u0440\u043F\u0435\u043D\u0438\u0435."
+      - 
       - "jogadores na frente. Sua posi\xE7\xE3o ser\xE1 atualizada a cada minuto.
         Obrigado por sua paci\xEAncia"
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: your rewards will be sent to your with in 3~15 business days . The merchants
         representend are not sponsors of the rewards or otherwise affiliated with
@@ -3252,6 +3442,7 @@ MonoBehaviour:
         \u0434\u043B\u044F \u043E\u0437\u043D\u0430\u043A\u043E\u043C\u043B\u0435\u043D\u0438\u044F
         \u0441 \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u043C\u0438
         \u0443\u0441\u043B\u043E\u0432\u0438\u044F\u043C\u0438."
+      - 
       - "suas recompensas ser\xE3o enviadas para voc\xEA em 3 a 15 dias \xFAteis
         [fins de semana n\xE3o inclu\xEDdos].\n\nOs representantes dos comerciantes
         n\xE3o s\xE3o patrocinadores das recompensas ou de outra forma afiliados
@@ -3259,7 +3450,7 @@ MonoBehaviour:
         s\xE3o marcas registradas e de propriedade de cada empresa representada e/ou
         suas afiliadas.\n\nvisite o site de cada empresa para obter os termos e condi\xE7\xF5es
         adicionais."
-      Flags: 000000000000000000
+      Flags: 00000000000000000000
       Languages_Touch: []
     - Term: Redeem Gift
       TermType: 0
@@ -3274,7 +3465,8 @@ MonoBehaviour:
       - 
       - 
       - 
-      Flags: 000000000000000000
+      - 
+      Flags: 00000000000000000000
       Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
@@ -3303,6 +3495,9 @@ MonoBehaviour:
       Flags: 0
     - Name: Russian
       Code: ru
+      Flags: 0
+    - Name: English (United States)
+      Code: en
       Flags: 0
     - Name: Portuguese (Brazil)
       Code: pt-BR

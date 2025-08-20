@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e60be42c1473144db0fd3337c25b500, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f93112ac48ea1f43bd0b99201339f88, type: 3}
   m_Name: footstep
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: a467507a4ffb1d542a558739b2fede77, type: 2}

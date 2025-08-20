@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94e721134b73f434994d746dad7067fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c66be88ecae996c48a070afdaf5ee7a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   effectType: 3
   iceSpriteRenderer: {fileID: 6114165364781526044}
   stageSprites:
-  - {fileID: 21300000, guid: 94e721134b73f434994d746dad7067fd, type: 3}
+  - {fileID: 21300000, guid: c66be88ecae996c48a070afdaf5ee7a5, type: 3}
   - {fileID: 21300000, guid: 63dd496e0b1b4b042974c1b18a22a7d7, type: 3}
   - {fileID: 21300000, guid: 37bf727ec7dc50b41a8a2931aaf6ca4c, type: 3}
   hitParticle:

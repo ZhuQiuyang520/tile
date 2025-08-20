@@ -34,7 +34,7 @@ namespace Watermelon
 
             public void Initialise()
             {
-                tileData = RaftMeeting.Flagpole.GetTile(tileID);
+                tileData = OilyVillage.Narrowly.GetTile(tileID);
             }
         }
     }

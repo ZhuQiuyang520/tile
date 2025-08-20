@@ -18,17 +18,33 @@ namespace Watermelon
 
         public LayerGrid this[int layerId] => layers[layerId];
 
-        public LayersMatrix(LevelData level, GameObject layersParent)
-        {
-            layers = new List<LayerGrid>(level.AmountOfLayers);
+        //public LayersMatrix(LevelData level, GameObject layersParent)
+        //{
+        //    layers = new List<LayerGrid>(level.AmountOfLayers);
 
-            for (int i = 0; i < level.AmountOfLayers; i++)
+        //    for (int i = 0; i < level.AmountOfLayers; i++)
+        //    {
+        //        GameObject layerGameObject = new GameObject(string.Format("Layer {0}", i.ToString("00")));
+        //        layerGameObject.transform.SetParent(layersParent.transform);
+        //        layerGameObject.transform.ResetLocal();
+
+        //        var size = (GameControl.CurLevel.AmountOfLayers - i - 1) % 2 == 0 ? GameControl.EvenLayerSize : GameControl.OddLayerSize;
+        //        LayerGrid layerRepresentation = new LayerGrid(layerGameObject, size.x, size.y);
+
+        //        layers.Add(layerRepresentation);
+        //    }
+        //}
+        public LayersMatrix(LevelData1 level, GameObject layersParent)
+        {
+            layers = new List<LayerGrid>(level.layers.Count);
+
+            for (int i = 0; i < level.layers.Count; i++)
             {
                 GameObject layerGameObject = new GameObject(string.Format("Layer {0}", i.ToString("00")));
                 layerGameObject.transform.SetParent(layersParent.transform);
                 layerGameObject.transform.ResetLocal();
 
-                var size = (RaftMeeting.BayGrant.AmountOfLayers - i - 1) % 2 == 0 ? RaftMeeting.TalkGrassCone : RaftMeeting.RagGrassCone;
+                var size = (OilyVillage.RyeClump.layers.Count - i - 1) % 2 == 0 ? OilyVillage.HourThankTray : OilyVillage.BudThankTray;
                 LayerGrid layerRepresentation = new LayerGrid(layerGameObject, size.x, size.y);
 
                 layers.Add(layerRepresentation);

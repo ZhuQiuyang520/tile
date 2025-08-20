@@ -29,32 +29,32 @@ namespace Watermelon
             LevelFieldCenter = new Vector2((leftBorder + rightBorder) / 2, (bottomBorder + topBorder) / 2);
             LevelFieldSize = new Vector2(rightBorder - leftBorder, topBorder - bottomBorder);
 
-            var dataTileSize = RaftMeeting.Weed.TileSize;
+            var dataTileSize = OilyVillage.Have.TileSize;
 
             SlotSize = new Vector2(LevelFieldSize.x / 8, LevelFieldSize.x / 8);
             if (dataTileSize != Vector2.one)
             {
                 if (dataTileSize.x > dataTileSize.y)
                 {
-                    SlotSize = new Vector2(SlotSize.x, SlotSize.y / RaftMeeting.Weed.TileSize.x * RaftMeeting.Weed.TileSize.y);
+                    SlotSize = new Vector2(SlotSize.x, SlotSize.y / OilyVillage.Have.TileSize.x * OilyVillage.Have.TileSize.y);
                 }
                 else
                 {
-                    SlotSize = new Vector2(SlotSize.x / RaftMeeting.Weed.TileSize.y * RaftMeeting.Weed.TileSize.x, SlotSize.y);
+                    SlotSize = new Vector2(SlotSize.x / OilyVillage.Have.TileSize.y * OilyVillage.Have.TileSize.x, SlotSize.y);
                 }
             }
         }
 
         public void Recalculate()
         {
-            var biggerLayerSize = RaftMeeting.MeSmokeGrassCopper ? RaftMeeting.TalkGrassCone : RaftMeeting.RagGrassCone;
+            var biggerLayerSize = OilyVillage.WeNeverThankRecede ? OilyVillage.HourThankTray : OilyVillage.BudThankTray;
 
             var tileSizeX = LevelFieldSize.x / biggerLayerSize.x;
             var tileSizeY = LevelFieldSize.y / biggerLayerSize.y;
 
-            var refTileSize = Vector2.one * Mathf.Clamp(Mathf.Min(tileSizeX, tileSizeY), RaftMeeting.Weed.MinTileSize, RaftMeeting.Weed.MaxTileSize);
+            var refTileSize = Vector2.one * Mathf.Clamp(Mathf.Min(tileSizeX, tileSizeY), OilyVillage.Have.MinTileSize, OilyVillage.Have.MaxTileSize);
 
-            var dataTileSize = RaftMeeting.Weed.TileSize;
+            var dataTileSize = OilyVillage.Have.TileSize;
 
             if(dataTileSize == Vector2.one)
             {
@@ -63,15 +63,15 @@ namespace Watermelon
             {
                 if(dataTileSize.x > dataTileSize.y)
                 {
-                    TileSize = new Vector2(refTileSize.x, refTileSize.y / RaftMeeting.Weed.TileSize.x * RaftMeeting.Weed.TileSize.y);
+                    TileSize = new Vector2(refTileSize.x, refTileSize.y / OilyVillage.Have.TileSize.x * OilyVillage.Have.TileSize.y);
                 } else
                 {
-                    TileSize = new Vector2(refTileSize.x / RaftMeeting.Weed.TileSize.y * RaftMeeting.Weed.TileSize.x, refTileSize.y);
+                    TileSize = new Vector2(refTileSize.x / OilyVillage.Have.TileSize.y * OilyVillage.Have.TileSize.x, refTileSize.y);
                 }
             }
             //TileSize = new Vector2(TileSize.x,TileSize.y * 1.13f);
-            OddLevelSize = new Vector2(TileSize.x * RaftMeeting.RagGrassCone.x, TileSize.y * RaftMeeting.RagGrassCone.y);
-            EvenLevelSize = new Vector2(TileSize.x * RaftMeeting.TalkGrassCone.x, TileSize.y * RaftMeeting.TalkGrassCone.y);
+            OddLevelSize = new Vector2(TileSize.x * OilyVillage.BudThankTray.x, TileSize.y * OilyVillage.BudThankTray.y);
+            EvenLevelSize = new Vector2(TileSize.x * OilyVillage.HourThankTray.x, TileSize.y * OilyVillage.HourThankTray.y);
         }
 
         public static Vector3 GetPosition(ElementPosition elementPosition)
@@ -80,7 +80,7 @@ namespace Watermelon
 
             var halfSize = TileSize / 2f;
 
-            if ((RaftMeeting.BayGrant.AmountOfLayers + 1 - layerID) % 2 == 0)
+            if ((OilyVillage.RyeClump.layers.Count + 1 - layerID) % 2 == 0)
             {
                 return new Vector3(-EvenLevelSize.x / 2f + elementPosition.X * TileSize.x + halfSize.x, -EvenLevelSize.y / 2f + halfSize.y + elementPosition.Y * TileSize.y, layerID);
             }

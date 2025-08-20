@@ -49,10 +49,5 @@ namespace Watermelon
 
             return counter;
         }
-
-        public string LevelName()
-        {
-            return this.name;
-        }
     }
 }

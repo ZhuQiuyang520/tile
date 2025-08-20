@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 485702170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9ca76eac8062f42b99bbf78e777ee1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9fe3631b119d0f3428659c4ea0be382e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jitterMagnitude: 0.2
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 485702170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f4be1e900da7f4992e48e38d48b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 22c4b5e5a0fd9484d83b1aa705b9a54c, type: 2}
@@ -333,7 +333,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619480125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afb2340fbd3fe14f9f4e07cba073e17, type: 3}
+  m_Script: {fileID: 11500000, guid: 54ba8b3ade639ec499d54f4a2510d423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xAxis: {x: 0.94, y: -0.01}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1619480125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
+  m_Script: {fileID: 11500000, guid: f6f4be1e900da7f4992e48e38d48b744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 22c4b5e5a0fd9484d83b1aa705b9a54c, type: 2}

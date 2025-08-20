@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using LitJson;
@@ -11,7 +11,7 @@ using System.Linq;
 public enum LoginPlatform { Android, IOS }
 
 /// <summary> 提现功能管理 </summary>
-public class CashOutManager : MonoSingleton<CashOutManager>
+public class CashOutManager : BeamNonliving<CashOutManager>
 {
     [Header("登录平台")]
     public LoginPlatform _LoginPlatform = LoginPlatform.Android;
@@ -36,8 +36,8 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     #region 游戏逻辑
     private void Start()
     {
-        Account = SaveDataManager.GetString("CashOut_Account");
-        Money = SaveDataManager.GetFloat("CashOut_Money");
+        Account = LuckHaveMimetic.PenAcross("CashOut_Account");
+        Money = LuckHaveMimetic.PenMaple("CashOut_Money");
     }
 
     private void OnApplicationPause(bool pauseStatus)
@@ -46,11 +46,11 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         if (pauseStatus && Seconds > 0)
         {
             string title = "Your reward is ready!";
-            string info = $"All {NetInfoMgr.instance.CashOut_Data.MoneyName} have been converted,Please check your rewards!";
-            PigmentationChronic.Chivalry.PanelPigmentation();
-            PigmentationChronic.Chivalry.IdentityPigmentation(title, info, (int)Seconds);
+            string info = $"All {SawSelfEke.instance.TuskShy_Have.MoneyName} have been converted,Please check your rewards!";
+            IrreversibleMimetic.Monopoly.FlakeIrreversible();
+            IrreversibleMimetic.Monopoly.AirplaneIrreversible(title, info, (int)Seconds);
             for (int i = 0; i < 10; i++) // 10次延时 10800秒 3小时
-                PigmentationChronic.Chivalry.IdentityPigmentation(title, info, (int)Seconds + (i * 10800));
+                IrreversibleMimetic.Monopoly.AirplaneIrreversible(title, info, (int)Seconds + (i * 10800));
         }
 
         if (pauseStatus)
@@ -92,7 +92,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
 
             //任务
-            if (NetInfoMgr.instance.CashOut_Data != null && NetInfoMgr.instance.CashOut_Data.TaskList.Count > 0)
+            if (SawSelfEke.instance.TuskShy_Have != null && SawSelfEke.instance.TuskShy_Have.TaskList.Count > 0)
             {
                 //记录第一次登录日期utc
                 if (!PlayerPrefs.HasKey("CashOut_FirstLoginTime"))
@@ -118,10 +118,10 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                 }
                 //计算今天距离第一次登录过了几天
                 int Day = (DateTime.UtcNow.Date - DateTime.Parse(PlayerPrefs.GetString("CashOut_FirstLoginTime"))).Days;
-                if (Day >= NetInfoMgr.instance.CashOut_Data.TaskList.Count) //一天一任务 天数超出任务数量显示默认任务
-                    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList.FirstOrDefault(t => t.IsDefault);
+                if (Day >= SawSelfEke.instance.TuskShy_Have.TaskList.Count) //一天一任务 天数超出任务数量显示默认任务
+                    Data.TaskData = SawSelfEke.instance.TuskShy_Have.TaskList.FirstOrDefault(t => t.IsDefault);
                 else
-                    Data.TaskData = NetInfoMgr.instance.CashOut_Data.TaskList[Day];
+                    Data.TaskData = SawSelfEke.instance.TuskShy_Have.TaskList[Day];
                 Data.TaskData.NowValue = PlayerPrefs.GetFloat("CashOut_TaskValue");
             }
         }
@@ -130,8 +130,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     public void AddMoney(float Value)
     {
         Money += Value;
-        SaveDataManager.SetFloat("CashOut_Money", Money);
-        SaveDataManager.SetFloat("CashOut_Money_All", SaveDataManager.GetFloat("CashOut_Money_All") + Value);
+        LuckHaveMimetic.LayMaple("CashOut_Money", Money);
         _CashOutPanel?.UpdateMoney();
         _CashOutEnter?.UpdateMoney();
     }
@@ -149,7 +148,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         CancelInvoke(nameof(Count1304Time));
         if (Event_1304Time <= 0)
             return;
-        PostEventScript.GetInstance().SendEvent("1304", Event_1304Time.ToString());
+        SlayNeverSpiral.PenMonopoly().JumpNever("1304", Event_1304Time.ToString());
         Event_1304Time = 0;
     }
 
@@ -185,7 +184,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         {
             {"app-version", Application.version},
             {"lang", I2.Loc.LocalizationManager.CurrentLanguageCode},
-            {"Authorization", SaveDataManager.GetString("CashOut_Token")},
+            {"Authorization", LuckHaveMimetic.PenAcross("CashOut_Token")},
             {"platform", WithdrawPlatform},
             {"os-version", ""},
             {"device-name", ""},
@@ -196,7 +195,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         {
             {"app-version", Application.version},
             {"lang", I2.Loc.LocalizationManager.CurrentLanguageCode},
-            {"Authorization", SaveDataManager.GetString("CashOut_Token")},
+            {"Authorization", LuckHaveMimetic.PenAcross("CashOut_Token")},
             {"platform", WithdrawPlatform},
             {"os-version", SystemInfo.operatingSystem},
             {"device-name", SystemInfo.deviceName},
@@ -211,7 +210,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         if (_LoginPlatform == LoginPlatform.Android)
         {
             Platform = "Android";
-            DeviceAdId = SaveDataManager.GetString("gaid");
+            DeviceAdId = LuckHaveMimetic.PenAcross("gaid");
             if (Application.platform == RuntimePlatform.Android)
             {
                 AndroidJavaClass aj = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -223,13 +222,13 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         {
             Platform = "iOS";
             Manufacturer = "Apple";
-            DeviceAdId = SaveDataManager.GetString("idfv");
+            DeviceAdId = LuckHaveMimetic.PenAcross("idfv");
         }
         StringBuilder uuidsb = new StringBuilder();
         uuidsb.Append(SystemInfo.deviceUniqueIdentifier);
 #if UNITY_ANDROID || UNITY_EDITOR //安卓UUID存在不同应用相同ID的情况 用SystemInfo.deviceUniqueIdentifier+AppInfo 
-        bool isNewPlayer = !PlayerPrefs.HasKey(CConfig.sv_IsNewPlayer + "Bool") || SaveDataManager.GetBool(CConfig.sv_IsNewPlayer);
-        bool hasuuidAndAppid = SaveDataManager.GetBool("UuidAndAPPid");
+        bool isNewPlayer = !PlayerPrefs.HasKey(CLagoon.No_WeCopSparse + "Bool") || LuckHaveMimetic.PenKeep(CLagoon.No_WeCopSparse);
+        bool hasuuidAndAppid = LuckHaveMimetic.PenKeep("UuidAndAPPid");
         if (isNewPlayer || hasuuidAndAppid) //新老用户兼容
             uuidsb.Append(AppInfo);
 #endif
@@ -250,7 +249,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         string loginUrl = $"{BaseUrl}/login";
         CashOutLog($"请求登录  请求体: {jsonBody}", false);
 
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: loginUrl,
             jsonData: jsonBody,
             success: (result) =>
@@ -262,13 +261,13 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                     {
                         CashOutLog("登录成功 数据： " + result.downloadHandler.text, false, true);
 #if UNITY_ANDROID || UNITY_EDITOR //安卓UUID 新老用户兼容
-                        bool isNewPlayer = !PlayerPrefs.HasKey(CConfig.sv_IsNewPlayer + "Bool") || SaveDataManager.GetBool(CConfig.sv_IsNewPlayer);
+                        bool isNewPlayer = !PlayerPrefs.HasKey(CLagoon.No_WeCopSparse + "Bool") || LuckHaveMimetic.PenKeep(CLagoon.No_WeCopSparse);
                         if (isNewPlayer)
-                            SaveDataManager.SetBool("UuidAndAPPid", true);
+                            LuckHaveMimetic.LayKeep("UuidAndAPPid", true);
 #endif
 
                         //刷新token 获取提现规则
-                        SaveDataManager.SetString("CashOut_Token", response.data.token);
+                        LuckHaveMimetic.LayAcross("CashOut_Token", response.data.token);
                         GetWithdrawRule();
                         //整理数据
                         Data = new CashOutResponseData();
@@ -276,14 +275,14 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         Data.Cash = float.Parse(response.data.cash, CultureInfo.InvariantCulture);
                         DateTime ConvertTime = DateTime.Parse(response.data.convert_time);
                         if (PlayerPrefs.HasKey("CashOut_ConvertTime"))
-                            Data.ConvertTime = long.Parse(SaveDataManager.GetString("CashOut_ConvertTime"));
+                            Data.ConvertTime = long.Parse(LuckHaveMimetic.PenAcross("CashOut_ConvertTime"));
                         if (Data.ConvertTime < ConvertTime.Ticks)
                         {
                             Money = 0;
-                            SaveDataManager.SetFloat("CashOut_Money", Money);
+                            LuckHaveMimetic.LayMaple("CashOut_Money", Money);
                         }
                         Data.ConvertTime = ConvertTime.Ticks;
-                        SaveDataManager.SetString("CashOut_ConvertTime", Data.ConvertTime.ToString());
+                        LuckHaveMimetic.LayAcross("CashOut_ConvertTime", Data.ConvertTime.ToString());
                         InvokeRepeating(nameof(TimeCount), 1, 1);
 
                         // 更新UI
@@ -305,7 +304,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                     {
                         CashOutLog($"登录失败: {response.msg}", true);
                         CashOutLog("如果报错是app not found，有可能是登陆平台选错了，有可能是包名和短剧后台ID对不上", true);
-                        ToastManager.GetInstance().ShowToast("Login fail :" + response.msg);
+                        SpearMimetic.PenMonopoly().BlueSpear("Login fail :" + response.msg);
                     }
                 }
                 catch (Exception e)
@@ -316,7 +315,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             fail: () =>
             {
                 CashOutLog("登录请求失败", true);
-                ToastManager.GetInstance().ShowToast("Login fail");
+                SpearMimetic.PenMonopoly().BlueSpear("Login fail");
                 Ready = false;
             },
             timeout: 3f,
@@ -328,7 +327,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     {
         CancelInvoke(nameof(TimeCount));
         string url = $"{BaseUrl}/user";
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
             url: url,
             success: (result) =>
             {
@@ -340,14 +339,14 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                         CashOutLog("用户信息数据： " + result.downloadHandler.text, false, true);
                         string Event_Money = Money.ToString();
 
-                        double OldCash = SaveDataManager.GetDouble("CashOut_Cash");
+                        double OldCash = LuckHaveMimetic.PenZigzag("CashOut_Cash");
                         float NewCash = float.Parse(response.data.cash, CultureInfo.InvariantCulture);
                         DateTime ConvertTime = DateTime.Parse(response.data.convert_time);
                         //当前时间小于后台时间 代表新一轮转换开始 清空Money
                         if (Data.ConvertTime < ConvertTime.Ticks)
                         {
                             Money = 0;
-                            SaveDataManager.SetFloat("CashOut_Money", Money);
+                            LuckHaveMimetic.LayMaple("CashOut_Money", Money);
                         }
                         if (Money == 0)
                         {
@@ -358,7 +357,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
                             //打点 如果钱转化了 上报转化信息
                             if (IsIconFly)
-                                PostEventScript.GetInstance().SendEvent("1302", Event_Money, NewCash.ToString());
+                                SlayNeverSpiral.PenMonopoly().JumpNever("1302", Event_Money, NewCash.ToString());
                         }
                         else
                         {
@@ -367,11 +366,11 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                             _CashOutEnter?.UpdateMoney();
                         }
                         Data.ConvertTime = ConvertTime.Ticks;
-                        SaveDataManager.SetString("CashOut_ConvertTime", Data.ConvertTime.ToString());
+                        LuckHaveMimetic.LayAcross("CashOut_ConvertTime", Data.ConvertTime.ToString());
                         Data.Cash = NewCash;
 
                         InvokeRepeating(nameof(TimeCount), 0, 1);
-                        SaveDataManager.SetDouble("CashOut_Cash", Data.Cash);
+                        LuckHaveMimetic.LayZigzag("CashOut_Cash", Data.Cash);
                         _CashOutPanel?.CloseLoading_UpdateUI();
                     }
                     else
@@ -397,7 +396,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     {
         string url = $"{BaseUrl}/withdraw/rule?platform={WithdrawPlatform}";
 
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
             url: url,
             success: (result) =>
             {
@@ -432,7 +431,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     {
         if (Data.Cash < MinWithdrawCount)
         {
-            ToastManager.GetInstance().ShowToast($"Minimum withdrawal amount {MinWithdrawCount}");
+            SpearMimetic.PenMonopoly().BlueSpear($"Minimum withdrawal amount {MinWithdrawCount}");
             _CashOutPanel?.CloseLoading_Withdraw(true);
             string Amount = Data.Cash.ToString("F2", System.Globalization.CultureInfo.InvariantCulture);
             SendWithdrawEvent(Amount, false);
@@ -451,7 +450,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         string jsonBody = JsonMapper.ToJson(withdrawRequest);
         string url = $"{BaseUrl}/withdraw";
 
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: url,
             jsonData: jsonBody,
             success: (result) =>
@@ -479,7 +478,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
                 {
                     CashOutLog($"解析提现响应数据失败: {e.Message}", true);
                     _CashOutPanel?.CloseLoading_Withdraw();
-                    ToastManager.GetInstance().ShowToast("Withdraw fail :" + e.Message);
+                    SpearMimetic.PenMonopoly().BlueSpear("Withdraw fail :" + e.Message);
 
                     SendWithdrawEvent(withdrawRequest.amount, false);
                 }
@@ -497,13 +496,13 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     }
     void SendWithdrawEvent(string Event_Cash, bool IsSuccess) //打点 提现成功或失败
     {
-        PostEventScript.GetInstance().SendEvent("1303", Event_Cash, IsSuccess ? "1" : "0");
+        SlayNeverSpiral.PenMonopoly().JumpNever("1303", Event_Cash, IsSuccess ? "1" : "0");
     }
 
     public void GetWithdrawRecord() // 获取提现记录
     {
         string url = $"{BaseUrl}/withdraw";
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
             url: url,
             success: (result) =>
             {
@@ -557,7 +556,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
         string jsonBody = JsonMapper.ToJson(requestData);
         CashOutLog($"上报ecpmURL: {url}  请求体: {jsonBody}", false);
 
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: url,
             jsonData: jsonBody,
             success: (result) =>
@@ -609,10 +608,10 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     {
         string url = $"{BaseUrl}/user/ad";
         RequestData_ReportAdjustID requestData = new RequestData_ReportAdjustID();
-        requestData.id = AdjustInitManager.Instance.GetAdjustAdid();
+        requestData.id = ShrimpBullMimetic.Instance.PenShrimpPale();
         string jsonBody = JsonMapper.ToJson(requestData);
         CashOutLog($"上报adjust_idURL: {url}  请求体: {jsonBody}", false);
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: url,
             jsonData: jsonBody,
             success: (result) =>
@@ -647,7 +646,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     void GetClientIP() // 获取客户端IP
     {
         string url = "http://ip-api.com/json/?key=NN3ExblXQt2Esoy";
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
             url: url,
             success: (result) =>
             {
@@ -681,7 +680,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     void GetRealIP_Step1() // 获取真实IP网址
     {
         string url = "https://nstool.netease.com/";
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
             url: url,
             success: (result) =>
             {
@@ -711,7 +710,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
     }
     void GetRealIP_Step2(string url) // 获取真实IP
     {
-        NetWorkManager.GetInstance().HttpGet(
+        SawBreaMimetic.PenMonopoly().BothPen(
            url: url,
            success: (result) =>
            {
@@ -752,7 +751,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
         CashOutLog("上报ID  客户端Ip：" + ClientIP + "  真实Ip：" + RealIP);
         string url = $"{BaseUrl}/user/meta";
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: url,
             jsonData: JsonMapper.ToJson(new { CLIENT_IP = ClientIP, REAL_IP = RealIP }),
             success: (result) =>
@@ -789,7 +788,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
     public void ReportEvent(int type, string string_0 = null, string string_1 = null, int? big_int_0 = null) // 上报事件
     {
-        if (string.IsNullOrEmpty(SaveDataManager.GetString("CashOut_Token")))
+        if (string.IsNullOrEmpty(LuckHaveMimetic.PenAcross("CashOut_Token")))
         {
             CashOutLog($"没Token不上报事件{type}", true);
             return;
@@ -811,7 +810,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
 
         string url = $"{BaseUrl}/event";
         CashOutLog($"上报事件{type}  请求体: {JsonMapper.ToJson(EventRequest)}", false);
-        NetWorkManager.GetInstance().HttpPostJson(
+        SawBreaMimetic.PenMonopoly().BothSlayJean(
             url: url,
             jsonData: JsonMapper.ToJson(EventRequest),
             success: (result) =>
@@ -913,7 +912,7 @@ public class CashOutManager : MonoSingleton<CashOutManager>
             _CashOutPanel?.UpdateTask();
             if (PlayerPrefs.GetInt("TaskEventReported") == 0 && NewValue >= Data.TaskData.Target)
             {
-                PostEventScript.GetInstance().SendEvent("1305", Name, NewValue.ToString(), Data.TaskData.IsDefault.ToString());
+                SlayNeverSpiral.PenMonopoly().JumpNever("1305", Name, NewValue.ToString(), Data.TaskData.IsDefault.ToString());
                 PlayerPrefs.SetInt("TaskEventReported", 1);
             }
         }

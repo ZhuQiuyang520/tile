@@ -7,7 +7,7 @@ namespace I2.Loc
 	{
 		void Start () 
 		{
-			Invoke(nameof(test), 3);
+			Invoke("test", 3);
 		}
 
 		void test()
@@ -23,7 +23,7 @@ namespace I2.Loc
 
 			//-- Call this function again in 3 seconds
 
-				Invoke(nameof(test), 3);
+				Invoke("test", 3);
 		}
 	}
 }

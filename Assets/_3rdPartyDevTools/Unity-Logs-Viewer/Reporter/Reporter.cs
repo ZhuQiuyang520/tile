@@ -596,7 +596,7 @@ public class Reporter : MonoBehaviour
 	void Start()
 	{
 		logDate = System.DateTime.Now.ToString();
-		StartCoroutine(nameof(readInfo));
+		StartCoroutine("readInfo");
 	}
 
 	//clear all logs
