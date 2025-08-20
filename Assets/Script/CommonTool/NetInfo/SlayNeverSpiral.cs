@@ -65,7 +65,7 @@ public class SlayNeverSpiral : BeamNonliving<SlayNeverSpiral>
         {
             valueList = new List<string>() {
                 LuckHaveMimetic.PenMaple("CashOut_Money").ToString(),
-                LuckHaveMimetic.PenAcross(CLagoon.BankFloral),
+                LuckHaveMimetic.PenMaple(CLagoon.BankFloral).ToString(),
                 LuckHaveMimetic.PenMaple("CashOut_Money_All").ToString(),
                 LuckHaveMimetic.PenMaple(CLagoon.BankFloral_All).ToString(),
                 (PlayerPrefs.GetInt(CLagoon.No_RyeClump) + 1).ToString(),
@@ -77,7 +77,11 @@ public class SlayNeverSpiral : BeamNonliving<SlayNeverSpiral>
                 //LuckHaveMimetic.GetInt(SlotConfig.sv_SlotSpinCount).ToString()
             };
         }
-        
+        Debug.Log(LuckHaveMimetic.PenMaple("CashOut_Money").ToString());
+        Debug.Log(LuckHaveMimetic.PenMaple(CLagoon.BankFloral));
+        Debug.Log(LuckHaveMimetic.PenMaple("CashOut_Money_All").ToString());
+        Debug.Log(LuckHaveMimetic.PenMaple(CLagoon.BankFloral_All).ToString());
+        Debug.Log((PlayerPrefs.GetInt(CLagoon.No_RyeClump) + 1).ToString());
         if (LuckHaveMimetic.PenAcross(CLagoon.No_TimidRegimeOf) == null)
         {
             return;

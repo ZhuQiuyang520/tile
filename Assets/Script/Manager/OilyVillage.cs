@@ -293,7 +293,6 @@ public class OilyVillage : MonoBehaviour
                         TileSpawnData tileSpawnData = new TileSpawnData();
                         
                         tileSpawnData.ExamineDatebase = new ElementPosition(x, y, i);
-                        Debug.Log(tileSpawnData.ExamineDatebase);
                         tileSpawnData.HereHave = cellData;
                         tileSpawnData.ThankNaive = i;
                         tileSpawnData.Thank = layer;

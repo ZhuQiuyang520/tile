@@ -18,7 +18,7 @@ public class CashOutManager : BeamNonliving<CashOutManager>
     [Header("短剧后台的产品id")]
     public string AppInfo = "4";
     string WithdrawPlatform = "PAYPAL";
-    string BaseUrl = "https://us.nicedramatv.com";
+    string BaseUrl = "http://us.nicedramatv.com";
     [HideInInspector] public string Account;
     [HideInInspector] public CashOutResponseData Data;
     [HideInInspector] public long LeftTime; // 剩余时间
@@ -131,6 +131,7 @@ public class CashOutManager : BeamNonliving<CashOutManager>
     {
         Money += Value;
         LuckHaveMimetic.LayMaple("CashOut_Money", Money);
+        LuckHaveMimetic.LayMaple("CashOut_Money_All" , LuckHaveMimetic.PenMaple("CashOut_Money_All") + Money);
         _CashOutPanel?.UpdateMoney();
         _CashOutEnter?.UpdateMoney();
     }
