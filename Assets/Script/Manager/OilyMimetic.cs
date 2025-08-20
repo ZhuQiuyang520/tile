@@ -43,7 +43,6 @@ public class OilyMimetic : BeamNonliving<OilyMimetic>
     };
     public void RefinerCoral(HapticPatterns.PresetType type)
     {
-        CashOutManager.
         if (WeCoral)
         {
             HapticPatterns.PlayPreset(type);
